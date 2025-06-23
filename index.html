@@ -1,1061 +1,893 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Mohammad Ali's Portfolio</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Mohammad Ali's Portfolio</title>
 
   <!-- Favicons -->
-  <link rel="icon" href="assets/img/rounded-image.png" type="image/png">
+  <link rel="icon" href="assets/images/rounded-image.png" type="image/png">
   <!-- <link href="assets/img/title-logo.png" rel="icon"> -->
-  <link href="assets/img/rounded-image.png" rel="apple-touch-icon">
+  <link href="assets/images/rounded-image.png" rel="apple-touch-icon">
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com" rel="preconnect">
-  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-    rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8; /* Softer light blue-gray */
+            color: #334155; /* Dark slate text */
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 2.5rem;
+            font-weight: 700;
+            color: #1e293b;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 70px; /* Slightly wider underline */
+            height: 4px;
+            background-color: #0d9488; /* Teal accent */
+            border-radius: 9999px;
+        }
+        /* New animated underline for nav links */
+        .nav-link {
+            position: relative;
+            padding: 0.5rem 0; /* Adjust padding for underline space */
+            color: #475569; /* Default color */
+            transition: color 0.3s ease-in-out; /* Smooth color transition */
+            overflow: hidden; /* Hide overflow from underline initially */
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 0%; /* Start at 0 width */
+            height: 2px; /* Underline thickness */
+            background-color: #0d9488; /* Teal color */
+            transition: width 0.3s ease-in-out; /* Animate width */
+        }
+        .nav-link:hover::after {
+            width: 100%; /* Expand to full width on hover */
+        }
+        .nav-link:hover {
+            color: #0d9488; /* Teal accent on hover */
+            transform: translateY(-2px); /* Slight lift */
+        }
 
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+        .btn-primary {
+            background-color: #0d9488; /* Teal */
+            color: white;
+            padding: 0.75rem 1.75rem; /* Slightly more padding */
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Softer shadow */
+        }
+        .btn-primary:hover {
+            background-color: #0f766e; /* Darker teal */
+            transform: translateY(-3px); /* More pronounced lift */
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+        .btn-secondary {
+            background-color: #e2e8f0; /* Light gray */
+            color: #334155;
+            padding: 0.75rem 1.75rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+        .btn-secondary:hover {
+            background-color: #cbd5e1; /* Darker gray */
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+        .card {
+            background-color: white;
+            border-radius: 1rem; /* More rounded corners */
+            padding: 2.5rem; /* More padding */
+            box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.1), 0 5px 15px -3px rgba(0, 0, 0, 0.05); /* Deeper shadow */
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .card:hover {
+            transform: translateY(-8px); /* More pronounced lift */
+            box-shadow: 0 20px 40px -8px rgba(0, 0, 0, 0.15), 0 8px 20px -5px rgba(0, 0, 0, 0.08);
+        }
+        .icon {
+            color: #0d9488; /* Teal for icons */
+        }
 
-  <!-- Main CSS File -->
-  <link href="assets/css/main.css" rel="stylesheet">
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* Ensure these are consistently applied to sections */
+        .animated-section.hidden-init {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        .animated-section.show {
+            animation: slideInUp 0.8s ease-out forwards;
+            opacity: 1; /* Override initial opacity for fade in */
+            transform: translateY(0); /* Override initial transform for slide in */
+        }
+        /* Project Tabs */
+        .tab-button {
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: all 0.2s ease-in-out;
+            cursor: pointer;
+            border: 2px solid transparent;
+            color: #475569;
+        }
+        .tab-button.active {
+            background-color: #0d9488;
+            color: white;
+            border-color: #0d9488;
+        }
+        .tab-button:not(.active):hover {
+            background-color: #e0f2f7;
+            color: #0d9488;
+        }
 
+        /* Image Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        .modal-overlay.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        .modal-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content img {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+        }
+        .modal-close {
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            background-color: white;
+            color: #334155;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: all 0.2s ease-in-out;
+        }
+        .modal-close:hover {
+            background-color: #f0f4f8;
+            transform: rotate(90deg);
+        }
+
+        /* Responsive adjustments for modal close button */
+        @media (max-width: 768px) {
+            .modal-close {
+                top: 10px;
+                right: 10px;
+                width: 30px;
+                height: 30px;
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Flying Icon Animations */
+        @keyframes floatEffect {
+            0% { transform: translate(0, 0) rotate(0deg) scale(1); opacity: 0.6; }
+            25% { transform: translate(10px, -20px) rotate(5deg) scale(1.05); opacity: 0.7; }
+            50% { transform: translate(0, -40px) rotate(-5deg) scale(1); opacity: 0.8; }
+            75% { transform: translate(-10px, -20px) rotate(5deg) scale(0.95); opacity: 0.7; }
+            100% { transform: translate(0, 0) rotate(0deg) scale(1); opacity: 0.6; }
+        }
+        @keyframes subtleMove {
+            0% { transform: translateX(0) translateY(0); }
+            50% { transform: translateX(20px) translateY(10px); }
+            100% { transform: translateX(0) translateY(0); }
+        }
+
+        .icon-fly {
+            position: absolute;
+            animation: floatEffect 15s ease-in-out infinite alternate, subtleMove 20s linear infinite;
+            filter: blur(0.5px); /* Subtle blur for ethereal look */
+        }
+        .icon-fly-1 { animation-duration: 18s; animation-delay: 0s; top: 10%; left: 15%; }
+        .icon-fly-2 { animation-duration: 22s; animation-delay: 2s; top: 25%; right: 20%; }
+        .icon-fly-3 { animation-duration: 19s; animation-delay: 4s; bottom: 15%; left: 30%; }
+        .icon-fly-4 { animation-duration: 25s; animation-delay: 1s; bottom: 5%; right: 10%; }
+        .icon-fly-5 { animation-duration: 20s; animation-delay: 3s; top: 40%; left: 5%; }
+        .icon-fly-6 { animation-duration: 23s; animation-delay: 5s; top: 50%; right: 5%; }
+        .icon-fly-7 { animation-duration: 17s; animation-delay: 6s; bottom: 25%; left: 5%; }
+        .icon-fly-8 { animation-duration: 21s; animation-delay: 7s; top: 5%; left: 45%; }
+        .icon-fly-9 { animation-duration: 24s; animation-delay: 8s; bottom: 35%; right: 40%; }
+
+
+        /* Media queries to adjust icon sizes/visibility on smaller screens */
+        @media (max-width: 768px) {
+            .icon-fly { display: none; /* Hide flying icons on smaller screens for less clutter */ }
+        }
+    </style>
 </head>
+<body class="antialiased">
 
-<body class="index-page">
+    <!-- Header/Navigation -->
+    <header class="bg-white shadow-lg py-4 sticky top-0 z-50">
+        <nav class="container flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-gray-900 rounded-lg p-2 hover:bg-gray-100 transition duration-300">Mohammad Ali</a>
+            <ul class="hidden md:flex space-x-8">
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#experience" class="nav-link">Experience</a></li>
+                <li><a href="#education" class="nav-link">Education</a></li>
+                <li><a href="#download-cv" class="nav-link">Download CV</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="md:hidden text-gray-600 hover:text-teal-700 focus:outline-none">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </nav>
+    </header>
 
-  <header id="header" class="header dark-background d-flex flex-column">
-    <i class="header-toggle d-xl-none bi bi-list"></i>
-
-    <div class="profile-img">
-      <img src="assets/img/rounded-image.png" alt="" class="img-fluid rounded-circle">
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="hidden fixed inset-0 bg-gray-900 bg-opacity-95 z-50 flex flex-col items-center justify-center space-y-8 md:hidden">
+        <button id="close-mobile-menu" class="absolute top-6 right-6 text-white text-3xl focus:outline-none">
+            <i class="fas fa-times"></i>
+        </button>
+        <ul class="text-white text-3xl font-bold space-y-6 text-center">
+            <li><a href="#about" class="block py-2 hover:text-teal-400 transition duration-300">About</a></li>
+            <li><a href="#skills" class="block py-2 hover:text-teal-400 transition duration-300">Skills</a></li>
+            <li><a href="#projects" class="block py-2 hover:text-teal-400 transition duration-300">Projects</a></li>
+            <li><a href="#experience" class="block py-2 hover:text-teal-400 transition duration-300">Experience</a></li>
+            <li><a href="#education" class="block py-2 hover:text-teal-400 transition duration-300">Education</a></li>
+            <li><a href="#download-cv" class="block py-2 hover:text-teal-400 transition duration-300">Download CV</a></li>
+            <li><a href="#contact" class="block py-2 hover:text-teal-400 transition duration-300">Contact</a></li>
+        </ul>
     </div>
-
-    <a href="index.html" class="logo d-flex align-items-center justify-content-center">
-      <h1 class="sitename">Mohammad Ali</h1>
-    </a>
-
-    <div class="social-links text-center">
-      <a href="#" class="twitter"><i class="bi bi-twitter-x"></i></a>
-      <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-      <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-      <a href="#" class="google-plus"><i class="bi bi-skype"></i></a>
-      <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
-    </div>
-
-    <nav id="navmenu" class="navmenu">
-      <ul>
-        <!-- <li><a href="#hero" class="active"><i class="bi bi-house navicon"></i>Home</a></li> -->
-        <li><a href="#about"><i class="bi bi-person navicon"></i> About</a></li>
-        <li><a href="#resume"><i class="bi bi-file-earmark-text navicon"></i> Resume</a></li>
-        <li><a href="#portfolio"><i class="bi bi-images navicon"></i> Portfolio</a></li>
-        <!-- <li><a href="#services"><i class="bi bi-hdd-stack navicon"></i> Services</a></li>
-        <li class="dropdown"><a href="#"><i class="bi bi-menu-button navicon"></i> <span>Dropdown</span> <i
-              class="bi bi-chevron-down toggle-dropdown"></i></a>
-          <ul>
-            <li><a href="#">Dropdown 1</a></li>
-            <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i
-                  class="bi bi-chevron-down toggle-dropdown"></i></a>
-              <ul>
-                <li><a href="#">Deep Dropdown 1</a></li>
-                <li><a href="#">Deep Dropdown 2</a></li>
-                <li><a href="#">Deep Dropdown 3</a></li>
-                <li><a href="#">Deep Dropdown 4</a></li>
-                <li><a href="#">Deep Dropdown 5</a></li>
-              </ul>
-            </li>
-            <li><a href="#">Dropdown 2</a></li>
-            <li><a href="#">Dropdown 3</a></li>
-            <li><a href="#">Dropdown 4</a></li>
-          </ul>
-        </li>
-        <li><a href="#contact"><i class="bi bi-envelope navicon"></i> Contact</a></li> -->
-      </ul>
-    </nav>
-
-  </header>
-
-  <main class="main">
 
     <!-- Hero Section -->
-    <!-- <section id="hero" class="hero section dark-background">
+    <section class="relative bg-gradient-to-br from-teal-600 to-cyan-700 text-white py-20 md:py-32 rounded-b-3xl shadow-2xl mb-16 overflow-hidden">
+        <div class="container text-center flex flex-col items-center relative z-10">
+            <img src="assets/images/rounded-image.png" alt="Mohammad Ali's Profile Picture" class="rounded-full w-44 h-44 mx-auto mb-8 border-6 border-teal-300 shadow-xl object-cover animate-fade-in delay-100">
+            <h1 class="text-5xl md:text-7xl font-extrabold mb-4 leading-tight animate-slide-in-up delay-200">Hi, I'm <span class="text-teal-200">Mohammad Ali</span></h1>
+            <p class="text-xl md:text-3xl font-light mb-10 animate-slide-in-up delay-300">A passionate <span class="font-bold text-teal-100">Flutter Developer</span> with 3 Years of Experience</p>
+            <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 animate-slide-in-up delay-400">
+                <a href="#projects" class="btn-primary">View My Work <i class="fas fa-arrow-right ml-2"></i></a>
+                <a href="#contact" class="btn-primary bg-transparent border-2 border-white hover:bg-white hover:text-teal-700">Get In Touch <i class="fas fa-envelope ml-2"></i></a>
+            </div>
+        </div>
 
-      <img src="assets/img/hero-bg.jpg" alt="" data-aos="fade-in" class="">
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-        <h2>Mohammad Ali</h2>
-        <p>I'm <span class="typed"
-            data-typed-items="Flutter Developer, iOS App Developer, Android App Developer">Developer</span><span
-            class="typed-cursor typed-cursor--blink" aria-hidden="true"></span><span
-            class="typed-cursor typed-cursor--blink" aria-hidden="true"></span></p>
-      </div>
-
-    </section> -->
-    <!-- /Hero Section -->
+        <!-- Flying Animated Icons (SVGs related to Flutter Development) -->
+        <div class="absolute inset-0 overflow-hidden pointer-events-none">
+            <!-- Flutter Icon -->
+            <div class="icon-fly icon-fly-1">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-10 h-10 text-teal-300 opacity-60">
+                    <path d="M14.07 10.93L8 4.86 4.86 8l6.07 6.07 3.14-3.14zM10 16.14l-6.07-6.07L0 12l10 10 3.14-3.14zM24 12l-6.07 6.07-3.14-3.14 6.07-6.07z"/>
+                </svg>
+            </div>
+            <!-- Android Icon -->
+            <div class="icon-fly icon-fly-2">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8 text-teal-200 opacity-50">
+                    <path d="M7 2v2H2C.9 4 0 4.9 0 6v14c0 1.1.9 2 2 2h20c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-5V2h-2v2h-6V2H7zm0 6h10v10H7V8zM8 9.5c.83 0 1.5-.67 1.5-1.5S8.83 6.5 8 6.5 6.5 7.17 6.5 8s.67 1.5 1.5 1.5zm8 0c.83 0 1.5-.67 1.5-1.5S16.83 6.5 16 6.5 14.5 7.17 14.5 8s.67 1.5 1.5 1.5z"/>
+                </svg>
+            </div>
+            <!-- iOS Icon (Apple Logo) -->
+            <div class="icon-fly icon-fly-3">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-12 h-12 text-teal-400 opacity-70">
+                    <path d="M12 1.347c-2.458 0-4.733 1.01-6.364 2.641C4.004 5.617 3 7.892 3 10.35s1.004 4.733 2.636 6.364C7.267 18.35 9.542 19.36 12 19.36s4.733-1.01 6.364-2.641C20.996 15.083 22 12.808 22 10.35s-1.004-4.733-2.636-6.364C16.733 2.357 14.458 1.347 12 1.347zM17.485 14.67c-1.397 1.397-3.25 2.158-5.23 2.158s-3.833-.761-5.23-2.158C5.628 13.273 5 11.69 5 10.35s.628-2.923 2.025-4.32c1.397-1.397 3.25-2.158 5.23-2.158s3.833.761 5.23 2.158c1.397 1.397 2.025 2.923 2.025 4.32s-.628 2.923-2.025 4.32zm-2.02-6.52c-.672-.672-1.56-.995-2.525-.995s-1.853.323-2.525.995c-.672.672-.995 1.56-.995 2.525s.323 1.853.995 2.525c.672.672 1.56.995 2.525.995s1.853-.323 2.525-.995c.672-.672.995-1.56.995-2.525s-.323-1.853-.995-2.525z"/>
+                </svg>
+            </div>
+            <!-- Google Play Icon -->
+            <div class="icon-fly icon-fly-4">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-9 h-9 text-cyan-300 opacity-60">
+                    <path d="M3 21h18v-2H3v2zM3 3v2h18V3H3zm0 8h18v-2H3v2zm0 4h18v-2H3v2zM3 7h18V5H3v2z"/>
+                </svg> <!-- A simplified play store like icon, representing apps -->
+            </div>
+             <!-- Git Icon -->
+            <div class="icon-fly icon-fly-5">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-7 h-7 text-teal-100 opacity-40">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm3.3 12.3c-.63.63-1.46.99-2.3.99s-1.67-.36-2.3-.99c-1.24-1.24-1.24-3.25 0-4.49s3.25-1.24 4.49 0c1.24 1.24 1.24 3.25 0 4.49z"/>
+                </svg> <!-- Generic Hexagon representing code/repo -->
+            </div>
+            <!-- API Integration Icon -->
+            <div class="icon-fly icon-fly-6">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-10 h-10 text-teal-300 opacity-60">
+                    <path d="M15 13H9c-1.66 0-3 1.34-3 3v2h12v-2c0-1.66-1.34-3-3-3zm0-8l-3-3-3 3h2v4h2V5h2z"/>
+                </svg> <!-- Exchange icon for APIs -->
+            </div>
+            <!-- State Management Icon -->
+            <div class="icon-fly icon-fly-7">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8 text-teal-200 opacity-50">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2z"/>
+                </svg> <!-- A simplified data flow/process icon -->
+            </div>
+            <!-- Firebase Icon (Flame-like) -->
+            <div class="icon-fly icon-fly-8">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-12 h-12 text-teal-400 opacity-70">
+                    <path d="M12 1.347c-2.458 0-4.733 1.01-6.364 2.641C4.004 5.617 3 7.892 3 10.35s1.004 4.733 2.636 6.364C7.267 18.35 9.542 19.36 12 19.36s4.733-1.01 6.364-2.641C20.996 15.083 22 12.808 22 10.35s-1.004-4.733-2.636-6.364C16.733 2.357 14.458 1.347 12 1.347zM17.485 14.67c-1.397 1.397-3.25 2.158-5.23 2.158s-3.833-.761-5.23-2.158C5.628 13.273 5 11.69 5 10.35s.628-2.923 2.025-4.32c1.397-1.397 3.25-2.158 5.23-2.158s3.833.761 5.23 2.158c1.397 1.397 2.025 2.923 2.025 4.32s-.628 2.923-2.025 4.32zm-2.02-6.52c-.672-.672-1.56-.995-2.525-.995s-1.853.323-2.525.995c-.672.672-.995 1.56-.995 2.525s.323 1.853.995 2.525c.672.672 1.56.995 2.525.995s1.853-.323 2.525-.995c.672-.672.995-1.56.995-2.525s-.323-1.853-.995-2.525z"/>
+                </svg> <!-- Simplified fire/flame -->
+            </div>
+            <!-- Cloud Deployment Icon -->
+            <div class="icon-fly icon-fly-9">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-9 h-9 text-cyan-300 opacity-60">
+                    <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13h-4v4h-2v-4H7l5-5 5 5z"/>
+                </svg>
+            </div>
+        </div>
+    </section>
 
     <!-- About Section -->
-    <section id="about" class="about section">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>About</h2>
-        <p>
-          I'm passionate and experienced Flutter developer. I specialize in building high-performance mobile
-          applications using Flutter, with a strong focus on responsive design, state management, and seamless user
-          experiences across platforms.I excel in crafting reusable code and managing state
-          using architectural patterns like BLoC and MVVM.
-        </p>
-
-        <!-- <p>
-          In addition to Flutter, I am proficient in various programming languages such as Dart, Java, C, and C++, and
-          have
-          experience integrating Firebase, Google Maps API, and other third-party services to build scalable solutions.
-
-          Whether it's crafting a user-friendly interface, managing complex state logic with flutter_bloc, or optimizing
-          app
-          performance, I am dedicated to delivering impactful solutions that exceed client and user expectations.
-
-        </p> -->
-      </div><!-- End Section Title -->
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="row gy-4 justify-content-center">
-          <div class="col-lg-4">
-            <!-- <img src="assets/img/my-profile-img.jpg" class="img-fluid" alt=""> -->
-            <img src="assets/img/my-image.jpg" class="img-fluid" alt="">
-          </div>
-          <div class="col-lg-8 content">
-            <h2>Flutter Mobile App Developer</h2>
-            <p class="fst-italic py-3">
-              <!-- Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-              dolore
-              magna aliqua. -->
-            </p>
-            <div class="row">
-              <div class="col-lg-6">
-                <ul>
-                  <!-- <li><i class="bi bi-chevron-right"></i> <strong>Birthday:</strong> <span>1 May 1995</span></li> -->
-                  <!-- <li><i class="bi bi-chevron-right"></i> <strong>Website:</strong> <span>www.example.com</span></li> -->
-                  <li><i class="bi bi-chevron-right"></i> <strong>Phone:</strong> <span>+880 1624188877</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>City:</strong> <span>Dhaka, Bangladesg</span></li>
-                </ul>
-              </div>
-              <div class="col-lg-6">
-                <ul>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Age:</strong> <span>27</span></li>
-                  <!-- <li><i class="bi bi-chevron-right"></i> <strong>Degree:</strong> <span>B.Sc</span></li> -->
-                  <li><i class="bi bi-chevron-right"></i> <strong>Email:</strong> <span>mscsapan@gmail.com</span></li>
-                  <!-- <li><i class="bi bi-chevron-right"></i> <strong>Freelance:</strong> <span>Available</span></li> -->
-                </ul>
-              </div>
+    <section id="about" class="py-16 md:py-24 animated-section hidden-init">
+        <div class="container">
+            <h2 class="text-4xl section-title mb-12 text-center mx-auto">About Me</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <p class="text-lg mb-4 text-gray-700">
+                        I am a Flutter Developer with 3 years of experience building high-performance mobile apps for iOS and Android. Proficient in Dart, Flutter, and BLOC for state management. Skilled in optimizing app performance, ensuring data integrity, and delivering engaging user experiences. Passionate about learning, collaboration, and developing innovative mobile solutions.
+                    </p>
+                    <p class="text-lg text-gray-700">
+                        My expertise lies in crafting intuitive and robust mobile experiences that delight users. I believe in writing clean, modular code, fostering collaborative teamwork, and continuously striving for improvement in every project.
+                    </p>
+                </div>
+                <div class="card p-8 shadow-xl">
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-800 flex items-center"><i class="fas fa-quote-left mr-3 text-teal-600"></i>My Philosophy</h3>
+                    <p class="text-gray-700 italic border-l-4 border-teal-400 pl-4 py-2">
+                        "Building beautiful, efficient, and scalable mobile applications is more than just coding; it's about creating seamless digital experiences that truly add value to users' lives. I am committed to pushing the boundaries of what's possible with Flutter."
+                    </p>
+                </div>
             </div>
-            <p class="py-3">
-              A Passionate Flutter developer with 2+ years’ experience in user-friendly apps across e-commerce, real
-              estate, and more.
-              Skilled in Flutter, Dart, Java, REST APIs, and state management using BLoC and MVVM.
-            </p>
-          </div>
         </div>
-
-      </div>
-
-    </section><!-- /About Section -->
-
-    <!-- Stats Section -->
-    <!-- <section id="stats" class="stats section">
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="row gy-4">
-
-          <div class="col-lg-3 col-md-6">
-            <div class="stats-item">
-              <i class="bi bi-emoji-smile"></i>
-              <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1"
-                class="purecounter"></span>
-              <p><strong>Happy Clients</strong> <span>consequuntur quae</span></p>
-            </div>
-          </div>
-        
-
-          <div class="col-lg-3 col-md-6">
-            <div class="stats-item">
-              <i class="bi bi-journal-richtext"></i>
-              <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1"
-                class="purecounter"></span>
-              <p><strong>Projects</strong> <span>adipisci atque cum quia aut</span></p>
-            </div>
-          </div>
-
-
-          <div class="col-lg-3 col-md-6">
-            <div class="stats-item">
-              <i class="bi bi-headset"></i>
-              <span data-purecounter-start="0" data-purecounter-end="1453" data-purecounter-duration="1"
-                class="purecounter"></span>
-              <p><strong>Hours Of Support</strong> <span>aut commodi quaerat</span></p>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6">
-            <div class="stats-item">
-              <i class="bi bi-people"></i>
-              <span data-purecounter-start="0" data-purecounter-end="32" data-purecounter-duration="1"
-                class="purecounter"></span>
-              <p><strong>Hard Workers</strong> <span>rerum asperiores dolor</span></p>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-
-    </section> -->
-    <!-- /Stats Section -->
+    </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="skills section light-background">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Skills</h2>
-        <p>"I'm always ready to learn although I do not always like being taught.” <em>— Winston Churchill</em></p>
-        <!-- <p>So I'm learning everyday untill i </p> -->
-      </div><!-- End Section Title -->
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="row skills-content skills-animation">
-
-          <div class="col-lg-6">
-
-            <div class="progress">
-              <span class="skill"><span>Flutter</span> <i class="val">90%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
+    <section id="skills" class="bg-white py-16 md:py-24 rounded-3xl shadow-xl mb-16 animated-section hidden-init">
+        <div class="container">
+            <h2 class="text-4xl section-title mb-12 text-center mx-auto">My Skills</h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 text-center">
+                <!-- Prioritized Skills -->
+                <div class="card p-6 flex flex-col items-center justify-center">
+                    <i class="fab fa-dev text-5xl mb-4 icon"></i>
+                    <h3 class="text-xl font-semibold text-gray-800">Flutter & Dart</h3>
+                    <p class="text-sm text-gray-600">Cross-platform mobile dev</p>
                 </div>
-              </div>
+                <div class="card p-6 flex flex-col items-center justify-center">
+                    <i class="fas fa-bezier-curve text-5xl mb-4 icon"></i>
+                    <h3 class="text-xl font-semibold text-gray-800">State Management</h3>
+                    <p class="text-sm text-gray-600">BLOC, Provider, GetX</p>
+                </div>
+                <div class="card p-6 flex flex-col items-center justify-center">
+                    <i class="fas fa-fire text-5xl mb-4 icon"></i>
+                    <h3 class="text-xl font-semibold text-gray-800">Firebase</h3>
+                    <p class="text-sm text-gray-600">Auth, Firestore, FCM</p>
+                </div>
+                <div class="card p-6 flex flex-col items-center justify-center">
+                    <i class="fas fa-cloud-upload-alt text-5xl mb-4 icon"></i>
+                    <h3 class="text-xl font-semibold text-gray-800">App Deployment</h3>
+                    <p class="text-sm text-gray-600">Play Store & App Store</p>
+                </div>
+                <!-- Other Important Skills -->
+                <div class="card p-6 flex flex-col items-center justify-center">
+                    <i class="fas fa-globe text-5xl mb-4 icon"></i>
+                    <h3 class="text-xl font-semibold text-gray-800">API Integration</h3>
+                    <p class="text-sm text-gray-600">RESTful APIs, Google Maps</p>
+                </div>
+                <div class="card p-6 flex flex-col items-center justify-center">
+                    <i class="fas fa-palette text-5xl mb-4 icon"></i>
+                    <h3 class="text-xl font-semibold text-gray-800">UI/UX Principles</h3>
+                    <p class="text-sm text-gray-600">Responsive, accessible design</p>
+                </div>
+                <div class="card p-6 flex flex-col items-center justify-center">
+                    <i class="fas fa-code-branch text-5xl mb-4 icon"></i>
+                    <h3 class="text-xl font-semibold text-gray-800">Version Control</h3>
+                    <p class="text-sm text-gray-600">Git & GitHub</p>
+                </div>
+                <div class="card p-6 flex flex-col items-center justify-center">
+                    <i class="fas fa-tachometer-alt text-5xl mb-4 icon"></i>
+                    <h3 class="text-xl font-semibold text-gray-800">Performance Opt.</h3>
+                    <p class="text-sm text-gray-600">Load time, efficiency</p>
+                </div>
             </div>
-            <div class="progress">
-              <span class="skill"><span>Android</span> <i class="val">90%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
-                </div>
-              </div>
-            </div>
-
-            <div class="progress">
-              <span class="skill"><span>Dart</span> <i class="val">80%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
-                </div>
-              </div>
-            </div>
-
-
-            <div class="progress">
-              <span class="skill"><span>Bloc Architecture</span> <i class="val">85%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
-                </div>
-              </div>
-            </div>
-
-
-            <div class="progress">
-              <span class="skill"><span>Firebase</span> <i class="val">70%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">
-                </div>
-              </div>
-            </div>
-
-
-
-            <div class="progress">
-              <span class="skill"><span>HTML</span> <i class="val">50%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
-                </div>
-              </div>
-            </div>
-
-            <div class="progress">
-              <span class="skill"><span>CSS</span> <i class="val">40%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">
-                </div>
-              </div>
-            </div>
-            <!-- End Skills Item -->
-
-          </div>
-
-          <div class="col-lg-6">
-
-
-
-            <div class="progress">
-              <span class="skill"><span>RestAPI</span> <i class="val">95%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100">
-                </div>
-              </div>
-            </div>
-
-            <div class="progress">
-              <span class="skill"><span>iOS</span> <i class="val">80%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
-                </div>
-              </div>
-            </div>
-
-
-            <div class="progress">
-              <span class="skill"><span>Java</span> <i class="val">60%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
-                </div>
-              </div>
-            </div>
-
-            <div class="progress">
-              <span class="skill"><span>Git</span> <i class="val">60%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
-                </div>
-              </div>
-            </div>
-
-
-
-            <div class="progress">
-              <span class="skill"><span>FCM</span> <i class="val">75%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
-                </div>
-              </div>
-            </div>
-
-
-            <div class="progress">
-              <span class="skill"><span>PHP</span> <i class="val">40%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">
-                </div>
-              </div>
-            </div>
-            <!-- End Skills Item -->
-
-            <div class="progress">
-              <span class="skill"><span>Laravel</span> <i class="val">30%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">
-                </div>
-              </div>
-            </div>
-            <!-- End Skills Item -->
-
-            <!-- <div class="progress">
-              <span class="skill"><span>Photoshop</span> <i class="val">55%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100">
-                </div>
-              </div>
-            </div> -->
-            <!-- End Skills Item -->
-
-          </div>
-
         </div>
-
-      </div>
-
     </section>
-    <!-- /Skills Section -->
 
-    <!-- Resume Section -->
-    <section id="resume" class="resume section">
+    <!-- Projects Section -->
+    <section id="projects" class="py-16 md:py-24 animated-section hidden-init">
+        <div class="container">
+            <h2 class="text-4xl section-title mb-12 text-center mx-auto">My Projects</h2>
 
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Resume</h2>
-        <p>Here’s my resume, highlighting 2+ years as a passionate Flutter developer with experience in user-friendly
-          apps across
-          e-commerce, real estate, and more. </p>
-      </div><!-- End Section Title -->
+            <!-- Project Tabs -->
+            <div class="flex justify-center mb-10 space-x-4">
+                <button class="tab-button active" data-tab="all">All</button>
+                <button class="tab-button" data-tab="ios">iOS</button>
+                <button class="tab-button" data-tab="android">Android</button>
+            </div>
 
-      <div class="container">
-
-        <div class="row">
-
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-            <h3 class="resume-title">Sumary</h3>
-
-            <div class="resume-item pb-0">
-              <h4>Mohammad Ali</h4>
-              <p><em>A Passionate Flutter developer with 2+ years of experience specializing in creating user-friendly,
-                  functional apps across
-                  multivendor e-commerce, handyman services, real estate, and influencer marketing. Skilled in Flutter,
-                  Dart, Java,
-                  RESTful APIs, and efficient state management with BLoC and MVVM.</em></p>
-              <ul>
-                <li>Dhaka, Bangladesh</li>
-                <li>+880 1624188877</li>
-                <li>mscsapan@gmail.com</li>
-              </ul>
-            </div><!-- Edn Resume Item -->
-
-            <h3 class="resume-title">Education</h3>
-            <div class="resume-item pb-0">
-              <h4>B.Sc in Computer Science &amp; Engineerning</h4>
-              <!-- <h5>2015 - 2016</h5> -->
-              <p><em>Southeast University, Bangladesh</em></p>
-              <!-- <p>Qui deserunt veniam. Et sed aliquam labore tempore sed quisquam iusto autem sit. Ea vero voluptatum qui
-                ut dignissimos deleniti nerada porti sand markend</p> -->
-            </div><!-- Edn Resume Item -->
-
-            <!-- <div class="resume-item">
-              <h4>Bachelor of Fine Arts &amp; Graphic Design</h4>
-              <h5>2010 - 2014</h5>
-              <p><em>Rochester Institute of Technology, Rochester, NY</em></p>
-              <p>Quia nobis sequi est occaecati aut. Repudiandae et iusto quae reiciendis et quis Eius vel ratione eius
-                unde vitae rerum voluptates asperiores voluptatem Earum molestiae consequatur neque etlon sader mart
-                dila</p>
-            </div> -->
-            <!-- Edn Resume Item -->
-
-          </div>
-
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-            <h3 class="resume-title">Professional Experience</h3>
-            <div class="resume-item">
-              <h4>mobile application developer</h4>
-              <h5>Sept. 14, 2022 - Present</h5>
-              <p><em>QuomodoSoft - Dhaka, Bangladesh </em></p>
-              <ul>
-                <li>Integrate realtime Chat using Pusher</li>
-                <li>Integrate Various Payment Method</li>
-                <li>Integrate Google map SDK & tracking location in realtime</li>
-                <li>RestAPI & third-party SDK integration</li>
-                <li>Successfully deploed apps on iOS app store & Google play store</li>
-                <li>Developed interactive UI</li>
-                <li>Practicing business logic</li>
-              </ul>
-            </div><!-- Edn Resume Item -->
-
-            <!-- <div class="resume-item">
-              <h4>Graphic design specialist</h4>
-              <h5>2017 - 2018</h5>
-              <p><em>Stepping Stone Advertising, New York, NY</em></p>
-              <ul>
-                <li>Developed numerous marketing programs (logos, brochures,infographics, presentations, and
-                  advertisements).</li>
-                <li>Managed up to 5 projects or tasks at a given time while under pressure</li>
-                <li>Recommended and consulted with clients on the most appropriate graphic design</li>
-                <li>Created 4+ design presentations and proposals a month for clients and account managers</li>
-              </ul>
-            </div> -->
-            <!-- Edn Resume Item -->
-
-          </div>
-
+            <!-- Project Grid -->
+            <div id="project-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Projects will be dynamically loaded here by JavaScript -->
+            </div>
         </div>
-
-      </div>
-
-    </section><!-- /Resume Section -->
-
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="portfolio section light-background">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Portfolio</h2>
-        <p>Over the few past years, I have worked on diverse projects, ranging from
-          e-commerce to real-time tracking and chating application. I successfully deployed several apps on both
-          the
-          Google Play Store and App Store, ensuring that my apps
-          not only
-          meet the highest standards of functionality and performance but also adhere to platform-specific guidelines.
-          My expertise covers all stages of development, from initial concept and design to final deployment and
-          maintenance.</p>
-      </div><!-- End Section Title -->
-
-      <div class="container">
-
-        <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
-
-          <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
-            <li data-filter=".filter-app" class="filter-active">Projects</li>
-            <li data-filter=".filter-ios">iOS</li>
-            <li data-filter=".filter-play-store">Play Store</li>
-          </ul><!-- End Portfolio Filters -->
-
-          <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
-            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-              <div class="portfolio-content h-100">
-                <img src="assets/img/portfolio/p1.png" class="img-fluid" alt="">
-                <div class="portfolio-info">
-                  <h4>ShopO User</h4>
-                  <p>Shopo eCommerce - Multivendor eCommerce Flutter App with Admin Panel</p>
-                  <a href="assets/img/portfolio/p1.png" title="ShopO User" data-gallery="portfolio-gallery-app"
-                    class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                  <a href="https://codecanyon.net/item/shopo-multivendor-ecommerce-flutter-app/39965496?s_rank=27"
-                    target="_blank" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                </div>
-              </div>
-            </div><!-- End Portfolio Item -->
-
-            <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
-              <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-                <div class="portfolio-content h-100">
-                  <img src="assets/img/portfolio/p2.png" class="img-fluid" alt="">
-                  <div class="portfolio-info">
-                    <h4>ShopO Seller</h4>
-                    <p>Shopo eCommerce - Multivendor eCommerce Flutter Seller App</p>
-                    <a href="assets/img/portfolio/p2.png" title="ShopO Seller" data-gallery="portfolio-gallery-app"
-                      class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                    <a href="https://codecanyon.net/item/shopo-ecommerce-multivendor-ecommerce-flutter-seller-app/43992355?s_rank=21"
-                      target="_blank" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                  </div>
-                </div>
-              </div><!-- End Portfolio Item -->
-
-              <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
-                <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-                  <div class="portfolio-content h-100">
-                    <img src="assets/img/portfolio/p3.jpg" class="img-fluid" alt="">
-                    <div class="portfolio-info">
-                      <h4>HomeCo</h4>
-                      <p>Homeco - Real Estate Directory listing Flutter App Flutter Seller App</p>
-                      <a href="assets/img/portfolio/p3.jpg" title="HomeCo" data-gallery="portfolio-gallery-app"
-                        class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                      <a href="https://codecanyon.net/item/homeco-real-estate-directory-listing-flutter-app/46302077?s_rank=16"
-                        target="_blank" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                    </div>
-                  </div>
-                </div><!-- End Portfolio Item -->
-
-
-                <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
-                  <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-                    <div class="portfolio-content h-100">
-                      <img src="assets/img/portfolio/ecoshop.jpeg" class="img-fluid" alt="">
-                      <div class="portfolio-info">
-                        <h4>EcoShop</h4>
-                        <p>EcoShop - Multivendor Food, Grocery, Ecommerce Flutter App</p>
-                        <a href="assets/img/portfolio/ecoshop.jpeg" title="EcoShop" data-gallery="portfolio-gallery-app"
-                          class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                        <a href="https://codecanyon.net/item/ecoshop-multivendor-food-grocery-ecommerce-flutter-app-admin-panel/42078956?s_rank=9"
-                          target="_blank" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                      </div>
-                    </div>
-                  </div><!-- End Portfolio Item -->
-
-                  <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
-                    <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-                      <div class="portfolio-content h-100">
-                        <img src="assets/img/portfolio/p8.png" class="img-fluid" alt="">
-                        <div class="portfolio-info">
-                          <h4>Aabcserv User</h4>
-                          <p>Aabcserv - Multivendor On-Demand Service & Handyman Marketplace Flutter User App
-                          </p>
-                          <a href="assets/img/portfolio/p8.png" title="Aabcserv User</h4>"
-                            data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i
-                              class="bi bi-zoom-in"></i></a>
-                          <a href="https://codecanyon.net/item/aabcserv-multivendor-ondemand-service-handyman-marketplace-flutter-user-app/43730277?s_rank=7"
-                            target="_blank" title="More Details" class="details-link"><i
-                              class="bi bi-link-45deg"></i></a>
-                        </div>
-                      </div>
-                    </div><!-- End Portfolio Item -->
-
-
-                    <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
-                      <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-                        <div class="portfolio-content h-100">
-                          <img src="assets/img/portfolio/p5.jpg" class="img-fluid" alt="">
-                          <div class="portfolio-info">
-                            <h4>Alasmart</h4>
-                            <p>Alasmart - Digital Products Buy Sell Marketplace App</p>
-                            <a href="assets/img/portfolio/p5.jpg" title="Alasmart" data-gallery="portfolio-gallery-app"
-                              class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                            <a href="https://codecanyon.net/item/alasmart-digital-products-buy-sell-marketplace-app-with-admin-panel/50713482?s_rank=10"
-                              target="_blank" title="More Details" class="details-link"><i
-                                class="bi bi-link-45deg"></i></a>
-                          </div>
-                        </div>
-                      </div><!-- End Portfolio Item -->
-
-                      <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
-                        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-                          <div class="portfolio-content h-100">
-                            <img src="assets/img/portfolio/p4.jpeg" class="img-fluid" alt="">
-                            <div class="portfolio-info">
-                              <h4>Servingo</h4>
-                              <p>Servingo - Multivendor On-Demand Service & Handyman App</p>
-                              <a href="assets/img/portfolio/p4.jpg" title="Servingo"
-                                data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i
-                                  class="bi bi-zoom-in"></i></a>
-                              <a href="https://codecanyon.net/item/servingo-multivendor-ondemand-service-handyman-app-with-admin-panel/49300850?s_rank=13"
-                                target="_blank" title="More Details" class="details-link"><i
-                                  class="bi bi-link-45deg"></i></a>
-                            </div>
-                          </div>
-                        </div><!-- End Portfolio Item -->
-
-                        <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
-                          <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-                            <div class="portfolio-content h-100">
-                              <img src="assets/img/portfolio/p9.png" class="img-fluid" alt="">
-                              <div class="portfolio-info">
-                                <h4>Aabcserv Provider</h4>
-                                <p>Aabcserv - Multivendor On-Demand Service & Handyman Marketplace Flutter Seller</p>
-                                <a href="assets/img/portfolio/p9.png" title="Aabcserv Provider</h4>"
-                                  data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i
-                                    class="bi bi-zoom-in"></i></a>
-                                <a href="https://codecanyon.net/item/aabcserv-multivendor-ondemand-service-handyman-marketplace-flutter-seller-app/44577780?s_rank=5"
-                                  target="_blank" title="More Details" class="details-link"><i
-                                    class="bi bi-link-45deg"></i></a>
-                              </div>
-                            </div>
-                          </div><!-- End Portfolio Item -->
-
-
-                          <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
-                            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-                              <div class="portfolio-content h-100">
-                                <img src="assets/img/portfolio/p10.jpg" class="img-fluid" alt="">
-                                <div class="portfolio-info">
-                                  <h4>DegMark</h4>
-                                  <p>DegMark - Digital Products Buy Sell Marketplace Flutter App</p>
-                                  <a href="assets/img/portfolio/p10.jpg" title="DegMark</h4>"
-                                    data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i
-                                      class="bi bi-zoom-in"></i></a>
-                                  <a href="https://codecanyon.net/item/degmark-digital-products-buy-sell-marketplace-flutter-user-app/47632307?s_rank=2"
-                                    target="_blank" title="More Details" class="details-link"><i
-                                      class="bi bi-link-45deg"></i></a>
-                                </div>
-                              </div>
-                            </div><!-- End Portfolio Item -->
-
-
-                            <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
-                              <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-                                <div class="portfolio-content h-100">
-                                  <img src="assets/img/portfolio/p6.png" class="img-fluid" alt="">
-                                  <div class="portfolio-info">
-                                    <h4>ShopUs</h4>
-                                    <p>ShopUs - Laravel Multivendor Fashion eCommerce Website User App</p>
-                                    <a href="assets/img/portfolio/p6.png" title="ShopUs"
-                                      data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i
-                                        class="bi bi-zoom-in"></i></a>
-                                    <a href="https://codecanyon.net/item/shopus-laravel-multivendor-fashion-ecommerce-website-user-app/45919531?s_rank=17"
-                                      target="_blank" title="More Details" class="details-link"><i
-                                        class="bi bi-link-45deg"></i></a>
-                                  </div>
-                                </div>
-                              </div><!-- End Portfolio Item -->
-
-
-                              <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
-                                <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app">
-                                  <div class="portfolio-content h-100">
-                                    <img src="assets/img/portfolio/p4.jpeg" class="img-fluid" alt="">
-                                    <div class="portfolio-info">
-                                      <h4>Inflanar</h4>
-                                      <p>Inflanar - Influencer Marketing Service Selling Platform User and Influencer
-                                        App
-                                      </p>
-                                      <a href="assets/img/portfolio/p4.jpg" title="Inflanar"
-                                        data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i
-                                          class="bi bi-zoom-in"></i></a>
-                                      <a href="https://codecanyon.net/item/inflanar-influencer-marketing-service-selling-platform-user-and-influencer-app/53381205?s_rank=6"
-                                        target="_blank" title="More Details" class="details-link"><i
-                                          class="bi bi-link-45deg"></i></a>
-                                    </div>
-                                  </div>
-                                </div><!-- End Portfolio Item -->
-
-
-
-
-                                <!-- Start iOS Portfolio Item -->
-
-
-                                <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
-                                  <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-ios">
-                                    <div class="portfolio-content h-100">
-                                      <img src="assets/img/portfolio/iosp1.png" class="img-fluid" alt="">
-                                      <div class="portfolio-info">
-
-                                        <p>Casas em Angola</p>
-                                        <a href="assets/img/portfolio/iosp1.png" title="Casas em Angola"
-                                          data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i
-                                            class="bi bi-zoom-in"></i></a>
-                                        <a href="https://apps.apple.com/us/app/casas-em-angola/id6503872414"
-                                          target="_blank" title="More Details" class="details-link"><i
-                                            class="bi bi-link-45deg"></i></a>
-                                      </div>
-                                    </div>
-                                  </div><!-- End Portfolio Item -->
-
-                                  <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
-                                    <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-ios">
-                                      <div class="portfolio-content h-100">
-                                        <img src="assets/img/portfolio/iosp2.png" class="img-fluid" alt="">
-                                        <div class="portfolio-info">
-                                          <p>Kulshiy</p>
-                                          <a href="assets/img/portfolio/iosp2.png" title="Kulshiy"
-                                            data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i
-                                              class="bi bi-zoom-in"></i></a>
-                                          <a href="https://apps.apple.com/us/app/kulshiy/id6472874597" target="_blank"
-                                            title="More Details" class="details-link"><i
-                                              class="bi bi-link-45deg"></i></a>
-                                        </div>
-                                      </div>
-                                    </div><!-- End Portfolio Item -->
-
-                                    <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
-                                      <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-play-store">
-                                        <div class="portfolio-content h-100">
-                                          <img src="assets/img/portfolio/iosp2.png" class="img-fluid" alt="">
-                                          <div class="portfolio-info">
-                                            <p>Kulshiy</p>
-                                            <a href="assets/img/portfolio/iosp2.png" title="Kulshiy"
-                                              data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i
-                                                class="bi bi-zoom-in"></i></a>
-                                            <a href="https://play.google.com/store/apps/details?id=com.kulshiy.europe"
-                                              target="_blank" title="More Details" class="details-link"><i
-                                                class="bi bi-link-45deg"></i></a>
-                                          </div>
-                                        </div>
-                                      </div><!-- End Portfolio Item -->
-
-
-                                      <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
-                                        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-ios">
-                                          <div class="portfolio-content h-100">
-                                            <img src="assets/img/portfolio/iosp3.png" class="img-fluid" alt="">
-                                            <div class="portfolio-info">
-                                              <p>Zipdrop</p>
-                                              <a href="assets/img/portfolio/iosp3.png" title="Zipdrop"
-                                                data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i
-                                                  class="bi bi-zoom-in"></i></a>
-                                              <a href="https://apps.apple.com/us/app/zipdrop/id6470990901"
-                                                target="_blank" title="More Details" class="details-link"><i
-                                                  class="bi bi-link-45deg"></i></a>
-                                            </div>
-                                          </div>
-                                        </div><!-- End Portfolio Item -->
-
-                                        <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
-                                          <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-play-store">
-                                            <div class="portfolio-content h-100">
-                                              <img src="assets/img/portfolio/iosp3.png" class="img-fluid" alt="">
-                                              <div class="portfolio-info">
-                                                <p>Zipdrop</p>
-                                                <a href="assets/img/portfolio/iosp3.png" title="Zipdrop"
-                                                  data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i
-                                                    class="bi bi-zoom-in"></i></a>
-                                                <a href="https://play.google.com/store/apps/details?id=com.zipdrop.app"
-                                                  target="_blank" title="More Details" class="details-link"><i
-                                                    class="bi bi-link-45deg"></i></a>
-                                              </div>
-                                            </div>
-                                          </div><!-- End Portfolio Item -->
-
-
-                                          <div class="row gy-4 isotope-container" data-aos="fade-up"
-                                            data-aos-delay="200">
-                                            <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-ios">
-                                              <div class="portfolio-content h-100">
-                                                <img src="assets/img/portfolio/iosp4.png" class="img-fluid" alt="">
-                                                <div class="portfolio-info">
-                                                  <p>Trowphy Fabric</p>
-                                                  <a href="assets/img/portfolio/iosp4.png" title="Trowphy Fabric"
-                                                    data-gallery="portfolio-gallery-app"
-                                                    class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                                                  <a href="https://apps.apple.com/us/app/trowphy-fabric/id6468037656"
-                                                    target="_blank" title="More Details" class="details-link"><i
-                                                      class="bi bi-link-45deg"></i></a>
-                                                </div>
-                                              </div>
-                                            </div><!-- End Portfolio Item -->
-
-                                            <div class="row gy-4 isotope-container" data-aos="fade-up"
-                                              data-aos-delay="200">
-                                              <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-ios">
-                                                <div class="portfolio-content h-100">
-                                                  <img src="assets/img/portfolio/unice.jpg" class="img-fluid" alt="">
-                                                  <div class="portfolio-info">
-                                                    <p>UNICE</p>
-                                                    <a href="assets/img/portfolio/unice.jpg" title="UNICE"
-                                                      data-gallery="portfolio-gallery-app"
-                                                      class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                                                    <a href="https://apps.apple.com/us/app/unice/id6463777529"
-                                                      target="_blank" title="More Details" class="details-link"><i
-                                                        class="bi bi-link-45deg"></i></a>
-                                                  </div>
-                                                </div>
-                                              </div>
-
-                                            </div>
-
-
-
-
-
-                                            <div class="row gy-4 isotope-container" data-aos="fade-up"
-                                              data-aos-delay="200">
-                                              <div
-                                                class="col-lg-4 col-md-6 portfolio-item isotope-item filter-play-store">
-                                                <div class="portfolio-content h-100">
-                                                  <img src="assets/img/portfolio/ps02.png" class="img-fluid" alt="">
-                                                  <div class="portfolio-info">
-                                                    <p>Digital Salon</p>
-                                                    <a href="assets/img/portfolio/ps02.png" title="Digital Salon"
-                                                      data-gallery="portfolio-gallery-app"
-                                                      class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                                                    <a href="https://play.google.com/store/apps/details?id=com.digitalsalon.app"
-                                                      target="_blank" title="More Details" class="details-link"><i
-                                                        class="bi bi-link-45deg"></i></a>
-                                                  </div>
-                                                </div>
-                                              </div>
-
-                                            </div>
-
-
-
-                                            <div class="row gy-4 isotope-container" data-aos="fade-up"
-                                              data-aos-delay="200">
-                                              <div
-                                                class="col-lg-4 col-md-6 portfolio-item isotope-item filter-play-store">
-                                                <div class="portfolio-content h-100">
-                                                  <img src="assets/img/portfolio/ps01.png" class="img-fluid" alt="">
-                                                  <div class="portfolio-info">
-                                                    <p>Propeter</p>
-                                                    <a href="assets/img/portfolio/ps02.png" title="Propeter"
-                                                      data-gallery="portfolio-gallery-app"
-                                                      class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                                                    <a href="https://play.google.com/store/apps/details?id=com.propeter.app"
-                                                      target="_blank" title="More Details" class="details-link"><i
-                                                        class="bi bi-link-45deg"></i></a>
-                                                  </div>
-                                                </div>
-                                              </div>
-
-                                            </div>
-
-
-
-                                            <div class="row gy-4 isotope-container" data-aos="fade-up"
-                                              data-aos-delay="200">
-                                              <div
-                                                class="col-lg-4 col-md-6 portfolio-item isotope-item filter-play-store">
-                                                <div class="portfolio-content h-100">
-                                                  <img src="assets/img/portfolio/ps05.png" class="img-fluid" alt="">
-                                                  <div class="portfolio-info">
-                                                    <p>Prolabmed</p>
-                                                    <a href="assets/img/portfolio/ps05.png" title="Prolabmed"
-                                                      data-gallery="portfolio-gallery-app"
-                                                      class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                                                    <a href="https://play.google.com/store/apps/details?id=com.prolabmed.app"
-                                                      target="_blank" title="More Details" class="details-link"><i
-                                                        class="bi bi-link-45deg"></i></a>
-                                                  </div>
-                                                </div>
-                                              </div>
-
-                                            </div>
-
-
-                                            <div class="row gy-4 isotope-container" data-aos="fade-up"
-                                              data-aos-delay="200">
-                                              <div
-                                                class="col-lg-4 col-md-6 portfolio-item isotope-item filter-play-store">
-                                                <div class="portfolio-content h-100">
-                                                  <img src="assets/img/portfolio/ps03.png" class="img-fluid" alt="">
-                                                  <div class="portfolio-info">
-                                                    <p>Laqqar</p>
-                                                    <a href="assets/img/portfolio/ps03.png" title="Laqqar"
-                                                      data-gallery="portfolio-gallery-app"
-                                                      class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                                                    <a href="https://play.google.com/store/apps/details?id=com.laqqar.user"
-                                                      target="_blank" title="More Details" class="details-link"><i
-                                                        class="bi bi-link-45deg"></i></a>
-                                                  </div>
-                                                </div>
-                                              </div>
-
-                                            </div>
-
-
-                                            <div class="row gy-4 isotope-container" data-aos="fade-up"
-                                              data-aos-delay="200">
-                                              <div
-                                                class="col-lg-4 col-md-6 portfolio-item isotope-item filter-play-store">
-                                                <div class="portfolio-content h-100">
-                                                  <img src="assets/img/portfolio/ps04.png" class="img-fluid" alt="">
-                                                  <div class="portfolio-info">
-                                                    <p>Kokolet</p>
-                                                    <a href="assets/img/portfolio/ps04.png" title="Kokolet"
-                                                      data-gallery="portfolio-gallery-app"
-                                                      class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                                                    <a href="https://play.google.com/store/apps/details?id=com.kokolet.luxury"
-                                                      target="_blank" title="More Details" class="details-link"><i
-                                                        class="bi bi-link-45deg"></i></a>
-                                                  </div>
-                                                </div>
-                                              </div>
-
-                                            </div>
-
-
-                                          </div>
-
-                                        </div>
-
     </section>
-    <!-- /Portfolio Section -->
 
+    <!-- Experience Section -->
+    <section id="experience" class="bg-white py-16 md:py-24 rounded-3xl shadow-xl mb-16 animated-section hidden-init">
+        <div class="container">
+            <h2 class="text-4xl section-title mb-12 text-center mx-auto">Work Experience</h2>
+            <div class="space-y-12">
+                <!-- Quomodosoft Experience -->
+                <div class="card p-8 flex flex-col md:flex-row items-start md:items-center justify-between">
+                    <div class="flex-grow">
+                        <h3 class="text-3xl font-semibold text-gray-900">Flutter Mobile App Developer</h3>
+                        <p class="text-xl text-teal-700 mb-4">Quomodosoft | Mirpur-10, Dhaka | Sept 2022 - May 2025</p>
+                        <ul class="list-disc list-inside text-gray-700 space-y-2 text-lg">
+                            <li>Built and maintained high-performance, cross-platform apps for Android and iOS using Flutter.</li>
+                            <li>Integrated Firebase Auth, Firestore, and Messaging for real-time updates and secure user flows.</li>
+                            <li>Implemented in-app purchases (subscriptions and one-time purchases) on both platforms.</li>
+                            <li>Integrated Google Maps API for location-based features and real-time tracking.</li>
+                            <li>Applied scalable state management using BLOC pattern for maintainable architecture.</li>
+                            <li>Collaborated with UI/UX designers to deliver responsive and user-friendly interfaces.</li>
+                            <li>Deployed and managed app releases on the Play Store and App Store.</li>
+                            <li>Conducted code reviews and performance optimizations.</li>
+                            <li>Published high-quality apps on CodeCanyon, adhering to technical and design standards.</li>
+                            <li>Collaborated with clients to gather requirements and deliver fully customized solutions that met their business goals.</li>
+                        </ul>
+                    </div>
+                    <span class="mt-6 md:mt-0 md:ml-8 text-md font-medium text-gray-600 bg-teal-100 px-4 py-2 rounded-full shadow-md">Full-time</span>
+                </div>
 
-
-
-    <!-- Services Section -->
-    <!-- <section id="services" class="services section">
-
-
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Services</h2>
-        <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint
-          consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit
-          in iste officiis commodi quidem hic quas.</p>
-      </div>
-
-      <div class="container">
-
-        <div class="row gy-4">
-
-          <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="100">
-            <div class="icon flex-shrink-0"><i class="bi bi-briefcase"></i></div>
-            <div>
-              <h4 class="title"><a href="service-details.html" class="stretched-link">Lorem Ipsum</a></h4>
-              <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint
-                occaecati cupiditate non provident</p>
+                <!-- Generic Additional Experience (can be removed/modified if no other roles) -->
+                <div class="card p-8 flex flex-col md:flex-row items-start md:items-center justify-between">
+                    <div class="flex-grow">
+                        <h3 class="text-3xl font-semibold text-gray-900">Freelance Flutter Developer</h3>
+                        <p class="text-xl text-teal-700 mb-4">Self-Employed | [Start Date] - Present (Optional)</p>
+                        <ul class="list-disc list-inside text-gray-700 space-y-2 text-lg">
+                            <li>Developed custom Flutter solutions for various clients, from concept to deployment.</li>
+                            <li>Focused on delivering highly responsive and performant applications tailored to specific business needs.</li>
+                            <li>Managed project lifecycles, ensuring timely delivery and client satisfaction.</li>
+                            <li>Continuously updated skills with the latest Flutter advancements and best practices.</li>
+                        </ul>
+                    </div>
+                    <span class="mt-6 md:mt-0 md:ml-8 text-md font-medium text-gray-600 bg-blue-100 px-4 py-2 rounded-full shadow-md">Freelance</span>
+                </div>
             </div>
-          </div>
-
-
-          <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="200">
-            <div class="icon flex-shrink-0"><i class="bi bi-card-checklist"></i></div>
-            <div>
-              <h4 class="title"><a href="service-details.html" class="stretched-link">Dolor Sitema</a></h4>
-              <p class="description">Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                commodo consequat tarad limino ata</p>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="300">
-            <div class="icon flex-shrink-0"><i class="bi bi-bar-chart"></i></div>
-            <div>
-              <h4 class="title"><a href="service-details.html" class="stretched-link">Sed ut perspiciatis</a></h4>
-              <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                fugiat nulla pariatur</p>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="400">
-            <div class="icon flex-shrink-0"><i class="bi bi-binoculars"></i></div>
-            <div>
-              <h4 class="title"><a href="service-details.html" class="stretched-link">Magni Dolores</a></h4>
-              <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-                mollit anim id est laborum</p>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="500">
-            <div class="icon flex-shrink-0"><i class="bi bi-brightness-high"></i></div>
-            <div>
-              <h4 class="title"><a href="service-details.html" class="stretched-link">Nemo Enim</a></h4>
-              <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
-                praesentium voluptatum deleniti atque</p>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up" data-aos-delay="600">
-            <div class="icon flex-shrink-0"><i class="bi bi-calendar4-week"></i></div>
-            <div>
-              <h4 class="title"><a href="service-details.html" class="stretched-link">Eiusmod Tempor</a></h4>
-              <p class="description">Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum
-                soluta nobis est eligendi</p>
-            </div>
-          </div>
-
         </div>
+    </section>
 
-      </div>
+    <!-- Education Section -->
+    <section id="education" class="py-16 md:py-24 animated-section hidden-init">
+        <div class="container">
+            <h2 class="text-4xl section-title mb-12 text-center mx-auto">Education</h2>
+            <div class="max-w-3xl mx-auto card p-8">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6">
+                    <div>
+                        <h3 class="text-2xl font-semibold text-gray-900">Bachelor of Computer Science & Engineering</h3>
+                        <p class="text-xl text-teal-700">Southeast University</p>
+                    </div>
+                    <span class="mt-2 sm:mt-0 text-lg font-medium text-gray-600 bg-indigo-100 px-4 py-2 rounded-full shadow-md">Dhaka, Bangladesh</span>
+                </div>
+                <p class="text-gray-700 text-lg">
+                    Focused on core computer science principles, software development methodologies, and algorithms. Gained a strong foundation in programming, data structures, and system design, preparing for a career in mobile application development.
+                </p>
+            </div>
+        </div>
+    </section>
 
-    </section> -->
-    <div class="mb-8"></div>
-    <div class="mb-8"></div>
-    <div class="mb-8"></div>
-    <div class="mb-8"></div>
-  </main>
+    <!-- Download CV Section -->
+    <section id="download-cv" class="bg-teal-700 text-white py-16 md:py-24 rounded-3xl shadow-xl mb-16 animated-section hidden-init">
+        <div class="container text-center">
+            <h2 class="text-4xl font-extrabold mb-8">Ready to Learn More?</h2>
+            <p class="text-xl mb-10 opacity-90">Download my full resume to get a comprehensive overview of my skills, experience, and projects.</p>
+            <a href="Mohammad Ali Resume.pdf" download="Mohammad_Ali_Resume.pdf" class="btn-primary bg-white text-teal-700 hover:bg-teal-100 hover:text-teal-800 transition duration-300 transform hover:scale-105">
+                <i class="fas fa-download mr-3"></i> Download My CV
+            </a>
+        </div>
+    </section>
 
-  <footer id="footer" class="footer position-relative light-background">
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 md:py-24 animated-section hidden-init">
+        <div class="container">
+            <h2 class="text-4xl section-title mb-12 text-center mx-auto">Get In Touch</h2>
+            <div class="max-w-3xl mx-auto card p-8">
+                <p class="text-center text-lg mb-8 text-gray-700">
+                    I'm always open to new opportunities and collaborations. Feel free to reach out via the form below or connect with me directly!
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-8 mb-8">
+                    <div class="text-center">
+                        <i class="fas fa-envelope text-4xl text-teal-600 mb-2"></i>
+                        <p class="text-lg font-medium text-gray-800">Email:</p>
+                        <a href="mailto:Emscsapan@gmail.com" class="text-teal-600 hover:underline text-lg">Emscsapan@gmail.com</a>
+                    </div>
+                    <div class="text-center">
+                        <i class="fas fa-phone-alt text-4xl text-teal-600 mb-2"></i>
+                        <p class="text-lg font-medium text-gray-800">Phone:</p>
+                        <a href="tel:+8801624188877" class="text-teal-600 hover:underline text-lg">+880 1624188877</a>
+                    </div>
+                </div>
+                <form id="contact-form" class="space-y-6">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Your Name</label>
+                        <input type="text" id="name" name="name" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-teal-500 focus:border-teal-500 sm:text-sm" placeholder="John Doe" required>
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Your Email</label>
+                        <input type="email" id="email" name="email" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-teal-500 focus:border-teal-500 sm:text-sm" placeholder="you@example.com" required>
+                    </div>
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message</label>
+                        <textarea id="message" name="message" rows="6" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-teal-500 focus:border-teal-500 sm:text-sm" placeholder="I'd love to discuss..." required></textarea>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn-primary">Send Message</button>
+                    </div>
+                    <div id="form-message" class="text-center mt-4 text-sm font-medium" style="display: none;"></div>
+                </form>
+            </div>
+        </div>
+    </section>
 
-    <div class="container">
-      <div class="copyright text-center ">
-        <p> <span>Copyright © 2024</span> <strong class="px-1 sitename">Mohammad Ali</strong> <span>All Rights
-            Reserved</span></p>
-      </div>
-      <!-- <div class="credits"> -->
-      <!-- All the links in the footer should remain intact. -->
-      <!-- You can delete the links only if you've purchased the pro version. -->
-      <!-- Licensing information: https://bootstrapmade.com/license/ -->
-      <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-      <!-- Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div> -->
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-10 mt-16 rounded-t-3xl shadow-2xl">
+        <div class="container text-center">
+            <p class="mb-6 text-gray-400">&copy; 2025 Mohammad Ali. All rights reserved.</p>
+            <div class="flex justify-center space-x-8">
+                <a href="https://linkedin.com/in/mscsapan" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition duration-300" aria-label="LinkedIn Profile">
+                    <i class="fab fa-linkedin-in text-3xl"></i>
+                </a>
+                <a href="https://github.com/mscsapan" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition duration-300" aria-label="GitHub Profile">
+                    <i class="fab fa-github text-3xl"></i>
+                </a>
+                <!-- Add other social links if desired, e.g., Twitter, Portfolio Website -->
+                <!-- <a href="#" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition duration-300" aria-label="Twitter Profile">
+                    <i class="fab fa-twitter text-3xl"></i>
+                </a> -->
+            </div>
+            <!-- <p class="mt-6 text-gray-500 text-sm">Crafted with ❤️ by AI</p> -->
+        </div>
+    </footer>
+
+    <!-- Image Modal Overlay -->
+    <div id="image-modal-overlay" class="modal-overlay">
+        <div class="modal-content">
+            <img id="modal-image" src="" alt="Zoomed Project Image">
+            <span id="modal-close" class="modal-close"><i class="fas fa-times"></i></span>
+        </div>
     </div>
 
-  </footer>
+    <!-- JavaScript -->
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    const headerOffset = document.querySelector('header').offsetHeight; // Get header height
+                    const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                    const offsetPosition = elementPosition - headerOffset - 20; // Adjust for header and some padding
 
-  <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
-      class="bi bi-arrow-up-short"></i></a>
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: "smooth"
+                    });
+                }
+                // Close mobile menu if open
+                const mobileMenu = document.getElementById('mobile-menu');
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
 
-  <!-- Preloader -->
-  <div id="preloader"></div>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.remove('hidden');
+        });
+        document.getElementById('close-mobile-menu').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.add('hidden');
+        });
 
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/typed.js/typed.umd.js"></script>
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+        // Contact form submission handler (client-side only for this example)
+        document.getElementById('contact-form')?.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formMessage = document.getElementById('form-message');
+            formMessage.style.display = 'block';
+            formMessage.textContent = "Sending your message...";
+            formMessage.classList.remove('text-red-600', 'text-green-600');
+            formMessage.classList.add('text-gray-600');
 
-  <!-- Main JS File -->
-  <script src="assets/js/main.js"></script>
+            // Simulate form submission
+            setTimeout(() => {
+                formMessage.textContent = "Thank you for your message! I'll get back to you soon.";
+                formMessage.classList.remove('text-gray-600');
+                formMessage.classList.add('text-green-600');
+                this.reset(); // Clear the form
+            }, 1500); // Simulate network delay
+        });
 
+        // Project Data (pulled from your resume)
+        const projects = [
+            {
+                name: "Digital Salon Management App",
+                summary: "Developed a salon management app for billing, invoicing, staff, and client tracking, with real-time reports, income analysis, and advanced search filters to streamline operations",
+                image: "assets/portfolio/saloon.png",
+                platforms: ["ios", "android"],
+                links: {
+                    appStore: "https://apps.apple.com/my/app/digital-smart-salon-management/id6739427179", // Replace with actual ID
+                    playStore: "https://play.google.com/store/apps/details?id=com.digitalsalon.app" // Replace with actual ID
+                }
+            },
+            {
+                name: "Kulshiy E-commerce Platform",
+                summary: "Developed an e-commerce platform connecting Iraqi consumers with European and Turkish products. Implemented features suchs as product curation, secure transactions, and efficient delivery tracking.",
+                image: "assets/portfolio/kulshiya.png",
+                platforms: ["ios", "android"],
+                links: {
+                    appStore: "https://apps.apple.com/us/app/kulshiy/id6472874597",
+                    playStore: "https://play.google.com/store/apps/details?id=com.kulshiy.europe"
+                }
+            },
+            {
+                name: "Kokolet Luxury",
+                summary: "Engineered a feature-rich shopping platform for premium sneakers, integrating secure payments and real-time inventory for Lagos-based retailer Kokolet Luxury.",
+                image: "assets/portfolio/kokolet.png",
+                platforms: ["android"],
+                links: {
+                    playStore: "https://play.google.com/store/apps/details?id=com.kokolet.luxury"
+                }
+            },
+            {
+                name: "odiQco: Premier BD e-store",
+                summary: "Built Bangladesh's all-in-one online shopping platform with diverse products, bKash & COD payments, and fast, user-friendly performance for a seamless customer experience.",
+                image: "https://placehold.co/400x250/0d9488/ffffff?text=odiQco",
+                platforms: ["android"],
+                links: {
+                    playStore: "https://play.google.com/store/apps/details?id=com.odiqco.bd"
+                }
+            },
+            {
+                name: "Zuraya - Instant Shopping",
+                summary: "Developed a shopping app delivering top fashion, beauty, and gadgets from China to Nigeria and Ghana, with fast shipping, local currency payments, and real-time order tracking.",
+                image: "assets/portfolio/zuraya.png",
+                platforms: ["android"],
+                links: {
+                    playStore: "https://play.google.com/store/apps/details?id=com.zuraya.app"
+                }
+            },
+            {
+                name: "Cre8er Club",
+                summary: "Built an influencer and brand collaboration platform facilitating secure payments, live chat, and verified creator profiles. Streamlined the process for brands and influencers to connect and manage campaigns effectively.",
+                image: "https://placehold.co/400x250/0d9488/ffffff?text=Cre8er+Club",
+                platforms: ["ios"],
+                links: {
+                    appStore: "https://apps.apple.com/us/app/cre8er-club/idYOUR_APP_ID"
+                }
+            },
+            {
+                name: "RepairGo",
+                summary: "Built a dual mobile app platform (Android & iOS) connecting homeowners with service professionals. Includes real-time booking, in-app live chat, and secure payments. Providers can upgrade via in-app purchases to access premium features and boost visibility.",
+                image: "https://placehold.co/400x250/0d9488/ffffff?text=RepairGo",
+                platforms: ["ios", "android"],
+                links: {
+                    playStoreUser: "https://play.google.com/store/apps/details?id=com.repairgo.user",
+                    appStoreUser: "https://apps.apple.com/us/app/repairgouser/id6741470857",
+                    playStorePro: "https://play.google.com/store/apps/details?id=com.repairgo.pro",
+                    appStorePro: "https://apps.apple.com/us/app/repairgopro/id6741471019"
+                }
+            },
+            {
+                name: "Shopo eCommerce",
+                summary: "Shopo is a modern multi vendor eCommerce solution built with Flutter and Laravel, offering apps, admin panel, and website support. Ideal for grocery, electronics, or general online stores with features like CMS, order tracking, and 9+ payment gateways.",
+                image: "https://placehold.co/400x250/0d9488/ffffff?text=Shopo+eCommerce",
+                platforms: ["all"],
+                 <!-- platforms: ["ios", "android"], -->
+                links: {
+                    liveLink: "https://codecanyon.net/item/shopo-multivendor-ecommerce-flutter-app/39965496?s_rank=31" // Assuming CodeCanyon link
+                }
+            },
+            {
+                name: "Workzone",
+                summary: "Workzone is a full-featured Flutter mobile app for freelance marketplaces, enabling users to post jobs, offer gig services, and manage service orders. Ideal for freelancers, employers, and businesses focused on online services and outsourcing.",
+                image: "https://placehold.co/400x250/0d9488/ffffff?text=Workzone",
+                platforms: ["all"],
+                links: {
+                    liveLink: "https://codecanyon.net/item/workzone-freelancer-marketplace-for-gig-service-order-job-posting-flutter-mobile-app/57759310?s_rank=1" // Assuming CodeCanyon link
+                }
+            },
+            {
+                name: "Homeco",
+                summary: "Homeco is a modern Flutter app for real estate directory listings, enabling both users and agents to list, manage, and explore properties-ideal for real estate platforms and marketplaces.",
+                image: "https://placehold.co/400x250/0d9488/ffffff?text=Homeco",
+                platforms: ["all"],
+                links: {
+                    liveLink: "https://codecanyon.net/item/homeco-real-estate-directory-listing-flutter-app/46302077?s_rank=20" // Assuming CodeCanyon link
+                }
+            }
+        ];
+
+        const projectGrid = document.getElementById('project-grid');
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const imageModalOverlay = document.getElementById('image-modal-overlay');
+        const modalImage = document.getElementById('modal-image');
+        const modalClose = document.getElementById('modal-close');
+
+        // Function to trigger section animations on scroll
+        const animateOnScroll = () => {
+            const sections = document.querySelectorAll('.animated-section.hidden-init');
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                const viewportHeight = window.innerHeight;
+                if (sectionTop < viewportHeight * 0.8) { // Animate when 80% of section is visible
+                    section.classList.remove('hidden-init');
+                    section.classList.add('show');
+                    // Stagger animation for children if present (e.g., cards)
+                    Array.from(section.children).forEach((child, index) => {
+                        if (child.classList.contains('card')) {
+                            child.style.animationDelay = `${index * 0.15}s`; // Stagger delay for cards
+                            child.classList.add('animate-slide-in-up');
+                        }
+                    });
+                }
+            });
+        };
+
+        // Initial check and event listener for scroll
+        document.addEventListener('DOMContentLoaded', animateOnScroll);
+        window.addEventListener('scroll', animateOnScroll);
+
+
+        function displayProjects(filter) {
+            // First, fade out existing projects for a smooth transition
+            projectGrid.style.opacity = 0;
+            projectGrid.style.transition = 'opacity 0.3s ease-out'; // Fast fade out
+
+            // Use a timeout to clear content and render new projects after the fade-out
+            setTimeout(() => {
+                projectGrid.innerHTML = ''; // Clear current projects
+                const filteredProjects = filter === 'all' ? projects : projects.filter(project => project.platforms.includes(filter));
+
+                if (filteredProjects.length === 0) {
+                    projectGrid.innerHTML = '<p class="col-span-full text-center text-gray-600 text-lg py-10">No projects found for this category.</p>';
+                    projectGrid.style.opacity = 1; // Fade back in for the message
+                    projectGrid.style.transition = 'opacity 0.5s ease-in';
+                    return;
+                }
+
+                filteredProjects.forEach((project, index) => {
+                    const projectCard = document.createElement('div');
+                    // Add initial animation class and staggered delay for new projects
+                    projectCard.classList.add('card', 'p-6', 'animate-slide-in-up');
+                    projectCard.style.animationDelay = `${index * 0.1}s`; // Staggered delay for each card
+
+                    let linksHtml = '';
+                    // Added hover effects to these links as well
+                    const linkClasses = "text-teal-600 hover:text-teal-800 font-medium flex items-center transform hover:scale-105 transition duration-200";
+
+                    if (project.links.playStore) {
+                        linksHtml += `<a href="${project.links.playStore}" target="_blank" rel="noopener noreferrer" class="${linkClasses}"><i class="fab fa-google-play mr-2"></i> Play Store</a>`;
+                    }
+                    if (project.links.appStore) {
+                        linksHtml += `<a href="${project.links.appStore}" target="_blank" rel="noopener noreferrer" class="${linkClasses}"><i class="fab fa-apple mr-2"></i> App Store</a>`;
+                    }
+                    // Handle RepairGo's multiple links
+                    if (project.name === "RepairGo") {
+                         if (project.links.playStoreUser) { linksHtml += `<a href="${project.links.playStoreUser}" target="_blank" rel="noopener noreferrer" class="${linkClasses}"><i class="fab fa-google-play mr-2"></i> User App</a>`; }
+                         if (project.links.appStoreUser) { linksHtml += `<a href="${project.links.appStoreUser}" target="_blank" rel="noopener noreferrer" class="${linkClasses}"><i class="fab fa-apple mr-2"></i> User App</a>`; }
+                         if (project.links.playStorePro) { linksHtml += `<a href="${project.links.playStorePro}" target="_blank" rel="noopener noreferrer" class="${linkClasses}"><i class="fab fa-google-play mr-2"></i> Pro App</a>`; }
+                         if (project.links.appStorePro) { linksHtml += `<a href="${project.links.appStorePro}" target="_blank" rel="noopener noreferrer" class="${linkClasses}"><i class="fab fa-apple mr-2"></i> Pro App</a>`; }
+                    }
+                    // Handle generic live links for CodeCanyon projects etc.
+                    if (project.links.liveLink && !project.links.playStore && !project.links.appStore && project.name !== "RepairGo") {
+                        linksHtml += `<a href="${project.links.liveLink}" target="_blank" rel="noopener noreferrer" class="${linkClasses}"><i class="fas fa-link mr-2"></i> Live Demo</a>`;
+                    }
+
+                    // Fallback if no specific links are available
+                    if (!linksHtml) {
+                        linksHtml = `<span class="text-gray-500 font-medium flex items-center"><i class="fas fa-info-circle mr-2"></i> Links unavailable</span>`;
+                    }
+
+
+                    projectCard.innerHTML = `
+                        <img src="${project.image}" alt="${project.name}" class="rounded-lg mb-4 w-full h-auto object-cover border border-gray-200 cursor-pointer project-image">
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-2">${project.name}</h3>
+                        <p class="text-gray-700 mb-4">${project.summary}</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            ${project.platforms.map(p => `<span class="bg-teal-100 text-teal-800 text-xs font-semibold px-2.5 py-0.5 rounded-full capitalize">${p}</span>`).join('')}
+                        </div>
+                        <div class="flex flex-wrap gap-x-4 gap-y-2">
+                            ${linksHtml}
+                        </div>
+                    `;
+                    projectGrid.appendChild(projectCard);
+                });
+                projectGrid.style.opacity = 1; // Fade in new projects
+                projectGrid.style.transition = 'opacity 0.5s ease-in'; // Slower fade in for new projects
+            }, 300); // Wait for the fade-out to complete (0.3s)
+        }
+
+        // Event listeners for project tabs
+        tabButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+                displayProjects(this.dataset.tab);
+            });
+        });
+
+        // Event listener for project image clicks (delegated)
+        projectGrid.addEventListener('click', function(e) {
+            if (e.target.classList.contains('project-image')) {
+                modalImage.src = e.target.src;
+                imageModalOverlay.classList.add('visible');
+            }
+        });
+
+        // Close modal when close button is clicked
+        modalClose.addEventListener('click', function() {
+            imageModalOverlay.classList.remove('visible');
+        });
+
+        // Close modal when clicking outside the image (on the overlay)
+        imageModalOverlay.addEventListener('click', function(e) {
+            if (e.target === imageModalOverlay) {
+                imageModalOverlay.classList.remove('visible');
+            }
+        });
+
+        // Initial display of all projects and trigger animations
+        document.addEventListener('DOMContentLoaded', () => {
+            displayProjects('all');
+            animateOnScroll(); // Trigger animations on load
+        });
+    </script>
 </body>
-
 </html>
