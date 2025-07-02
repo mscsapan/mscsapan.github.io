@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Mohammad Ali's Portfolio</title>
+    <title>Mohammad Ali's Portfolio</title>
 
   <!-- Favicons -->
   <link rel="icon" href="assets/images/rounded-image.png" type="image/png">
-  <!-- <link href="assets/img/title-logo.png" rel="icon"> -->
   <link href="assets/images/rounded-image.png" rel="apple-touch-icon">
 
     <!-- Tailwind CSS CDN -->
@@ -17,11 +16,82 @@
     <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        /* CSS Variables for Theming */
+        :root {
+            --bg-color: #f0f4f8;
+            --text-color: #334155;
+            --header-bg: #ffffff;
+            --card-bg: #ffffff;
+            --accent-color: #0d9488; /* Teal */
+            --accent-darker: #0f766e; /* Darker Teal */
+            --shadow-light: rgba(0, 0, 0, 0.1);
+            --shadow-dark: rgba(0, 0, 0, 0.05);
+            --hero-gradient-from: #0d9488;
+            --hero-gradient-to: #0e7490;
+            --hero-text-color: #ffffff;
+            --hero-accent-text: #e0f2f7;
+            --tab-button-bg: #ffffff;
+            --tab-button-text: #475569;
+            --tab-button-hover-bg: #e0f2f7;
+            --tab-button-hover-text: #0d9488;
+            --footer-bg: #1e293b;
+            --footer-text: #cbd5e1;
+            --footer-icon: #94a3b8;
+            --footer-icon-hover: #ffffff;
+            --link-color: #0d9488;
+            --link-hover-color: #0f766e;
+            --border-color: #e2e8f0;
+            --input-border: #cbd5e1;
+            --input-focus-ring: #0d9488;
+            --download-section-bg: #0d9488; /* Specific for download section */
+            --download-btn-bg: #ffffff;
+            --download-btn-text: #0d9488;
+            --download-btn-hover-bg: #e0f2f7;
+            --download-btn-hover-text: #0f766e;
+            --cursor-color: #0d9488; /* Default cursor color */
+        }
+
+        .dark-mode {
+            --bg-color: #1a202c;
+            --text-color: #e2e8f0;
+            --header-bg: #2d3748;
+            --card-bg: #2d3748;
+            --accent-color: #4fd1c5; /* Lighter teal accent */
+            --accent-darker: #38b2ac;
+            --shadow-light: rgba(0, 0, 0, 0.3);
+            --shadow-dark: rgba(0, 0, 0, 0.2);
+            --hero-gradient-from: #1a202c;
+            --hero-gradient-to: #2d3748;
+            --hero-text-color: #e2e8f0;
+            --hero-accent-text: #81e6d9;
+            --tab-button-bg: #4a5568;
+            --tab-button-text: #e2e8f0;
+            --tab-button-hover-bg: #636b6f;
+            --tab-button-hover-text: #e2e8f0;
+            --footer-bg: #000000;
+            --footer-text: #a0aec0;
+            --footer-icon: #e2e8f0;
+            --footer-icon-hover: #4fd1c5;
+            --link-color: #4fd1c5;
+            --link-hover-color: #38b2ac;
+            --border-color: #4a5568;
+            --input-border: #4a5568;
+            --input-focus-ring: #4fd1c5;
+            --download-section-bg: #2d3748; /* Dark mode background for download section */
+            --download-btn-bg: #4fd1c5;
+            --download-btn-text: #1a202c;
+            --download-btn-hover-bg: #38b2ac;
+            --download-btn-hover-text: #1a202c;
+            --cursor-color: #4fd1c5; /* Dark mode cursor color */
+        }
+
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f0f4f8; /* Softer light blue-gray */
-            color: #334155; /* Dark slate text */
+            background-color: var(--bg-color);
+            color: var(--text-color);
             line-height: 1.6;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            cursor: none; /* Hide default cursor */
         }
         .container {
             max-width: 1200px;
@@ -33,85 +103,84 @@
             display: inline-block;
             margin-bottom: 2.5rem;
             font-weight: 700;
-            color: #1e293b;
+            color: var(--text-color);
         }
         .section-title::after {
             content: '';
             position: absolute;
             left: 0;
             bottom: -8px;
-            width: 70px; /* Slightly wider underline */
+            width: 70px;
             height: 4px;
-            background-color: #0d9488; /* Teal accent */
+            background-color: var(--accent-color);
             border-radius: 9999px;
         }
-        /* New animated underline for nav links */
         .nav-link {
             position: relative;
-            padding: 0.5rem 0; /* Adjust padding for underline space */
-            color: #475569; /* Default color */
-            transition: color 0.3s ease-in-out; /* Smooth color transition */
-            overflow: hidden; /* Hide overflow from underline initially */
+            padding: 0.5rem 0;
+            color: var(--tab-button-text);
+            transition: color 0.3s ease-in-out;
+            overflow: hidden;
         }
         .nav-link::after {
             content: '';
             position: absolute;
             left: 0;
             bottom: 0;
-            width: 0%; /* Start at 0 width */
-            height: 2px; /* Underline thickness */
-            background-color: #0d9488; /* Teal color */
-            transition: width 0.3s ease-in-out; /* Animate width */
+            width: 0%;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease-in-out;
         }
         .nav-link:hover::after {
-            width: 100%; /* Expand to full width on hover */
+            width: 100%;
         }
         .nav-link:hover {
-            color: #0d9488; /* Teal accent on hover */
-            transform: translateY(-2px); /* Slight lift */
+            color: var(--accent-color);
+            transform: translateY(-2px);
         }
 
         .btn-primary {
-            background-color: #0d9488; /* Teal */
+            background-color: var(--accent-color);
             color: white;
-            padding: 0.75rem 1.75rem; /* Slightly more padding */
-            border-radius: 0.5rem;
-            font-weight: 600;
-            transition: all 0.3s ease-in-out;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Softer shadow */
-        }
-        .btn-primary:hover {
-            background-color: #0f766e; /* Darker teal */
-            transform: translateY(-3px); /* More pronounced lift */
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-        }
-        .btn-secondary {
-            background-color: #e2e8f0; /* Light gray */
-            color: #334155;
             padding: 0.75rem 1.75rem;
             border-radius: 0.5rem;
             font-weight: 600;
             transition: all 0.3s ease-in-out;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 10px var(--shadow-light);
+        }
+        .btn-primary:hover {
+            background-color: var(--accent-darker);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px var(--shadow-dark);
+        }
+        .btn-secondary {
+            background-color: var(--border-color);
+            color: var(--text-color);
+            padding: 0.75rem 1.75rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 4px 10px var(--shadow-dark);
         }
         .btn-secondary:hover {
-            background-color: #cbd5e1; /* Darker gray */
+            background-color: var(--input-border);
             transform: translateY(-3px);
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 15px var(--shadow-light);
         }
         .card {
-            background-color: white;
-            border-radius: 1rem; /* More rounded corners */
-            padding: 2.5rem; /* More padding */
-            box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.1), 0 5px 15px -3px rgba(0, 0, 0, 0.05); /* Deeper shadow */
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            background-color: var(--card-bg);
+            border-radius: 1rem;
+            padding: 2.5rem;
+            box-shadow: 0 15px 30px -5px var(--shadow-light), 0 5px 15px -3px var(--shadow-dark);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, background-color 0.3s ease, color 0.3s ease;
         }
         .card:hover {
-            transform: translateY(-8px); /* More pronounced lift */
-            box-shadow: 0 20px 40px -8px rgba(0, 0, 0, 0.15), 0 8px 20px -5px rgba(0, 0, 0, 0.08);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px -8px var(--shadow-light), 0 8px 20px -5px var(--shadow-dark);
         }
         .icon {
-            color: #0d9488; /* Teal for icons */
+            color: var(--accent-color);
         }
 
         /* Animations */
@@ -123,34 +192,34 @@
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        /* Ensure these are consistently applied to sections */
         .animated-section.hidden-init {
             opacity: 0;
             transform: translateY(20px);
         }
         .animated-section.show {
             animation: slideInUp 0.8s ease-out forwards;
-            opacity: 1; /* Override initial opacity for fade in */
-            transform: translateY(0); /* Override initial transform for slide in */
+            opacity: 1;
+            transform: translateY(0);
         }
         /* Project Tabs */
         .tab-button {
             padding: 0.75rem 1.5rem;
             border-radius: 0.5rem;
             font-weight: 600;
-            transition: all 0.2s ease-in-out;
+            transition: all 0.2s ease-in-out, background-color 0.3s ease, color 0.3s ease;
             cursor: pointer;
             border: 2px solid transparent;
-            color: #475569;
+            color: var(--tab-button-text);
+            background-color: var(--tab-button-bg);
         }
         .tab-button.active {
-            background-color: #0d9488;
+            background-color: var(--accent-color);
             color: white;
-            border-color: #0d9488;
+            border-color: var(--accent-color);
         }
         .tab-button:not(.active):hover {
-            background-color: #e0f2f7;
-            color: #0d9488;
+            background-color: var(--tab-button-hover-bg);
+            color: var(--tab-button-hover-text);
         }
 
         /* Image Modal Styles */
@@ -191,8 +260,8 @@
             position: absolute;
             top: -20px;
             right: -20px;
-            background-color: white;
-            color: #334155;
+            background-color: var(--card-bg);
+            color: var(--text-color);
             border-radius: 50%;
             width: 40px;
             height: 40px;
@@ -202,10 +271,10 @@
             font-size: 1.5rem;
             cursor: pointer;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            transition: all 0.2s ease-in-out;
+            transition: all 0.2s ease-in-out, background-color 0.3s ease, color 0.3s ease;
         }
         .modal-close:hover {
-            background-color: #f0f4f8;
+            background-color: var(--tab-button-hover-bg);
             transform: rotate(90deg);
         }
 
@@ -237,7 +306,7 @@
         .icon-fly {
             position: absolute;
             animation: floatEffect 15s ease-in-out infinite alternate, subtleMove 20s linear infinite;
-            filter: blur(0.5px); /* Subtle blur for ethereal look */
+            filter: blur(0.5px);
         }
         .icon-fly-1 { animation-duration: 18s; animation-delay: 0s; top: 10%; left: 15%; }
         .icon-fly-2 { animation-duration: 22s; animation-delay: 2s; top: 25%; right: 20%; }
@@ -252,16 +321,128 @@
 
         /* Media queries to adjust icon sizes/visibility on smaller screens */
         @media (max-width: 768px) {
-            .icon-fly { display: none; /* Hide flying icons on smaller screens for less clutter */ }
+            .icon-fly { display: none; }
+        }
+
+        /* Custom CSS for Text Effects */
+        .hero-name-glow {
+            text-shadow: 0px 0px 15px var(--hero-text-color), 0px 0px 25px var(--hero-text-color);
+        }
+
+        /* Gradient Text for Header Name */
+        .header-gradient-text {
+            background: linear-gradient(to right, var(--accent-color), var(--accent-darker));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent; /* Fallback for non-webkit browsers */
+        }
+
+        /* Theme Toggle Button */
+        #theme-toggle {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--text-color);
+            transition: color 0.3s ease;
+            margin-left: 1rem;
+        }
+        #theme-toggle:hover {
+            color: var(--accent-color);
+        }
+
+        /* Animated Gradient Circle for Profile Image */
+        .profile-image-wrapper {
+            position: relative;
+            width: 14rem; /* w-56, 14 * 16 = 224px */
+            height: 14rem; /* h-56 */
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 2rem; /* Center and add margin-bottom */
+            overflow: hidden;
+            box-shadow: 0 0 0 6px var(--hero-accent-text), 0 0 0 10px rgba(255,255,255,0.3); /* Base border and outer glow */
+        }
+
+        .profile-image-wrapper::before {
+            content: '';
+            position: absolute;
+            inset: -5px; /* Slightly larger than the wrapper */
+            border-radius: 50%;
+            background: conic-gradient(from 0deg, var(--hero-accent-text) 0%, transparent 20%, transparent 80%, var(--hero-accent-text) 100%);
+            animation: rotateGradient 4s linear infinite;
+            z-index: -1; /* Behind the image */
+        }
+
+        @keyframes rotateGradient {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .profile-image-wrapper img {
+            width: 13rem; /* Slightly smaller than wrapper to show gradient */
+            height: 13rem;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--hero-gradient-from); /* Inner border for image */
+            box-shadow: 0 0 15px rgba(0,0,0,0.3);
+            transition: border-color 0.3s ease;
+        }
+
+        /* Custom Cursor */
+        #custom-cursor {
+            position: fixed;
+            width: 20px; /* Increased size */
+            height: 20px; /* Increased size */
+            background-color: var(--cursor-color);
+            border-radius: 50%;
+            pointer-events: none; /* Allows clicks through the cursor */
+            z-index: 9999;
+            opacity: 0.6;
+            transform: translate(-50%, -50%); /* Center the cursor */
+            transition: background-color 0.3s ease, transform 0.05s linear; /* Smooth color change, fast follow */
+            filter: blur(4px); /* Subtle blur effect */
+        }
+
+        /* Hide default cursor on body */
+        body {
+            cursor: none;
+        }
+
+        /* Show default cursor on interactive elements */
+        a, button, input, textarea, select, .tab-button, .card {
+            cursor: pointer !important;
+        }
+
+        /* Specific styling for the Download CV button to ensure theme compatibility */
+        .btn-download-cv {
+            background-color: var(--download-btn-bg);
+            color: var(--download-btn-text);
+            padding: 0.75rem 1.75rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            box-shadow: 0 4px 10px var(--shadow-light);
+            transition: all 0.3s ease-in-out;
+        }
+        .btn-download-cv:hover {
+            background-color: var(--download-btn-hover-bg);
+            color: var(--download-btn-hover-text);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px var(--shadow-dark);
         }
     </style>
 </head>
 <body class="antialiased">
 
+    <!-- Custom Cursor HTML -->
+    <div id="custom-cursor"></div>
+
     <!-- Header/Navigation -->
-    <header class="bg-white shadow-lg py-4 sticky top-0 z-50">
+    <header class="bg-white shadow-lg py-4 sticky top-0 z-50" style="background-color: var(--header-bg);">
         <nav class="container flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold text-gray-900 rounded-lg p-2 hover:bg-gray-100 transition duration-300">Mohammad Ali</a>
+            <a href="#" class="text-2xl font-bold rounded-lg p-2 transition duration-300 header-gradient-text hover:bg-gray-100">Mohammad Ali</a>
             <ul class="hidden md:flex space-x-8">
                 <li><a href="#about" class="nav-link">About</a></li>
                 <li><a href="#skills" class="nav-link">Skills</a></li>
@@ -271,38 +452,47 @@
                 <li><a href="#download-cv" class="nav-link">Download CV</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
-            <!-- Mobile Menu Button -->
-            <button id="mobile-menu-button" class="md:hidden text-gray-600 hover:text-teal-700 focus:outline-none">
-                <i class="fas fa-bars text-2xl"></i>
-            </button>
+            <div class="flex items-center">
+                <!-- Theme Toggle Button -->
+                <button id="theme-toggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon" id="theme-icon"></i>
+                </button>
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-button" class="md:hidden text-gray-600 hover:text-teal-700 focus:outline-none ml-4" style="color: var(--text-color);">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
         </nav>
     </header>
 
     <!-- Mobile Menu Overlay -->
-    <div id="mobile-menu" class="hidden fixed inset-0 bg-gray-900 bg-opacity-95 z-50 flex flex-col items-center justify-center space-y-8 md:hidden">
+    <div id="mobile-menu" class="hidden fixed inset-0 bg-gray-900 bg-opacity-95 z-50 flex flex-col items-center justify-center space-y-8 md:hidden" style="background-color: var(--footer-bg);">
         <button id="close-mobile-menu" class="absolute top-6 right-6 text-white text-3xl focus:outline-none">
             <i class="fas fa-times"></i>
         </button>
         <ul class="text-white text-3xl font-bold space-y-6 text-center">
-            <li><a href="#about" class="block py-2 hover:text-teal-400 transition duration-300">About</a></li>
-            <li><a href="#skills" class="block py-2 hover:text-teal-400 transition duration-300">Skills</a></li>
-            <li><a href="#projects" class="block py-2 hover:text-teal-400 transition duration-300">Projects</a></li>
-            <li><a href="#experience" class="block py-2 hover:text-teal-400 transition duration-300">Experience</a></li>
-            <li><a href="#education" class="block py-2 hover:text-teal-400 transition duration-300">Education</a></li>
-            <li><a href="#download-cv" class="block py-2 hover:text-teal-400 transition duration-300">Download CV</a></li>
-            <li><a href="#contact" class="block py-2 hover:text-teal-400 transition duration-300">Contact</a></li>
+            <li><a href="#about" class="block py-2 hover:text-teal-400 transition duration-300" style="color: var(--hero-text-color); hover:color: var(--accent-color);">About</a></li>
+            <li><a href="#skills" class="block py-2 hover:text-teal-400 transition duration-300" style="color: var(--hero-text-color); hover:color: var(--accent-color);">Skills</a></li>
+            <li><a href="#projects" class="block py-2 hover:text-teal-400 transition duration-300" style="color: var(--hero-text-color); hover:color: var(--accent-color);">Projects</a></li>
+            <li><a href="#experience" class="block py-2 hover:text-teal-400 transition duration-300" style="color: var(--hero-text-color); hover:color: var(--accent-color);">Experience</a></li>
+            <li><a href="#education" class="block py-2 hover:text-teal-400 transition duration-300" style="color: var(--hero-text-color); hover:color: var(--accent-color);">Education</a></li>
+            <li><a href="#download-cv" class="block py-2 hover:text-teal-400 transition duration-300" style="color: var(--hero-text-color); hover:color: var(--accent-color);">Download CV</a></li>
+            <li><a href="#contact" class="block py-2 hover:text-teal-400 transition duration-300" style="color: var(--hero-text-color); hover:color: var(--accent-color);">Contact</a></li>
         </ul>
     </div>
 
     <!-- Hero Section -->
-    <section class="relative bg-gradient-to-br from-teal-600 to-cyan-700 text-white py-20 md:py-32 rounded-b-3xl shadow-2xl mb-16 overflow-hidden">
+    <section class="relative py-20 md:py-32 rounded-b-3xl shadow-2xl mb-16 overflow-hidden" style="background: linear-gradient(to bottom right, var(--hero-gradient-from), var(--hero-gradient-to)); color: var(--hero-text-color);">
         <div class="container text-center flex flex-col items-center relative z-10">
-            <img src="assets/images/rounded-image.png" alt="Mohammad Ali's Profile Picture" class="rounded-full w-44 h-44 mx-auto mb-8 border-6 border-teal-300 shadow-xl object-cover animate-fade-in delay-100">
-            <h1 class="text-5xl md:text-7xl font-extrabold mb-4 leading-tight animate-slide-in-up delay-200">Hi, I'm <span class="text-teal-200">Mohammad Ali</span></h1>
-            <p class="text-xl md:text-3xl font-light mb-10 animate-slide-in-up delay-300">A passionate <span class="font-bold text-teal-100">Flutter Developer</span> with 3 Years of Experience</p>
+            <!-- Profile Image with Animated Gradient Circle -->
+            <div class="profile-image-wrapper animate-fade-in delay-100">
+                <img src="assets/images/rounded-image.png" alt="Mohammad Ali's Profile Picture" class="rounded-full object-cover">
+            </div>
+            <h1 class="text-5xl md:text-7xl font-extrabold mb-4 leading-tight hero-name-glow animate-slide-in-up delay-200">Hi, I'm <span style="color: var(--hero-accent-text);">Mohammad Ali</span></h1>
+            <p class="text-xl md:text-3xl font-light mb-10 animate-slide-in-up delay-300">A passionate <span class="font-bold" style="color: var(--hero-accent-text);">Flutter Developer</span> with 3 Years of Experience</p>
             <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 animate-slide-in-up delay-400">
                 <a href="#projects" class="btn-primary">View My Work <i class="fas fa-arrow-right ml-2"></i></a>
-                <a href="#contact" class="btn-primary bg-transparent border-2 border-white hover:bg-white hover:text-teal-700">Get In Touch <i class="fas fa-envelope ml-2"></i></a>
+                <a href="#contact" class="btn-primary bg-transparent border-2 border-white hover:bg-white" style="border-color: var(--hero-text-color); color: var(--hero-text-color); hover:color: var(--accent-color);">Get In Touch <i class="fas fa-envelope ml-2"></i></a>
             </div>
         </div>
 
@@ -310,55 +500,55 @@
         <div class="absolute inset-0 overflow-hidden pointer-events-none">
             <!-- Flutter Icon -->
             <div class="icon-fly icon-fly-1">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-10 h-10 text-teal-300 opacity-60">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-10 h-10" style="color: var(--hero-accent-text); opacity: 0.6;">
                     <path d="M14.07 10.93L8 4.86 4.86 8l6.07 6.07 3.14-3.14zM10 16.14l-6.07-6.07L0 12l10 10 3.14-3.14zM24 12l-6.07 6.07-3.14-3.14 6.07-6.07z"/>
                 </svg>
             </div>
             <!-- Android Icon -->
             <div class="icon-fly icon-fly-2">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8 text-teal-200 opacity-50">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8" style="color: var(--hero-accent-text); opacity: 0.5;">
                     <path d="M7 2v2H2C.9 4 0 4.9 0 6v14c0 1.1.9 2 2 2h20c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-5V2h-2v2h-6V2H7zm0 6h10v10H7V8zM8 9.5c.83 0 1.5-.67 1.5-1.5S8.83 6.5 8 6.5 6.5 7.17 6.5 8s.67 1.5 1.5 1.5zm8 0c.83 0 1.5-.67 1.5-1.5S16.83 6.5 16 6.5 14.5 7.17 14.5 8s.67 1.5 1.5 1.5z"/>
                 </svg>
             </div>
             <!-- iOS Icon (Apple Logo) -->
             <div class="icon-fly icon-fly-3">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-12 h-12 text-teal-400 opacity-70">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-12 h-12" style="color: var(--hero-accent-text); opacity: 0.7;">
                     <path d="M12 1.347c-2.458 0-4.733 1.01-6.364 2.641C4.004 5.617 3 7.892 3 10.35s1.004 4.733 2.636 6.364C7.267 18.35 9.542 19.36 12 19.36s4.733-1.01 6.364-2.641C20.996 15.083 22 12.808 22 10.35s-1.004-4.733-2.636-6.364C16.733 2.357 14.458 1.347 12 1.347zM17.485 14.67c-1.397 1.397-3.25 2.158-5.23 2.158s-3.833-.761-5.23-2.158C5.628 13.273 5 11.69 5 10.35s.628-2.923 2.025-4.32c1.397-1.397 3.25-2.158 5.23-2.158s3.833.761 5.23 2.158c1.397 1.397 2.025 2.923 2.025 4.32s-.628 2.923-2.025 4.32zm-2.02-6.52c-.672-.672-1.56-.995-2.525-.995s-1.853.323-2.525.995c-.672.672-.995 1.56-.995 2.525s.323 1.853.995 2.525c.672.672 1.56.995 2.525.995s1.853-.323 2.525-.995c.672-.672.995-1.56.995-2.525s-.323-1.853-.995-2.525z"/>
                 </svg>
             </div>
             <!-- Google Play Icon -->
             <div class="icon-fly icon-fly-4">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-9 h-9 text-cyan-300 opacity-60">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-9 h-9" style="color: var(--hero-accent-text); opacity: 0.6;">
                     <path d="M3 21h18v-2H3v2zM3 3v2h18V3H3zm0 8h18v-2H3v2zm0 4h18v-2H3v2zM3 7h18V5H3v2z"/>
-                </svg> <!-- A simplified play store like icon, representing apps -->
+                </svg>
             </div>
              <!-- Git Icon -->
             <div class="icon-fly icon-fly-5">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-7 h-7 text-teal-100 opacity-40">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-7 h-7" style="color: var(--hero-accent-text); opacity: 0.4;">
                     <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm3.3 12.3c-.63.63-1.46.99-2.3.99s-1.67-.36-2.3-.99c-1.24-1.24-1.24-3.25 0-4.49s3.25-1.24 4.49 0c1.24 1.24 1.24 3.25 0 4.49z"/>
-                </svg> <!-- Generic Hexagon representing code/repo -->
+                </svg>
             </div>
             <!-- API Integration Icon -->
             <div class="icon-fly icon-fly-6">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-10 h-10 text-teal-300 opacity-60">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-10 h-10" style="color: var(--hero-accent-text); opacity: 0.6;">
                     <path d="M15 13H9c-1.66 0-3 1.34-3 3v2h12v-2c0-1.66-1.34-3-3-3zm0-8l-3-3-3 3h2v4h2V5h2z"/>
-                </svg> <!-- Exchange icon for APIs -->
+                </svg>
             </div>
             <!-- State Management Icon -->
             <div class="icon-fly icon-fly-7">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8 text-teal-200 opacity-50">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8" style="color: var(--hero-accent-text); opacity: 0.5;">
                     <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2z"/>
-                </svg> <!-- A simplified data flow/process icon -->
+                </svg>
             </div>
             <!-- Firebase Icon (Flame-like) -->
             <div class="icon-fly icon-fly-8">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-12 h-12 text-teal-400 opacity-70">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-12 h-12" style="color: var(--hero-accent-text); opacity: 0.7;">
                     <path d="M12 1.347c-2.458 0-4.733 1.01-6.364 2.641C4.004 5.617 3 7.892 3 10.35s1.004 4.733 2.636 6.364C7.267 18.35 9.542 19.36 12 19.36s4.733-1.01 6.364-2.641C20.996 15.083 22 12.808 22 10.35s-1.004-4.733-2.636-6.364C16.733 2.357 14.458 1.347 12 1.347zM17.485 14.67c-1.397 1.397-3.25 2.158-5.23 2.158s-3.833-.761-5.23-2.158C5.628 13.273 5 11.69 5 10.35s.628-2.923 2.025-4.32c1.397-1.397 3.25-2.158 5.23-2.158s3.833.761 5.23 2.158c1.397 1.397 2.025 2.923 2.025 4.32s-.628 2.923-2.025 4.32zm-2.02-6.52c-.672-.672-1.56-.995-2.525-.995s-1.853.323-2.525.995c-.672.672-.995 1.56-.995 2.525s.323 1.853.995 2.525c.672.672 1.56.995 2.525.995s1.853-.323 2.525-.995c.672-.672.995-1.56.995-2.525s-.323-1.853-.995-2.525z"/>
-                </svg> <!-- Simplified fire/flame -->
+                </svg>
             </div>
             <!-- Cloud Deployment Icon -->
             <div class="icon-fly icon-fly-9">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-9 h-9 text-cyan-300 opacity-60">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-9 h-9" style="color: var(--hero-accent-text); opacity: 0.6;">
                     <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13h-4v4h-2v-4H7l5-5 5 5z"/>
                 </svg>
             </div>
@@ -371,16 +561,16 @@
             <h2 class="text-4xl section-title mb-12 text-center mx-auto">About Me</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                 <div>
-                    <p class="text-lg mb-4 text-gray-700">
+                    <p class="text-lg mb-4" style="color: var(--text-color);">
                         I am a Flutter Developer with 3 years of experience building high-performance mobile apps for iOS and Android. Proficient in Dart, Flutter, and BLOC for state management. Skilled in optimizing app performance, ensuring data integrity, and delivering engaging user experiences. Passionate about learning, collaboration, and developing innovative mobile solutions.
                     </p>
-                    <p class="text-lg text-gray-700">
+                    <p class="text-lg" style="color: var(--text-color);">
                         My expertise lies in crafting intuitive and robust mobile experiences that delight users. I believe in writing clean, modular code, fostering collaborative teamwork, and continuously striving for improvement in every project.
                     </p>
                 </div>
                 <div class="card p-8 shadow-xl">
-                    <h3 class="text-2xl font-semibold mb-4 text-gray-800 flex items-center"><i class="fas fa-quote-left mr-3 text-teal-600"></i>My Philosophy</h3>
-                    <p class="text-gray-700 italic border-l-4 border-teal-400 pl-4 py-2">
+                    <h3 class="text-2xl font-semibold mb-4 flex items-center" style="color: var(--text-color);"><i class="fas fa-quote-left mr-3" style="color: var(--accent-color);"></i>My Philosophy</h3>
+                    <p class="italic border-l-4 pl-4 py-2" style="color: var(--text-color); border-color: var(--accent-color);">
                         "Building beautiful, efficient, and scalable mobile applications is more than just coding; it's about creating seamless digital experiences that truly add value to users' lives. I am committed to pushing the boundaries of what's possible with Flutter."
                     </p>
                 </div>
@@ -389,51 +579,51 @@
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="bg-white py-16 md:py-24 rounded-3xl shadow-xl mb-16 animated-section hidden-init">
+    <section id="skills" class="py-16 md:py-24 rounded-3xl shadow-xl mb-16 animated-section hidden-init" style="background-color: var(--card-bg);">
         <div class="container">
             <h2 class="text-4xl section-title mb-12 text-center mx-auto">My Skills</h2>
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 text-center">
                 <!-- Prioritized Skills -->
                 <div class="card p-6 flex flex-col items-center justify-center">
-                    <i class="fab fa-dev text-5xl mb-4 icon"></i>
-                    <h3 class="text-xl font-semibold text-gray-800">Flutter & Dart</h3>
-                    <p class="text-sm text-gray-600">Cross-platform mobile dev</p>
+                    <i class="fab fa-dev text-5xl mb-4" style="color: var(--accent-color);"></i>
+                    <h3 class="text-xl font-semibold mb-4" style="color: var(--text-color);">Flutter & Dart</h3>
+                    <p class="text-sm" style="color: var(--text-color);">Cross-platform mobile dev</p>
                 </div>
                 <div class="card p-6 flex flex-col items-center justify-center">
-                    <i class="fas fa-bezier-curve text-5xl mb-4 icon"></i>
-                    <h3 class="text-xl font-semibold text-gray-800">State Management</h3>
-                    <p class="text-sm text-gray-600">BLOC, Provider, GetX</p>
+                    <i class="fas fa-bezier-curve text-5xl mb-4" style="color: var(--accent-color);"></i>
+                    <h3 class="text-xl font-semibold mb-4" style="color: var(--text-color);">State Management</h3>
+                    <p class="text-sm" style="color: var(--text-color);">BLOC, Provider, GetX</p>
                 </div>
                 <div class="card p-6 flex flex-col items-center justify-center">
-                    <i class="fas fa-fire text-5xl mb-4 icon"></i>
-                    <h3 class="text-xl font-semibold text-gray-800">Firebase</h3>
-                    <p class="text-sm text-gray-600">Auth, Firestore, FCM</p>
+                    <i class="fas fa-fire text-5xl mb-4" style="color: var(--accent-color);"></i>
+                    <h3 class="text-xl font-semibold mb-4" style="color: var(--text-color);">Firebase</h3>
+                    <p class="text-sm" style="color: var(--text-color);">Auth, Firestore, FCM</p>
                 </div>
                 <div class="card p-6 flex flex-col items-center justify-center">
-                    <i class="fas fa-cloud-upload-alt text-5xl mb-4 icon"></i>
-                    <h3 class="text-xl font-semibold text-gray-800">App Deployment</h3>
-                    <p class="text-sm text-gray-600">Play Store & App Store</p>
+                    <i class="fas fa-cloud-upload-alt text-5xl mb-4" style="color: var(--accent-color);"></i>
+                    <h3 class="text-xl font-semibold mb-4" style="color: var(--text-color);">App Deployment</h3>
+                    <p class="text-sm" style="color: var(--text-color);">Play Store & App Store</p>
                 </div>
                 <!-- Other Important Skills -->
                 <div class="card p-6 flex flex-col items-center justify-center">
-                    <i class="fas fa-globe text-5xl mb-4 icon"></i>
-                    <h3 class="text-xl font-semibold text-gray-800">API Integration</h3>
-                    <p class="text-sm text-gray-600">RESTful APIs, Google Maps</p>
+                    <i class="fas fa-globe text-5xl mb-4" style="color: var(--accent-color);"></i>
+                    <h3 class="text-xl font-semibold mb-4" style="color: var(--text-color);">API Integration</h3>
+                    <p class="text-sm" style="color: var(--text-color);">RESTful APIs, Google Maps</p>
                 </div>
                 <div class="card p-6 flex flex-col items-center justify-center">
-                    <i class="fas fa-palette text-5xl mb-4 icon"></i>
-                    <h3 class="text-xl font-semibold text-gray-800">UI/UX Principles</h3>
-                    <p class="text-sm text-gray-600">Responsive, accessible design</p>
+                    <i class="fas fa-palette text-5xl mb-4" style="color: var(--accent-color);"></i>
+                    <h3 class="text-xl font-semibold mb-4" style="color: var(--text-color);">UI/UX Principles</h3>
+                    <p class="text-sm" style="color: var(--text-color);">Responsive, accessible design</p>
                 </div>
                 <div class="card p-6 flex flex-col items-center justify-center">
-                    <i class="fas fa-code-branch text-5xl mb-4 icon"></i>
-                    <h3 class="text-xl font-semibold text-gray-800">Version Control</h3>
-                    <p class="text-sm text-gray-600">Git & GitHub</p>
+                    <i class="fas fa-code-branch text-5xl mb-4" style="color: var(--accent-color);"></i>
+                    <h3 class="text-xl font-semibold mb-4" style="color: var(--text-color);">Version Control</h3>
+                    <p class="text-sm" style="color: var(--text-color);">Git & GitHub</p>
                 </div>
                 <div class="card p-6 flex flex-col items-center justify-center">
-                    <i class="fas fa-tachometer-alt text-5xl mb-4 icon"></i>
-                    <h3 class="text-xl font-semibold text-gray-800">Performance Opt.</h3>
-                    <p class="text-sm text-gray-600">Load time, efficiency</p>
+                    <i class="fas fa-tachometer-alt text-5xl mb-4" style="color: var(--accent-color);"></i>
+                    <h3 class="text-xl font-semibold mb-4" style="color: var(--text-color);">Performance Opt.</h3>
+                    <p class="text-sm" style="color: var(--text-color);">Load time, efficiency</p>
                 </div>
             </div>
         </div>
@@ -459,16 +649,16 @@
     </section>
 
     <!-- Experience Section -->
-    <section id="experience" class="bg-white py-16 md:py-24 rounded-3xl shadow-xl mb-16 animated-section hidden-init">
+    <section id="experience" class="py-16 md:py-24 rounded-3xl shadow-xl mb-16 animated-section hidden-init" style="background-color: var(--card-bg);">
         <div class="container">
             <h2 class="text-4xl section-title mb-12 text-center mx-auto">Work Experience</h2>
             <div class="space-y-12">
                 <!-- Quomodosoft Experience -->
                 <div class="card p-8 flex flex-col md:flex-row items-start md:items-center justify-between">
                     <div class="flex-grow">
-                        <h3 class="text-3xl font-semibold text-gray-900">Flutter Mobile App Developer</h3>
-                        <p class="text-xl text-teal-700 mb-4">Quomodosoft | Mirpur-10, Dhaka | Sept 2022 - May 2025</p>
-                        <ul class="list-disc list-inside text-gray-700 space-y-2 text-lg">
+                        <h3 class="text-3xl font-semibold" style="color: var(--text-color);">Flutter Mobile App Developer</h3>
+                        <p class="text-xl mb-4" style="color: var(--accent-color);">Quomodosoft | Mirpur-10, Dhaka | Sept 2022 - May 2025</p>
+                        <ul class="list-disc list-inside space-y-2 text-lg" style="color: var(--text-color);">
                             <li>Built and maintained high-performance, cross-platform apps for Android and iOS using Flutter.</li>
                             <li>Integrated Firebase Auth, Firestore, and Messaging for real-time updates and secure user flows.</li>
                             <li>Implemented in-app purchases (subscriptions and one-time purchases) on both platforms.</li>
@@ -481,22 +671,22 @@
                             <li>Collaborated with clients to gather requirements and deliver fully customized solutions that met their business goals.</li>
                         </ul>
                     </div>
-                    <span class="mt-6 md:mt-0 md:ml-8 text-md font-medium text-gray-600 bg-teal-100 px-4 py-2 rounded-full shadow-md">Full-time</span>
+                    <span class="mt-6 md:mt-0 md:ml-8 text-md font-medium px-4 py-2 rounded-full shadow-md" style="color: var(--text-color); background-color: var(--accent-color);">Full-time</span>
                 </div>
 
                 <!-- Generic Additional Experience (can be removed/modified if no other roles) -->
                 <div class="card p-8 flex flex-col md:flex-row items-start md:items-center justify-between">
                     <div class="flex-grow">
-                        <h3 class="text-3xl font-semibold text-gray-900">Freelance Flutter Developer</h3>
-                        <p class="text-xl text-teal-700 mb-4">Self-Employed</p>
-                        <ul class="list-disc list-inside text-gray-700 space-y-2 text-lg">
+                        <h3 class="text-3xl font-semibold" style="color: var(--text-color);">Freelance Flutter Developer</h3>
+                        <p class="text-xl mb-4" style="color: var(--accent-color);">Self-Employed</p>
+                        <ul class="list-disc list-inside space-y-2 text-lg" style="color: var(--text-color);">
                             <li>Developed custom Flutter solutions for various clients, from concept to deployment.</li>
                             <li>Focused on delivering highly responsive and performant applications tailored to specific business needs.</li>
                             <li>Managed project lifecycles, ensuring timely delivery and client satisfaction.</li>
                             <li>Continuously updated skills with the latest Flutter advancements and best practices.</li>
                         </ul>
                     </div>
-                    <span class="mt-6 md:mt-0 md:ml-8 text-md font-medium text-gray-600 bg-blue-100 px-4 py-2 rounded-full shadow-md">Freelance</span>
+                    <span class="mt-6 md:mt-0 md:ml-8 text-md font-medium px-4 py-2 rounded-full shadow-md" style="color: var(--text-color); background-color: var(--border-color);">Freelance</span>
                 </div>
             </div>
         </div>
@@ -509,12 +699,12 @@
             <div class="max-w-3xl mx-auto card p-8">
                 <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6">
                     <div>
-                        <h3 class="text-2xl font-semibold text-gray-900">Bachelor of Computer Science & Engineering</h3>
-                        <p class="text-xl text-teal-700">Southeast University</p>
+                        <h3 class="text-2xl font-semibold" style="color: var(--text-color);">Bachelor of Computer Science & Engineering</h3>
+                        <p class="text-xl" style="color: var(--accent-color);">Southeast University</p>
                     </div>
-                    <span class="mt-2 sm:mt-0 text-lg font-medium text-gray-600 bg-indigo-100 px-4 py-2 rounded-full shadow-md">Dhaka, Bangladesh</span>
+                    <span class="mt-2 sm:mt-0 text-lg font-medium px-4 py-2 rounded-full shadow-md" style="color: var(--text-color); background-color: var(--border-color);">Dhaka, Bangladesh</span>
                 </div>
-                <p class="text-gray-700 text-lg">
+                <p class="text-lg" style="color: var(--text-color);">
                     Focused on core computer science principles, software development methodologies, and algorithms. Gained a strong foundation in programming, data structures, and system design, preparing for a career in mobile application development.
                 </p>
             </div>
@@ -522,12 +712,11 @@
     </section>
 
     <!-- Download CV Section -->
-    <section id="download-cv" class="bg-teal-700 text-white py-16 md:py-24 rounded-3xl shadow-xl mb-16 animated-section hidden-init">
+    <section id="download-cv" class="py-16 md:py-24 rounded-3xl shadow-xl mb-16 animated-section hidden-init" style="background-color: var(--download-section-bg); color: var(--hero-text-color);">
         <div class="container text-center">
             <h2 class="text-4xl font-extrabold mb-8">Ready to Learn More?</h2>
             <p class="text-xl mb-10 opacity-90">Download my full resume to get a comprehensive overview of my skills, experience, and projects.</p>
-            <!-- <a href="assets/portfolio/Mohammad Ali Resume.pdf" download="Mohammad Ali Resume.pdf" class="btn-primary bg-white text-teal-700 hover:bg-teal-100 hover:text-teal-800 transition duration-300 transform hover:scale-105"> -->
-            <a href="https://drive.google.com/drive/folders/1fK-UHGuSodXjAVtKNTiNNTNpi19eiNqG?usp=sharing" target="_blank" class="btn-primary bg-white text-teal-700 hover:bg-teal-100 hover:text-teal-800 transition duration-300 transform hover:scale-105">
+            <a href="https://drive.google.com/drive/folders/1fK-UHGuSodXjAVtKNTiNNTNpi19eiNqG?usp=sharing" target="_blank" class="btn-download-cv transform hover:scale-105">
                 <i class="fas fa-download mr-3"></i> Download My CV
             </a>
         </div>
@@ -538,33 +727,33 @@
         <div class="container">
             <h2 class="text-4xl section-title mb-12 text-center mx-auto">Get In Touch</h2>
             <div class="max-w-3xl mx-auto card p-8">
-                <p class="text-center text-lg mb-8 text-gray-700">
+                <p class="text-center text-lg mb-8" style="color: var(--text-color);">
                     I'm always open to new opportunities and collaborations. Feel free to reach out via the form below or connect with me directly!
                 </p>
                 <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-8 mb-8">
                     <div class="text-center">
-                        <i class="fas fa-envelope text-4xl text-teal-600 mb-2"></i>
-                        <p class="text-lg font-medium text-gray-800">Email:</p>
-                        <a href="mailto:mscsapan@gmail.com" class="text-teal-600 hover:underline text-lg">mscsapan@gmail.com</a>
+                        <i class="fas fa-envelope text-4xl" style="color: var(--accent-color);"></i>
+                        <p class="text-lg font-medium" style="color: var(--text-color);">Email:</p>
+                        <a href="mailto:mscsapan@gmail.com" class="hover:underline text-lg" style="color: var(--link-color);">mscsapan@gmail.com</a>
                     </div>
                     <div class="text-center">
-                        <i class="fas fa-phone-alt text-4xl text-teal-600 mb-2"></i>
-                        <p class="text-lg font-medium text-gray-800">Phone:</p>
-                        <a href="tel:+8801624188877" class="text-teal-600 hover:underline text-lg">+880 1624188877</a>
+                        <i class="fas fa-phone-alt text-4xl" style="color: var(--accent-color);"></i>
+                        <p class="text-lg font-medium" style="color: var(--text-color);">Phone:</p>
+                        <a href="tel:+8801624188877" class="hover:underline text-lg" style="color: var(--link-color);">+880 1624188877</a>
                     </div>
                 </div>
                 <form id="contact-form" class="space-y-6">
                     <div>
-                        <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Your Name</label>
-                        <input type="text" id="name" name="name" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-teal-500 focus:border-teal-500 sm:text-sm" placeholder="John Doe" required>
+                        <label for="name" class="block text-sm font-medium mb-1" style="color: var(--text-color);">Your Name</label>
+                        <input type="text" id="name" name="name" class="mt-1 block w-full px-4 py-2 border rounded-md shadow-sm sm:text-sm" style="border-color: var(--input-border); background-color: var(--card-bg); color: var(--text-color); focus:ring-color: var(--input-focus-ring); focus:border-color: var(--input-focus-ring);" placeholder="John Doe" required>
                     </div>
                     <div>
-                        <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Your Email</label>
-                        <input type="email" id="email" name="email" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-teal-500 focus:border-teal-500 sm:text-sm" placeholder="you@example.com" required>
+                        <label for="email" class="block text-sm font-medium mb-1" style="color: var(--text-color);">Your Email</label>
+                        <input type="email" id="email" name="email" class="mt-1 block w-full px-4 py-2 border rounded-md shadow-sm sm:text-sm" style="border-color: var(--input-border); background-color: var(--card-bg); color: var(--text-color); focus:ring-color: var(--input-focus-ring); focus:border-color: var(--input-focus-ring);" placeholder="you@example.com" required>
                     </div>
                     <div>
-                        <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message</label>
-                        <textarea id="message" name="message" rows="6" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-teal-500 focus:border-teal-500 sm:text-sm" placeholder="I'd love to discuss..." required></textarea>
+                        <label for="message" class="block text-sm font-medium mb-1" style="color: var(--text-color);">Message</label>
+                        <textarea id="message" name="message" rows="6" class="mt-1 block w-full px-4 py-2 border rounded-md shadow-sm sm:text-sm" style="border-color: var(--input-border); background-color: var(--card-bg); color: var(--text-color); focus:ring-color: var(--input-focus-ring); focus:border-color: var(--input-focus-ring);" placeholder="I'd love to discuss..." required></textarea>
                     </div>
                     <div class="text-center">
                         <button type="submit" class="btn-primary">Send Message</button>
@@ -576,22 +765,17 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-10 mt-16 rounded-t-3xl shadow-2xl">
+    <footer class="py-10 mt-16 rounded-t-3xl shadow-2xl" style="background-color: var(--footer-bg); color: var(--footer-text);">
         <div class="container text-center">
-            <p class="mb-6 text-gray-400">&copy; 2025 Mohammad Ali. All rights reserved.</p>
+            <p class="mb-6">&copy; 2025 Mohammad Ali. All rights reserved.</p>
             <div class="flex justify-center space-x-8">
-                <a href="https://linkedin.com/in/mscsapan" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition duration-300" aria-label="LinkedIn Profile">
+                <a href="https://linkedin.com/in/mscsapan" target="_blank" rel="noopener noreferrer" class="transition duration-300" style="color: var(--footer-icon); hover:color: var(--footer-icon-hover);" aria-label="LinkedIn Profile">
                     <i class="fab fa-linkedin-in text-3xl"></i>
                 </a>
-                <a href="https://github.com/mscsapan" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition duration-300" aria-label="GitHub Profile">
+                <a href="https://github.com/mscsapan" target="_blank" rel="noopener noreferrer" class="transition duration-300" style="color: var(--footer-icon); hover:color: var(--footer-icon-hover);" aria-label="GitHub Profile">
                     <i class="fab fa-github text-3xl"></i>
                 </a>
-                <!-- Add other social links if desired, e.g., Twitter, Portfolio Website -->
-                <!-- <a href="#" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition duration-300" aria-label="Twitter Profile">
-                    <i class="fab fa-twitter text-3xl"></i>
-                </a> -->
             </div>
-            <!-- <p class="mt-6 text-gray-500 text-sm">Crafted with ❤️ by AI</p> -->
         </div>
     </footer>
 
@@ -605,6 +789,42 @@
 
     <!-- JavaScript -->
     <script>
+        // Theme Toggle Logic
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const body = document.body;
+
+        // Function to set theme
+        function setTheme(theme) {
+            if (theme === 'dark') {
+                body.classList.add('dark-mode');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                body.classList.remove('dark-mode');
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        // Check for saved theme preference on load
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            setTheme(savedTheme);
+        });
+
+        // Toggle theme on button click
+        themeToggleBtn.addEventListener('click', () => {
+            if (body.classList.contains('dark-mode')) {
+                setTheme('light');
+            } else {
+                setTheme('dark');
+            }
+        });
+
+
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -612,16 +832,15 @@
                 const targetId = this.getAttribute('href');
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
-                    const headerOffset = document.querySelector('header').offsetHeight; // Get header height
+                    const headerOffset = document.querySelector('header').offsetHeight;
                     const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
-                    const offsetPosition = elementPosition - headerOffset - 20; // Adjust for header and some padding
+                    const offsetPosition = elementPosition - headerOffset - 20;
 
                     window.scrollTo({
                         top: offsetPosition,
                         behavior: "smooth"
                     });
                 }
-                // Close mobile menu if open
                 const mobileMenu = document.getElementById('mobile-menu');
                 if (!mobileMenu.classList.contains('hidden')) {
                     mobileMenu.classList.add('hidden');
@@ -646,16 +865,15 @@
             formMessage.classList.remove('text-red-600', 'text-green-600');
             formMessage.classList.add('text-gray-600');
 
-            // Simulate form submission
             setTimeout(() => {
                 formMessage.textContent = "Thank you for your message! I'll get back to you soon.";
                 formMessage.classList.remove('text-gray-600');
                 formMessage.classList.add('text-green-600');
-                this.reset(); // Clear the form
-            }, 1500); // Simulate network delay
+                this.reset();
+            }, 1500);
         });
 
-        // Project Data (pulled from your resume)
+        // Project Data
         const projects = [
             {
                 name: "Digital Salon Management App",
@@ -663,8 +881,8 @@
                 image: "assets/portfolio/saloon.webp",
                 platforms: ["ios", "android"],
                 links: {
-                    appStore: "https://apps.apple.com/my/app/digital-smart-salon-management/id6739427179", // Replace with actual ID
-                    playStore: "https://play.google.com/store/apps/details?id=com.digitalsalon.app" // Replace with actual ID
+                    appStore: "https://apps.apple.com/my/app/digital-smart-salon-management/id6739427179",
+                    playStore: "https://play.google.com/store/apps/details?id=com.digitalsalon.app"
                 }
             },
             {
@@ -750,9 +968,8 @@
                 summary: "Shopo is a modern multi vendor eCommerce solution built with Flutter and Laravel, offering apps, admin panel, and website support. Ideal for grocery, electronics, or general online stores with features like CMS, order tracking, and 9+ payment gateways.",
                 image: "assets/portfolio/shopo.png",
                 platforms: ["all"],
-                 <!-- platforms: ["ios", "android"], -->
                 links: {
-                    liveLink: "https://codecanyon.net/item/shopo-multivendor-ecommerce-flutter-app/39965496?s_rank=31" // Assuming CodeCanyon link
+                    liveLink: "https://codecanyon.net/item/shopo-multivendor-ecommerce-flutter-app/39965496?s_rank=31"
                 }
             },
             {
@@ -761,7 +978,7 @@
                 image: "assets/portfolio/ecoshop.png",
                 platforms: ["all"],
                 links: {
-                    liveLink: "https://codecanyon.net/item/ecoshop-multivendor-food-grocery-ecommerce-flutter-app-admin-panel/42078956?s_rank=16" // Assuming CodeCanyon link
+                    liveLink: "https://codecanyon.net/item/ecoshop-multivendor-food-grocery-ecommerce-flutter-app-admin-panel/42078956?s_rank=16"
                 }
             },
             {
@@ -770,7 +987,7 @@
                 image: "assets/portfolio/workzone.png",
                 platforms: ["all"],
                 links: {
-                    liveLink: "https://codecanyon.net/item/workzone-freelancer-marketplace-for-gig-service-order-job-posting-flutter-mobile-app/57759310?s_rank=1" // Assuming CodeCanyon link
+                    liveLink: "https://codecanyon.net/item/workzone-freelancer-marketplace-for-gig-service-order-job-posting-flutter-mobile-app/57759310?s_rank=1"
                 }
             },
             {
@@ -779,7 +996,7 @@
                 image: "assets/portfolio/inflanar.png",
                 platforms: ["all"],
                 links: {
-                    liveLink: "https://codecanyon.net/item/inflanar-influencer-marketing-service-selling-platform-user-and-influencer-app/53381205?s_rank=10" // Assuming CodeCanyon link
+                    liveLink: "https://codecanyon.net/item/inflanar-influencer-marketing-service-selling-platform-user-and-influencer-app/53381205?s_rank=10"
                 }
             },
               {
@@ -788,7 +1005,7 @@
                 image: "assets/portfolio/homeco.png",
                 platforms: ["all"],
                 links: {
-                    liveLink: "https://codecanyon.net/item/homeco-real-estate-directory-listing-flutter-app/46302077?s_rank=20" // Assuming CodeCanyon link
+                    liveLink: "https://codecanyon.net/item/homeco-real-estate-directory-listing-flutter-app/46302077?s_rank=20"
                 }
                 
             }
@@ -799,6 +1016,7 @@
         const imageModalOverlay = document.getElementById('image-modal-overlay');
         const modalImage = document.getElementById('modal-image');
         const modalClose = document.getElementById('modal-close');
+        const customCursor = document.getElementById('custom-cursor'); // Get custom cursor element
 
         // Function to trigger section animations on scroll
         const animateOnScroll = () => {
@@ -806,13 +1024,12 @@
             sections.forEach(section => {
                 const sectionTop = section.getBoundingClientRect().top;
                 const viewportHeight = window.innerHeight;
-                if (sectionTop < viewportHeight * 0.8) { // Animate when 80% of section is visible
+                if (sectionTop < viewportHeight * 0.8) {
                     section.classList.remove('hidden-init');
                     section.classList.add('show');
-                    // Stagger animation for children if present (e.g., cards)
                     Array.from(section.children).forEach((child, index) => {
                         if (child.classList.contains('card')) {
-                            child.style.animationDelay = `${index * 0.15}s`; // Stagger delay for cards
+                            child.style.animationDelay = `${index * 0.15}s`;
                             child.classList.add('animate-slide-in-up');
                         }
                     });
@@ -826,68 +1043,59 @@
 
 
         function displayProjects(filter) {
-            // First, fade out existing projects for a smooth transition
             projectGrid.style.opacity = 0;
-            projectGrid.style.transition = 'opacity 0.3s ease-out'; // Fast fade out
+            projectGrid.style.transition = 'opacity 0.3s ease-out';
 
-            // Use a timeout to clear content and render new projects after the fade-out
             setTimeout(() => {
-                projectGrid.innerHTML = ''; // Clear current projects
+                projectGrid.innerHTML = '';
                 const filteredProjects = filter === 'all' ? projects : projects.filter(project => project.platforms.includes(filter));
 
                 if (filteredProjects.length === 0) {
                     projectGrid.innerHTML = '<p class="col-span-full text-center text-gray-600 text-lg py-10">No projects found for this category.</p>';
-                    projectGrid.style.opacity = 1; // Fade back in for the message
+                    projectGrid.style.opacity = 1;
                     projectGrid.style.transition = 'opacity 0.5s ease-in';
                     return;
                 }
 
                 filteredProjects.forEach((project, index) => {
                     const projectCard = document.createElement('div');
-                    // Add initial animation class and staggered delay for new projects
                     projectCard.classList.add('card', 'p-6', 'animate-slide-in-up');
-                    projectCard.style.animationDelay = `${index * 0.1}s`; // Staggered delay for each card
+                    projectCard.style.animationDelay = `${index * 0.1}s`;
 
                     let linksHtml = '';
-                    // Added hover effects to these links as well
                     const linkClasses = "text-teal-600 hover:text-teal-800 font-medium flex items-center transform hover:scale-105 transition duration-200";
 
                     if (project.links.playStore) {
-                        linksHtml += `<a href="${project.links.playStore}" target="_blank" rel="noopener noreferrer" class="${linkClasses}"><i class="fab fa-google-play mr-2"></i> Play Store</a>`;
+                        linksHtml += `<a href="${project.links.playStore}" target="_blank" rel="noopener noreferrer" class="${linkClasses}" style="color: var(--link-color); hover:color: var(--link-hover-color);"><i class="fab fa-google-play mr-2"></i> Play Store</a>`;
                     }
                     if (project.links.appStore) {
-                        linksHtml += `<a href="${project.links.appStore}" target="_blank" rel="noopener noreferrer" class="${linkClasses}"><i class="fab fa-apple mr-2"></i> App Store</a>`;
+                        linksHtml += `<a href="${project.links.appStore}" target="_blank" rel="noopener noreferrer" class="${linkClasses}" style="color: var(--link-color); hover:color: var(--link-hover-color);"><i class="fab fa-apple mr-2"></i> App Store</a>`;
                     }
-                    // Handle RepairGo's multiple links
                     if (project.name === "RepairGo") {
-                         if (project.links.playStoreUser) { linksHtml += `<a href="${project.links.playStoreUser}" target="_blank" rel="noopener noreferrer" class="${linkClasses}"><i class="fab fa-google-play mr-2"></i> User App</a>`; }
-                         if (project.links.appStoreUser) { linksHtml += `<a href="${project.links.appStoreUser}" target="_blank" rel="noopener noreferrer" class="${linkClasses}"><i class="fab fa-apple mr-2"></i> User App</a>`; }
-                         if (project.links.playStorePro) { linksHtml += `<a href="${project.links.playStorePro}" target="_blank" rel="noopener noreferrer" class="${linkClasses}"><i class="fab fa-google-play mr-2"></i> Pro App</a>`; }
-                         if (project.links.appStorePro) { linksHtml += `<a href="${project.links.appStorePro}" target="_blank" rel="noopener noreferrer" class="${linkClasses}"><i class="fab fa-apple mr-2"></i> Pro App</a>`; }
+                         if (project.links.playStoreUser) { linksHtml += `<a href="${project.links.playStoreUser}" target="_blank" rel="noopener noreferrer" class="${linkClasses}" style="color: var(--link-color); hover:color: var(--link-hover-color);"><i class="fab fa-google-play mr-2"></i> User App</a>`; }
+                         if (project.links.appStoreUser) { linksHtml += `<a href="${project.links.appStoreUser}" target="_blank" rel="noopener noreferrer" class="${linkClasses}" style="color: var(--link-color); hover:color: var(--link-hover-color);"><i class="fab fa-apple mr-2"></i> User App</a>`; }
+                         if (project.links.playStorePro) { linksHtml += `<a href="${project.links.playStorePro}" target="_blank" rel="noopener noreferrer" class="${linkClasses}" style="color: var(--link-color); hover:color: var(--link-hover-color);"><i class="fab fa-google-play mr-2"></i> Pro App</a>`; }
+                         if (project.links.appStorePro) { linksHtml += `<a href="${project.links.appStorePro}" target="_blank" rel="noopener noreferrer" class="${linkClasses}" style="color: var(--link-color); hover:color: var(--link-hover-color);"><i class="fab fa-apple mr-2"></i> Pro App</a>`; }
                     }
-
-                      // Handle Fannan's multiple links
                     if (project.name === "Fannan Express") {
-                         if (project.links.playStoreUser) { linksHtml += `<a href="${project.links.playStoreUser}" target="_blank" rel="noopener noreferrer" class="${linkClasses}"><i class="fab fa-google-play mr-2"></i> User App</a>`; }
-                         if (project.links.playStoreSeller) { linksHtml += `<a href="${project.links.playStoreSeller}" target="_blank" rel="noopener noreferrer" class="${linkClasses}"><i class="fab fa-google-play mr-2"></i> Seller App</a>`; }
+                         if (project.links.playStoreUser) { linksHtml += `<a href="${project.links.playStoreUser}" target="_blank" rel="noopener noreferrer" class="${linkClasses}" style="color: var(--link-color); hover:color: var(--link-hover-color);"><i class="fab fa-google-play mr-2"></i> User App</a>`; }
+                         if (project.links.playStoreSeller) { linksHtml += `<a href="${project.links.playStoreSeller}" target="_blank" rel="noopener noreferrer" class="${linkClasses}" style="color: var(--link-color); hover:color: var(--link-hover-color);"><i class="fab fa-google-play mr-2"></i> Seller App</a>`; }
                     }
-                    // Handle generic live links for CodeCanyon projects etc.
-                    if (project.links.liveLink && !project.links.playStore && !project.links.appStore && project.name !== "RepairGo") {
-                        linksHtml += `<a href="${project.links.liveLink}" target="_blank" rel="noopener noreferrer" class="${linkClasses}"><i class="fas fa-link mr-2"></i> Live Demo</a>`;
+                    if (project.links.liveLink && !project.links.playStore && !project.links.appStore && project.name !== "RepairGo" && project.name !== "Fannan Express") {
+                        linksHtml += `<a href="${project.links.liveLink}" target="_blank" rel="noopener noreferrer" class="${linkClasses}" style="color: var(--link-color); hover:color: var(--link-hover-color);"><i class="fas fa-link mr-2"></i> Live Demo</a>`;
                     }
 
-                    // Fallback if no specific links are available
                     if (!linksHtml) {
-                        linksHtml = `<span class="text-gray-500 font-medium flex items-center"><i class="fas fa-info-circle mr-2"></i> Links unavailable</span>`;
+                        linksHtml = `<span class="font-medium flex items-center" style="color: var(--text-color);"><i class="fas fa-info-circle mr-2"></i> Links unavailable</span>`;
                     }
 
 
                     projectCard.innerHTML = `
-                        <img src="${project.image}" alt="${project.name}" class="rounded-lg mb-4 w-full h-auto object-cover border border-gray-200 cursor-pointer project-image">
-                        <h3 class="text-2xl font-semibold text-gray-800 mb-2">${project.name}</h3>
-                        <p class="text-gray-700 mb-4">${project.summary}</p>
+                        <img src="${project.image}" alt="${project.name}" class="rounded-lg mb-4 w-full h-auto object-cover border cursor-pointer project-image" style="border-color: var(--border-color);">
+                        <h3 class="text-2xl font-semibold mb-2" style="color: var(--text-color);">${project.name}</h3>
+                        <p class="mb-4" style="color: var(--text-color);">${project.summary}</p>
                         <div class="flex flex-wrap gap-2 mb-4">
-                            ${project.platforms.map(p => `<span class="bg-teal-100 text-teal-800 text-xs font-semibold px-2.5 py-0.5 rounded-full capitalize">${p}</span>`).join('')}
+                            ${project.platforms.map(p => `<span class="text-xs font-semibold px-2.5 py-0.5 rounded-full capitalize" style="background-color: var(--accent-color); color: var(--hero-text-color);">${p}</span>`).join('')}
                         </div>
                         <div class="flex flex-wrap gap-x-4 gap-y-2">
                             ${linksHtml}
@@ -895,9 +1103,9 @@
                     `;
                     projectGrid.appendChild(projectCard);
                 });
-                projectGrid.style.opacity = 1; // Fade in new projects
-                projectGrid.style.transition = 'opacity 0.5s ease-in'; // Slower fade in for new projects
-            }, 300); // Wait for the fade-out to complete (0.3s)
+                projectGrid.style.opacity = 1;
+                projectGrid.style.transition = 'opacity 0.5s ease-in';
+            }, 300);
         }
 
         // Event listeners for project tabs
@@ -929,10 +1137,16 @@
             }
         });
 
+        // Custom Cursor Logic
+        document.addEventListener('mousemove', (e) => {
+            customCursor.style.left = `${e.clientX}px`;
+            customCursor.style.top = `${e.clientY}px`;
+        });
+
         // Initial display of all projects and trigger animations
         document.addEventListener('DOMContentLoaded', () => {
             displayProjects('all');
-            animateOnScroll(); // Trigger animations on load
+            animateOnScroll();
         });
     </script>
 </body>
