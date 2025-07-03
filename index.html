@@ -90,7 +90,8 @@
             background-color: var(--bg-color);
             color: var(--text-color);
             line-height: 1.6;
-            transition: background-color 0.3s ease, color 0.3s ease;
+            /* No direct background/color transition here, handled by overlay */
+            transition: color 0.5s ease; /* Only color transition for text */
             cursor: none; /* Hide default cursor */
         }
         .container {
@@ -104,6 +105,7 @@
             margin-bottom: 2.5rem;
             font-weight: 700;
             color: var(--text-color);
+            transition: color 0.5s ease;
         }
         .section-title::after {
             content: '';
@@ -114,6 +116,7 @@
             height: 4px;
             background-color: var(--accent-color);
             border-radius: 9999px;
+            transition: background-color 0.5s ease;
         }
         .nav-link {
             position: relative;
@@ -130,7 +133,7 @@
             width: 0%;
             height: 2px;
             background-color: var(--accent-color);
-            transition: width 0.3s ease-in-out;
+            transition: width 0.3s ease-in-out, background-color 0.5s ease;
         }
         .nav-link:hover::after {
             width: 100%;
@@ -146,7 +149,7 @@
             padding: 0.75rem 1.75rem;
             border-radius: 0.5rem;
             font-weight: 600;
-            transition: all 0.3s ease-in-out;
+            transition: all 0.3s ease-in-out, background-color 0.5s ease, color 0.5s ease, box-shadow 0.5s ease;
             box-shadow: 0 4px 10px var(--shadow-light);
         }
         .btn-primary:hover {
@@ -160,7 +163,7 @@
             padding: 0.75rem 1.75rem;
             border-radius: 0.5rem;
             font-weight: 600;
-            transition: all 0.3s ease-in-out;
+            transition: all 0.3s ease-in-out, background-color 0.5s ease, color 0.5s ease, box-shadow 0.5s ease;
             box-shadow: 0 4px 10px var(--shadow-dark);
         }
         .btn-secondary:hover {
@@ -173,7 +176,7 @@
             border-radius: 1rem;
             padding: 2.5rem;
             box-shadow: 0 15px 30px -5px var(--shadow-light), 0 5px 15px -3px var(--shadow-dark);
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, background-color 0.3s ease, color 0.3s ease;
+            transition: transform 0.3s ease-in-out, box-shadow 0.5s ease-in-out, background-color 0.5s ease, color 0.5s ease;
         }
         .card:hover {
             transform: translateY(-8px);
@@ -181,6 +184,7 @@
         }
         .icon {
             color: var(--accent-color);
+            transition: color 0.5s ease;
         }
 
         /* Animations */
@@ -206,7 +210,7 @@
             padding: 0.75rem 1.5rem;
             border-radius: 0.5rem;
             font-weight: 600;
-            transition: all 0.2s ease-in-out, background-color 0.3s ease, color 0.3s ease;
+            transition: all 0.2s ease-in-out, background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease;
             cursor: pointer;
             border: 2px solid transparent;
             color: var(--tab-button-text);
@@ -271,7 +275,7 @@
             font-size: 1.5rem;
             cursor: pointer;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            transition: all 0.2s ease-in-out, background-color 0.3s ease, color 0.3s ease;
+            transition: all 0.2s ease-in-out, background-color 0.5s ease, color 0.5s ease;
         }
         .modal-close:hover {
             background-color: var(--tab-button-hover-bg);
@@ -327,6 +331,7 @@
         /* Custom CSS for Text Effects */
         .hero-name-glow {
             text-shadow: 0px 0px 15px var(--hero-text-color), 0px 0px 25px var(--hero-text-color);
+            transition: text-shadow 0.5s ease;
         }
 
         /* Gradient Text for Header Name */
@@ -336,6 +341,7 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
             color: transparent; /* Fallback for non-webkit browsers */
+            transition: background 0.5s ease;
         }
 
         /* Theme Toggle Button */
@@ -345,7 +351,7 @@
             cursor: pointer;
             font-size: 1.5rem;
             color: var(--text-color);
-            transition: color 0.3s ease;
+            transition: color 0.5s ease;
             margin-left: 1rem;
         }
         #theme-toggle:hover {
@@ -364,6 +370,7 @@
             margin: 0 auto 2rem; /* Center and add margin-bottom */
             overflow: hidden;
             box-shadow: 0 0 0 6px var(--hero-accent-text), 0 0 0 10px rgba(255,255,255,0.3); /* Base border and outer glow */
+            transition: box-shadow 0.5s ease;
         }
 
         .profile-image-wrapper::before {
@@ -374,6 +381,7 @@
             background: conic-gradient(from 0deg, var(--hero-accent-text) 0%, transparent 20%, transparent 80%, var(--hero-accent-text) 100%);
             animation: rotateGradient 4s linear infinite;
             z-index: -1; /* Behind the image */
+            transition: background 0.5s ease;
         }
 
         @keyframes rotateGradient {
@@ -388,7 +396,7 @@
             object-fit: cover;
             border: 4px solid var(--hero-gradient-from); /* Inner border for image */
             box-shadow: 0 0 15px rgba(0,0,0,0.3);
-            transition: border-color 0.3s ease;
+            transition: border-color 0.5s ease;
         }
 
         /* Custom Cursor */
@@ -402,7 +410,7 @@
             z-index: 9999;
             opacity: 0.6;
             transform: translate(-50%, -50%); /* Center the cursor */
-            transition: background-color 0.3s ease, transform 0.05s linear; /* Smooth color change, fast follow */
+            transition: background-color 0.5s ease, transform 0.05s linear; /* Smooth color change, fast follow */
             filter: blur(4px); /* Subtle blur effect */
         }
 
@@ -424,7 +432,7 @@
             border-radius: 0.5rem;
             font-weight: 600;
             box-shadow: 0 4px 10px var(--shadow-light);
-            transition: all 0.3s ease-in-out;
+            transition: all 0.3s ease-in-out, background-color 0.5s ease, color 0.5s ease, box-shadow 0.5s ease;
         }
         .btn-download-cv:hover {
             background-color: var(--download-btn-hover-bg);
@@ -432,12 +440,65 @@
             transform: translateY(-3px);
             box-shadow: 0 8px 15px var(--shadow-dark);
         }
+
+        /* Footer Social Icons Hover Effect */
+        footer a {
+            transition: color 0.3s ease; /* Ensure hover transition is smooth */
+        }
+        footer a:hover {
+            color: var(--footer-icon-hover);
+        }
+
+        /* Header and Mobile Menu background transitions */
+        header {
+            transition: background-color 0.5s ease, box-shadow 0.5s ease;
+        }
+        #mobile-menu {
+            transition: background-color 0.5s ease;
+        }
+        #mobile-menu a {
+            transition: color 0.3s ease; /* For mobile menu links */
+        }
+        #mobile-menu a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Project image border transition */
+        .project-image {
+            transition: border-color 0.5s ease;
+        }
+
+        /* Input and textarea transitions */
+        input, textarea {
+            transition: border-color 0.5s ease, background-color 0.5s ease, color 0.5s ease;
+        }
+
+        /* Theme Transition Overlay Styles */
+        .theme-transition-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9998; /* Below custom cursor, above everything else */
+            pointer-events: none; /* Allows clicks through by default */
+            background-color: transparent; /* Will be set dynamically */
+            clip-path: circle(0% at 100% 0%); /* Starts as a tiny circle at top-right */
+            transition: clip-path 0.7s ease-in-out; /* For the expansion animation */
+        }
+        .theme-transition-overlay.active {
+            pointer-events: auto; /* Temporarily block events during transition */
+            clip-path: circle(150% at 100% 0%); /* Expands to cover the screen */
+        }
     </style>
 </head>
 <body class="antialiased">
 
     <!-- Custom Cursor HTML -->
     <div id="custom-cursor"></div>
+
+    <!-- Theme Transition Overlay -->
+    <div id="theme-transition-overlay" class="theme-transition-overlay"></div>
 
     <!-- Header/Navigation -->
     <header class="bg-white shadow-lg py-4 sticky top-0 z-50" style="background-color: var(--header-bg);">
@@ -686,7 +747,7 @@
                             <li>Continuously updated skills with the latest Flutter advancements and best practices.</li>
                         </ul>
                     </div>
-                    <span class="mt-6 md:mt-0 md:ml-8 text-md font-medium px-4 py-2 rounded-full shadow-md" style="color: var(--text-color); background-color: var(--border-color);">Freelance</span>
+                    <span class="mt-6 md:mt-0 md:ml-8 text-md font-medium px-4 py-2 rounded-full shadow-md" style="color: var(--text-color); background-color: var(--accent-color);">Freelance</span>
                 </div>
             </div>
         </div>
@@ -702,7 +763,7 @@
                         <h3 class="text-2xl font-semibold" style="color: var(--text-color);">Bachelor of Computer Science & Engineering</h3>
                         <p class="text-xl" style="color: var(--accent-color);">Southeast University</p>
                     </div>
-                    <span class="mt-2 sm:mt-0 text-lg font-medium px-4 py-2 rounded-full shadow-md" style="color: var(--text-color); background-color: var(--border-color);">Dhaka, Bangladesh</span>
+                    <span class="mt-2 sm:mt-0 text-lg font-medium px-2 py-2 rounded-full shadow-md" style="color: var(--text-color); background-color: var(--accent-color);">Dhaka, Bangladesh</span>
                 </div>
                 <p class="text-lg" style="color: var(--text-color);">
                     Focused on core computer science principles, software development methodologies, and algorithms. Gained a strong foundation in programming, data structures, and system design, preparing for a career in mobile application development.
@@ -769,10 +830,10 @@
         <div class="container text-center">
             <p class="mb-6">&copy; 2025 Mohammad Ali. All rights reserved.</p>
             <div class="flex justify-center space-x-8">
-                <a href="https://linkedin.com/in/mscsapan" target="_blank" rel="noopener noreferrer" class="transition duration-300 footer-social-icon" style="color: var(--footer-icon);" aria-label="LinkedIn Profile">
+                <a href="https://linkedin.com/in/mscsapan" target="_blank" rel="noopener noreferrer" class="transition duration-300" style="color: var(--footer-icon);" aria-label="LinkedIn Profile">
                     <i class="fab fa-linkedin-in text-3xl"></i>
                 </a>
-                <a href="https://github.com/mscsapan" target="_blank" rel="noopener noreferrer" class="transition duration-300 footer-social-icon" style="color: var(--footer-icon);" aria-label="GitHub Profile">
+                <a href="https://github.com/mscsapan" target="_blank" rel="noopener noreferrer" class="transition duration-300" style="color: var(--footer-icon);" aria-label="GitHub Profile">
                     <i class="fab fa-github text-3xl"></i>
                 </a>
             </div>
@@ -793,20 +854,46 @@
         const themeToggleBtn = document.getElementById('theme-toggle');
         const themeIcon = document.getElementById('theme-icon');
         const body = document.body;
+        const themeTransitionOverlay = document.getElementById('theme-transition-overlay');
 
         // Function to set theme
         function setTheme(theme) {
-            if (theme === 'dark') {
-                body.classList.add('dark-mode');
-                themeIcon.classList.remove('fa-moon');
-                themeIcon.classList.add('fa-sun');
-                localStorage.setItem('theme', 'dark');
-            } else {
-                body.classList.remove('dark-mode');
-                themeIcon.classList.remove('fa-sun');
-                themeIcon.classList.add('fa-moon');
-                localStorage.setItem('theme', 'light');
+            const currentThemeIsDark = body.classList.contains('dark-mode');
+            const targetThemeIsDark = (theme === 'dark');
+
+            // If no actual theme change, just return
+            if (currentThemeIsDark === targetThemeIsDark) {
+                return;
             }
+
+            // Determine the background color for the overlay during transition
+            const newBgColor = targetThemeIsDark ? '#1a202c' : '#f0f4f8'; // Dark mode bg or Light mode bg
+
+            // Set the overlay's background to the *new* theme's background
+            themeTransitionOverlay.style.backgroundColor = newBgColor;
+
+            // Make overlay visible and start the expansion animation
+            themeTransitionOverlay.classList.add('active');
+
+            // After the transition, switch the actual theme and hide the overlay
+            setTimeout(() => {
+                if (targetThemeIsDark) {
+                    body.classList.add('dark-mode');
+                    themeIcon.classList.remove('fa-moon');
+                    themeIcon.classList.add('fa-sun');
+                } else {
+                    body.classList.remove('dark-mode');
+                    themeIcon.classList.remove('fa-sun');
+                    themeIcon.classList.add('fa-moon');
+                }
+                localStorage.setItem('theme', theme);
+
+                // Reset overlay for next use
+                setTimeout(() => {
+                    themeTransitionOverlay.classList.remove('active');
+                    themeTransitionOverlay.style.backgroundColor = 'transparent'; // Clear background
+                }, 100); // A small delay after theme switch to ensure it's applied
+            }, 700); // Matches the clip-path transition duration (0.7s)
         }
 
         // Check for saved theme preference on load
@@ -1066,23 +1153,23 @@
                     const linkClasses = "text-teal-600 hover:text-teal-800 font-medium flex items-center transform hover:scale-105 transition duration-200";
 
                     if (project.links.playStore) {
-                        linksHtml += `<a href="${project.links.playStore}" target="_blank" rel="noopener noreferrer" class="${linkClasses}" style="color: var(--link-color); hover:color: var(--link-hover-color);"><i class="fab fa-google-play mr-2"></i> Play Store</a>`;
+                        linksHtml += `<a href="${project.links.playStore}" target="_blank" rel="noopener noreferrer" class="${linkClasses}" style="color: var(--link-color);"><i class="fab fa-google-play mr-2"></i> Play Store</a>`;
                     }
                     if (project.links.appStore) {
-                        linksHtml += `<a href="${project.links.appStore}" target="_blank" rel="noopener noreferrer" class="${linkClasses}" style="color: var(--link-color); hover:color: var(--link-hover-color);"><i class="fab fa-apple mr-2"></i> App Store</a>`;
+                        linksHtml += `<a href="${project.links.appStore}" target="_blank" rel="noopener noreferrer" class="${linkClasses}" style="color: var(--link-color);"><i class="fab fa-apple mr-2"></i> App Store</a>`;
                     }
                     if (project.name === "RepairGo") {
-                         if (project.links.playStoreUser) { linksHtml += `<a href="${project.links.playStoreUser}" target="_blank" rel="noopener noreferrer" class="${linkClasses}" style="color: var(--link-color); hover:color: var(--link-hover-color);"><i class="fab fa-google-play mr-2"></i> User App</a>`; }
-                         if (project.links.appStoreUser) { linksHtml += `<a href="${project.links.appStoreUser}" target="_blank" rel="noopener noreferrer" class="${linkClasses}" style="color: var(--link-color); hover:color: var(--link-hover-color);"><i class="fab fa-apple mr-2"></i> User App</a>`; }
-                         if (project.links.playStorePro) { linksHtml += `<a href="${project.links.playStorePro}" target="_blank" rel="noopener noreferrer" class="${linkClasses}" style="color: var(--link-color); hover:color: var(--link-hover-color);"><i class="fab fa-google-play mr-2"></i> Pro App</a>`; }
-                         if (project.links.appStorePro) { linksHtml += `<a href="${project.links.appStorePro}" target="_blank" rel="noopener noreferrer" class="${linkClasses}" style="color: var(--link-color); hover:color: var(--link-hover-color);"><i class="fab fa-apple mr-2"></i> Pro App</a>`; }
+                         if (project.links.playStoreUser) { linksHtml += `<a href="${project.links.playStoreUser}" target="_blank" rel="noopener noreferrer" class="${linkClasses}" style="color: var(--link-color);"><i class="fab fa-google-play mr-2"></i> User App</a>`; }
+                         if (project.links.appStoreUser) { linksHtml += `<a href="${project.links.appStoreUser}" target="_blank" rel="noopener noreferrer" class="${linkClasses}" style="color: var(--link-color);"><i class="fab fa-apple mr-2"></i> User App</a>`; }
+                         if (project.links.playStorePro) { linksHtml += `<a href="${project.links.playStorePro}" target="_blank" rel="noopener noreferrer" class="${linkClasses}" style="color: var(--link-color);"><i class="fab fa-google-play mr-2"></i> Pro App</a>`; }
+                         if (project.links.appStorePro) { linksHtml += `<a href="${project.links.appStorePro}" target="_blank" rel="noopener noreferrer" class="${linkClasses}" style="color: var(--link-color);"><i class="fab fa-apple mr-2"></i> Pro App</a>`; }
                     }
                     if (project.name === "Fannan Express") {
-                         if (project.links.playStoreUser) { linksHtml += `<a href="${project.links.playStoreUser}" target="_blank" rel="noopener noreferrer" class="${linkClasses}" style="color: var(--link-color); hover:color: var(--link-hover-color);"><i class="fab fa-google-play mr-2"></i> User App</a>`; }
-                         if (project.links.playStoreSeller) { linksHtml += `<a href="${project.links.playStoreSeller}" target="_blank" rel="noopener noreferrer" class="${linkClasses}" style="color: var(--link-color); hover:color: var(--link-hover-color);"><i class="fab fa-google-play mr-2"></i> Seller App</a>`; }
+                         if (project.links.playStoreUser) { linksHtml += `<a href="${project.links.playStoreUser}" target="_blank" rel="noopener noreferrer" class="${linkClasses}" style="color: var(--link-color);"><i class="fab fa-google-play mr-2"></i> User App</a>`; }
+                         if (project.links.playStoreSeller) { linksHtml += `<a href="${project.links.playStoreSeller}" target="_blank" rel="noopener noreferrer" class="${linkClasses}" style="color: var(--link-color);"><i class="fab fa-google-play mr-2"></i> Seller App</a>`; }
                     }
                     if (project.links.liveLink && !project.links.playStore && !project.links.appStore && project.name !== "RepairGo" && project.name !== "Fannan Express") {
-                        linksHtml += `<a href="${project.links.liveLink}" target="_blank" rel="noopener noreferrer" class="${linkClasses}" style="color: var(--link-color); hover:color: var(--link-hover-color);"><i class="fas fa-link mr-2"></i> Live Demo</a>`;
+                        linksHtml += `<a href="${project.links.liveLink}" target="_blank" rel="noopener noreferrer" class="${linkClasses}" style="color: var(--link-color);"><i class="fas fa-link mr-2"></i> Live Demo</a>`;
                     }
 
                     if (!linksHtml) {
