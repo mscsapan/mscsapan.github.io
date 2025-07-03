@@ -49,6 +49,9 @@
             --download-btn-hover-bg: #e0f2f7;
             --download-btn-hover-text: #0f766e;
             --cursor-color: #0d9488; /* Default cursor color */
+            --scroll-to-top-bg: #0d9488;
+            --scroll-to-top-icon: #ffffff;
+            --scroll-to-top-hover-bg: #0f766e;
         }
 
         .dark-mode {
@@ -83,6 +86,9 @@
             --download-btn-hover-bg: #38b2ac;
             --download-btn-hover-text: #1a202c;
             --cursor-color: #4fd1c5; /* Dark mode cursor color */
+            --scroll-to-top-bg: #4fd1c5;
+            --scroll-to-top-icon: #1a202c;
+            --scroll-to-top-hover-bg: #38b2ac;
         }
 
         body {
@@ -295,11 +301,11 @@
 
         /* Flying Icon Animations */
         @keyframes floatEffect {
-            0% { transform: translate(0, 0) rotate(0deg) scale(1); opacity: 0.6; }
-            25% { transform: translate(10px, -20px) rotate(5deg) scale(1.05); opacity: 0.7; }
-            50% { transform: translate(0, -40px) rotate(-5deg) scale(1); opacity: 0.8; }
-            75% { transform: translate(-10px, -20px) rotate(5deg) scale(0.95); opacity: 0.7; }
-            100% { transform: translate(0, 0) rotate(0deg) scale(1); opacity: 0.6; }
+            0% { transform: translate(0, 0) rotate(0deg) scale(1); }
+            25% { transform: translate(10px, -20px) rotate(5deg) scale(1.05); }
+            50% { transform: translate(0, -40px) rotate(-5deg) scale(1); }
+            75% { transform: translate(-10px, -20px) rotate(5deg) scale(0.95); }
+            100% { transform: translate(0, 0) rotate(0deg) scale(1); }
         }
         @keyframes subtleMove {
             0% { transform: translateX(0) translateY(0); }
@@ -310,17 +316,18 @@
         .icon-fly {
             position: absolute;
             animation: floatEffect 15s ease-in-out infinite alternate, subtleMove 20s linear infinite;
-            filter: blur(0.5px);
+            /* Removed blur effect */
         }
-        .icon-fly-1 { animation-duration: 18s; animation-delay: 0s; top: 10%; left: 15%; }
-        .icon-fly-2 { animation-duration: 22s; animation-delay: 2s; top: 25%; right: 20%; }
-        .icon-fly-3 { animation-duration: 19s; animation-delay: 4s; bottom: 15%; left: 30%; }
-        .icon-fly-4 { animation-duration: 25s; animation-delay: 1s; bottom: 5%; right: 10%; }
-        .icon-fly-5 { animation-duration: 20s; animation-delay: 3s; top: 40%; left: 5%; }
-        .icon-fly-6 { animation-duration: 23s; animation-delay: 5s; top: 50%; right: 5%; }
-        .icon-fly-7 { animation-duration: 17s; animation-delay: 6s; bottom: 25%; left: 5%; }
-        .icon-fly-8 { animation-duration: 21s; animation-delay: 7s; top: 5%; left: 45%; }
-        .icon-fly-9 { animation-duration: 24s; animation-delay: 8s; bottom: 35%; right: 40%; }
+        /* Increased opacity for better visibility */
+        .icon-fly-1 { animation-duration: 18s; animation-delay: 0s; top: 10%; left: 15%; opacity: 0.9; }
+        .icon-fly-2 { animation-duration: 22s; animation-delay: 2s; top: 25%; right: 20%; opacity: 0.9; }
+        .icon-fly-3 { animation-duration: 19s; animation-delay: 4s; bottom: 15%; left: 30%; opacity: 0.9; }
+        .icon-fly-4 { animation-duration: 25s; animation-delay: 1s; bottom: 5%; right: 10%; opacity: 0.9; }
+        .icon-fly-5 { animation-duration: 20s; animation-delay: 3s; top: 40%; left: 5%; opacity: 0.9; }
+        .icon-fly-6 { animation-duration: 23s; animation-delay: 5s; top: 50%; right: 5%; opacity: 0.9; }
+        .icon-fly-7 { animation-duration: 17s; animation-delay: 6s; bottom: 25%; left: 5%; opacity: 0.9; }
+        .icon-fly-8 { animation-duration: 21s; animation-delay: 7s; top: 5%; left: 45%; opacity: 0.9; }
+        .icon-fly-9 { animation-duration: 24s; animation-delay: 8s; bottom: 35%; right: 40%; opacity: 0.9; }
 
 
         /* Media queries to adjust icon sizes/visibility on smaller screens */
@@ -490,6 +497,39 @@
             pointer-events: auto; /* Temporarily block events during transition */
             clip-path: circle(150% at 100% 0%); /* Expands to cover the screen */
         }
+
+        /* Scroll to Top Button Styles */
+        #scroll-to-top-btn {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background-color: var(--scroll-to-top-bg);
+            color: var(--scroll-to-top-icon);
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out, background-color 0.5s ease, color 0.5s ease;
+            z-index: 999; /* Ensure it's above most content */
+        }
+
+        #scroll-to-top-btn.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        #scroll-to-top-btn:hover {
+            background-color: var(--scroll-to-top-hover-bg);
+            transform: translateY(-2px);
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -561,55 +601,55 @@
         <div class="absolute inset-0 overflow-hidden pointer-events-none">
             <!-- Flutter Icon -->
             <div class="icon-fly icon-fly-1">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-10 h-10" style="color: var(--hero-accent-text); opacity: 0.6;">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-10 h-10" style="color: var(--hero-accent-text);">
                     <path d="M14.07 10.93L8 4.86 4.86 8l6.07 6.07 3.14-3.14zM10 16.14l-6.07-6.07L0 12l10 10 3.14-3.14zM24 12l-6.07 6.07-3.14-3.14 6.07-6.07z"/>
                 </svg>
             </div>
             <!-- Android Icon -->
             <div class="icon-fly icon-fly-2">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8" style="color: var(--hero-accent-text); opacity: 0.5;">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8" style="color: var(--hero-accent-text);">
                     <path d="M7 2v2H2C.9 4 0 4.9 0 6v14c0 1.1.9 2 2 2h20c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-5V2h-2v2h-6V2H7zm0 6h10v10H7V8zM8 9.5c.83 0 1.5-.67 1.5-1.5S8.83 6.5 8 6.5 6.5 7.17 6.5 8s.67 1.5 1.5 1.5zm8 0c.83 0 1.5-.67 1.5-1.5S16.83 6.5 16 6.5 14.5 7.17 14.5 8s.67 1.5 1.5 1.5z"/>
                 </svg>
             </div>
             <!-- iOS Icon (Apple Logo) -->
             <div class="icon-fly icon-fly-3">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-12 h-12" style="color: var(--hero-accent-text); opacity: 0.7;">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-12 h-12" style="color: var(--hero-accent-text);">
                     <path d="M12 1.347c-2.458 0-4.733 1.01-6.364 2.641C4.004 5.617 3 7.892 3 10.35s1.004 4.733 2.636 6.364C7.267 18.35 9.542 19.36 12 19.36s4.733-1.01 6.364-2.641C20.996 15.083 22 12.808 22 10.35s-1.004-4.733-2.636-6.364C16.733 2.357 14.458 1.347 12 1.347zM17.485 14.67c-1.397 1.397-3.25 2.158-5.23 2.158s-3.833-.761-5.23-2.158C5.628 13.273 5 11.69 5 10.35s.628-2.923 2.025-4.32c1.397-1.397 3.25-2.158 5.23-2.158s3.833.761 5.23 2.158c1.397 1.397 2.025 2.923 2.025 4.32s-.628 2.923-2.025 4.32zm-2.02-6.52c-.672-.672-1.56-.995-2.525-.995s-1.853.323-2.525.995c-.672.672-.995 1.56-.995 2.525s.323 1.853.995 2.525c.672.672 1.56.995 2.525.995s1.853-.323 2.525-.995c.672-.672.995-1.56.995-2.525s-.323-1.853-.995-2.525z"/>
                 </svg>
             </div>
             <!-- Google Play Icon -->
             <div class="icon-fly icon-fly-4">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-9 h-9" style="color: var(--hero-accent-text); opacity: 0.6;">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-9 h-9" style="color: var(--hero-accent-text);">
                     <path d="M3 21h18v-2H3v2zM3 3v2h18V3H3zm0 8h18v-2H3v2zm0 4h18v-2H3v2zM3 7h18V5H3v2z"/>
                 </svg>
             </div>
              <!-- Git Icon -->
             <div class="icon-fly icon-fly-5">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-7 h-7" style="color: var(--hero-accent-text); opacity: 0.4;">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-7 h-7" style="color: var(--hero-accent-text);">
                     <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm3.3 12.3c-.63.63-1.46.99-2.3.99s-1.67-.36-2.3-.99c-1.24-1.24-1.24-3.25 0-4.49s3.25-1.24 4.49 0c1.24 1.24 1.24 3.25 0 4.49z"/>
                 </svg>
             </div>
             <!-- API Integration Icon -->
             <div class="icon-fly icon-fly-6">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-10 h-10" style="color: var(--hero-accent-text); opacity: 0.6;">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-10 h-10" style="color: var(--hero-accent-text);">
                     <path d="M15 13H9c-1.66 0-3 1.34-3 3v2h12v-2c0-1.66-1.34-3-3-3zm0-8l-3-3-3 3h2v4h2V5h2z"/>
                 </svg>
             </div>
             <!-- State Management Icon -->
             <div class="icon-fly icon-fly-7">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8" style="color: var(--hero-accent-text); opacity: 0.5;">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8" style="color: var(--hero-accent-text);">
                     <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2z"/>
                 </svg>
             </div>
             <!-- Firebase Icon (Flame-like) -->
             <div class="icon-fly icon-fly-8">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-12 h-12" style="color: var(--hero-accent-text); opacity: 0.7;">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-12 h-12" style="color: var(--hero-accent-text);">
                     <path d="M12 1.347c-2.458 0-4.733 1.01-6.364 2.641C4.004 5.617 3 7.892 3 10.35s1.004 4.733 2.636 6.364C7.267 18.35 9.542 19.36 12 19.36s4.733-1.01 6.364-2.641C20.996 15.083 22 12.808 22 10.35s-1.004-4.733-2.636-6.364C16.733 2.357 14.458 1.347 12 1.347zM17.485 14.67c-1.397 1.397-3.25 2.158-5.23 2.158s-3.833-.761-5.23-2.158C5.628 13.273 5 11.69 5 10.35s.628-2.923 2.025-4.32c1.397-1.397 3.25-2.158 5.23-2.158s3.833.761 5.23 2.158c1.397 1.397 2.025 2.923 2.025 4.32s-.628 2.923-2.025 4.32zm-2.02-6.52c-.672-.672-1.56-.995-2.525-.995s-1.853.323-2.525.995c-.672.672-.995 1.56-.995 2.525s.323 1.853.995 2.525c.672.672 1.56.995 2.525.995s1.853-.323 2.525-.995c.672-.672.995-1.56.995-2.525s-.323-1.853-.995-2.525z"/>
                 </svg>
             </div>
             <!-- Cloud Deployment Icon -->
             <div class="icon-fly icon-fly-9">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-9 h-9" style="color: var(--hero-accent-text); opacity: 0.6;">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-9 h-9" style="color: var(--hero-accent-text);">
                     <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13h-4v4h-2v-4H7l5-5 5 5z"/>
                 </svg>
             </div>
@@ -725,7 +765,6 @@
                             <li>Implemented in-app purchases (subscriptions and one-time purchases) on both platforms.</li>
                             <li>Integrated Google Maps API for location-based features and real-time tracking.</li>
                             <li>Applied scalable state management using BLOC pattern for maintainable architecture.</li>
-                            <li>Collaborated with UI/UX designers to deliver responsive and user-friendly interfaces.</li>
                             <li>Deployed and managed app releases on the Play Store and App Store.</li>
                             <li>Conducted code reviews and performance optimizations.</li>
                             <li>Published high-quality apps on CodeCanyon, adhering to technical and design standards.</li>
@@ -839,6 +878,11 @@
             </div>
         </div>
     </footer>
+
+    <!-- Scroll to Top Button -->
+    <button id="scroll-to-top-btn" aria-label="Scroll to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
 
     <!-- Image Modal Overlay -->
     <div id="image-modal-overlay" class="modal-overlay">
@@ -1104,6 +1148,7 @@
         const modalImage = document.getElementById('modal-image');
         const modalClose = document.getElementById('modal-close');
         const customCursor = document.getElementById('custom-cursor'); // Get custom cursor element
+        const scrollToTopBtn = document.getElementById('scroll-to-top-btn'); // Get scroll to top button
 
         // Function to trigger section animations on scroll
         const animateOnScroll = () => {
@@ -1228,6 +1273,22 @@
         document.addEventListener('mousemove', (e) => {
             customCursor.style.left = `${e.clientX}px`;
             customCursor.style.top = `${e.clientY}px`;
+        });
+
+        // Scroll to Top Button Logic
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) { // Show button after scrolling 300px
+                scrollToTopBtn.classList.add('show');
+            } else {
+                scrollToTopBtn.classList.remove('show');
+            }
+        });
+
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth' // Smooth scroll to top
+            });
         });
 
         // Initial display of all projects and trigger animations
