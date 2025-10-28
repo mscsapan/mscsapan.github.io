@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mohammad Ali's Portfolio</title>
 
-  <!-- Favicons -->
-  <link rel="icon" href="assets/images/rounded-image.png" type="image/png">
-  <link href="assets/images/rounded-image.png" rel="apple-touch-icon">
+    <!-- Favicons -->
+    <link rel="icon" href="assets/images/rounded-image.png" type="image/png">
+    <link href="assets/images/rounded-image.png" rel="apple-touch-icon">
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -22,8 +23,10 @@
             --text-color: #334155;
             --header-bg: #ffffff;
             --card-bg: #ffffff;
-            --accent-color: #0d9488; /* Teal */
-            --accent-darker: #0f766e; /* Darker Teal */
+            --accent-color: #0d9488;
+            /* Teal */
+            --accent-darker: #0f766e;
+            /* Darker Teal */
             --shadow-light: rgba(0, 0, 0, 0.1);
             --shadow-dark: rgba(0, 0, 0, 0.05);
             --hero-gradient-from: #0d9488;
@@ -43,12 +46,14 @@
             --border-color: #e2e8f0;
             --input-border: #cbd5e1;
             --input-focus-ring: #0d9488;
-            --download-section-bg: #0d9488; /* Specific for download section */
+            --download-section-bg: #0d9488;
+            /* Specific for download section */
             --download-btn-bg: #ffffff;
             --download-btn-text: #0d9488;
             --download-btn-hover-bg: #e0f2f7;
             --download-btn-hover-text: #0f766e;
-            --cursor-color: #0d9488; /* Default cursor color */
+            --cursor-color: #0d9488;
+            /* Default cursor color */
             --scroll-to-top-bg: #0d9488;
             --scroll-to-top-icon: #ffffff;
             --scroll-to-top-hover-bg: #0f766e;
@@ -59,7 +64,8 @@
             --text-color: #e2e8f0;
             --header-bg: #2d3748;
             --card-bg: #2d3748;
-            --accent-color: #4fd1c5; /* Lighter teal accent */
+            --accent-color: #4fd1c5;
+            /* Lighter teal accent */
             --accent-darker: #38b2ac;
             --shadow-light: rgba(0, 0, 0, 0.3);
             --shadow-dark: rgba(0, 0, 0, 0.2);
@@ -80,12 +86,14 @@
             --border-color: #4a5568;
             --input-border: #4a5568;
             --input-focus-ring: #4fd1c5;
-            --download-section-bg: #2d3748; /* Dark mode background for download section */
+            --download-section-bg: #2d3748;
+            /* Dark mode background for download section */
             --download-btn-bg: #4fd1c5;
             --download-btn-text: #1a202c;
             --download-btn-hover-bg: #38b2ac;
             --download-btn-hover-text: #1a202c;
-            --cursor-color: #4fd1c5; /* Dark mode cursor color */
+            --cursor-color: #4fd1c5;
+            /* Dark mode cursor color */
             --scroll-to-top-bg: #4fd1c5;
             --scroll-to-top-icon: #1a202c;
             --scroll-to-top-hover-bg: #38b2ac;
@@ -97,14 +105,18 @@
             color: var(--text-color);
             line-height: 1.6;
             /* No direct background/color transition here, handled by overlay */
-            transition: color 0.5s ease; /* Only color transition for text */
-            cursor: none; /* Hide default cursor */
+            transition: color 0.5s ease;
+            /* Only color transition for text */
+            cursor: none;
+            /* Hide default cursor */
         }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 1.5rem;
         }
+
         .section-title {
             position: relative;
             display: inline-block;
@@ -113,6 +125,7 @@
             color: var(--text-color);
             transition: color 0.5s ease;
         }
+
         .section-title::after {
             content: '';
             position: absolute;
@@ -124,6 +137,7 @@
             border-radius: 9999px;
             transition: background-color 0.5s ease;
         }
+
         .nav-link {
             position: relative;
             padding: 0.5rem 0;
@@ -131,6 +145,7 @@
             transition: color 0.3s ease-in-out;
             overflow: hidden;
         }
+
         .nav-link::after {
             content: '';
             position: absolute;
@@ -141,9 +156,11 @@
             background-color: var(--accent-color);
             transition: width 0.3s ease-in-out, background-color 0.5s ease;
         }
+
         .nav-link:hover::after {
             width: 100%;
         }
+
         .nav-link:hover {
             color: var(--accent-color);
             transform: translateY(-2px);
@@ -158,11 +175,13 @@
             transition: all 0.3s ease-in-out, background-color 0.5s ease, color 0.5s ease, box-shadow 0.5s ease;
             box-shadow: 0 4px 10px var(--shadow-light);
         }
+
         .btn-primary:hover {
             background-color: var(--accent-darker);
             transform: translateY(-3px);
             box-shadow: 0 8px 15px var(--shadow-dark);
         }
+
         .btn-secondary {
             background-color: var(--border-color);
             color: var(--text-color);
@@ -172,11 +191,13 @@
             transition: all 0.3s ease-in-out, background-color 0.5s ease, color 0.5s ease, box-shadow 0.5s ease;
             box-shadow: 0 4px 10px var(--shadow-dark);
         }
+
         .btn-secondary:hover {
             background-color: var(--input-border);
             transform: translateY(-3px);
             box-shadow: 0 8px 15px var(--shadow-light);
         }
+
         .card {
             background-color: var(--card-bg);
             border-radius: 1rem;
@@ -184,10 +205,12 @@
             box-shadow: 0 15px 30px -5px var(--shadow-light), 0 5px 15px -3px var(--shadow-dark);
             transition: transform 0.3s ease-in-out, box-shadow 0.5s ease-in-out, background-color 0.5s ease, color 0.5s ease;
         }
+
         .card:hover {
             transform: translateY(-8px);
             box-shadow: 0 20px 40px -8px var(--shadow-light), 0 8px 20px -5px var(--shadow-dark);
         }
+
         .icon {
             color: var(--accent-color);
             transition: color 0.5s ease;
@@ -195,22 +218,38 @@
 
         /* Animations */
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
+
         @keyframes slideInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
+
         .animated-section.hidden-init {
             opacity: 0;
             transform: translateY(20px);
         }
+
         .animated-section.show {
             animation: slideInUp 0.8s ease-out forwards;
             opacity: 1;
             transform: translateY(0);
         }
+
         /* Project Tabs */
         .tab-button {
             padding: 0.75rem 1.5rem;
@@ -222,11 +261,13 @@
             color: var(--tab-button-text);
             background-color: var(--tab-button-bg);
         }
+
         .tab-button.active {
             background-color: var(--accent-color);
             color: white;
             border-color: var(--accent-color);
         }
+
         .tab-button:not(.active):hover {
             background-color: var(--tab-button-hover-bg);
             color: var(--tab-button-hover-text);
@@ -248,10 +289,12 @@
             visibility: hidden;
             transition: opacity 0.3s ease, visibility 0.3s ease;
         }
+
         .modal-overlay.visible {
             opacity: 1;
             visibility: visible;
         }
+
         .modal-content {
             position: relative;
             max-width: 90%;
@@ -260,12 +303,14 @@
             justify-content: center;
             align-items: center;
         }
+
         .modal-content img {
             max-width: 100%;
             max-height: 100%;
             border-radius: 0.75rem;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
         }
+
         .modal-close {
             position: absolute;
             top: -20px;
@@ -283,6 +328,7 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
             transition: all 0.2s ease-in-out, background-color 0.5s ease, color 0.5s ease;
         }
+
         .modal-close:hover {
             background-color: var(--tab-button-hover-bg);
             transform: rotate(90deg);
@@ -301,16 +347,39 @@
 
         /* Flying Icon Animations */
         @keyframes floatEffect {
-            0% { transform: translate(0, 0) rotate(0deg) scale(1); }
-            25% { transform: translate(10px, -20px) rotate(5deg) scale(1.05); }
-            50% { transform: translate(0, -40px) rotate(-5deg) scale(1); }
-            75% { transform: translate(-10px, -20px) rotate(5deg) scale(0.95); }
-            100% { transform: translate(0, 0) rotate(0deg) scale(1); }
+            0% {
+                transform: translate(0, 0) rotate(0deg) scale(1);
+            }
+
+            25% {
+                transform: translate(10px, -20px) rotate(5deg) scale(1.05);
+            }
+
+            50% {
+                transform: translate(0, -40px) rotate(-5deg) scale(1);
+            }
+
+            75% {
+                transform: translate(-10px, -20px) rotate(5deg) scale(0.95);
+            }
+
+            100% {
+                transform: translate(0, 0) rotate(0deg) scale(1);
+            }
         }
+
         @keyframes subtleMove {
-            0% { transform: translateX(0) translateY(0); }
-            50% { transform: translateX(20px) translateY(10px); }
-            100% { transform: translateX(0) translateY(0); }
+            0% {
+                transform: translateX(0) translateY(0);
+            }
+
+            50% {
+                transform: translateX(20px) translateY(10px);
+            }
+
+            100% {
+                transform: translateX(0) translateY(0);
+            }
         }
 
         .icon-fly {
@@ -318,21 +387,86 @@
             animation: floatEffect 15s ease-in-out infinite alternate, subtleMove 20s linear infinite;
             /* Removed blur effect */
         }
+
         /* Increased opacity for better visibility */
-        .icon-fly-1 { animation-duration: 18s; animation-delay: 0s; top: 10%; left: 15%; opacity: 0.9; }
-        .icon-fly-2 { animation-duration: 22s; animation-delay: 2s; top: 25%; right: 20%; opacity: 0.9; }
-        .icon-fly-3 { animation-duration: 19s; animation-delay: 4s; bottom: 15%; left: 30%; opacity: 0.9; }
-        .icon-fly-4 { animation-duration: 25s; animation-delay: 1s; bottom: 5%; right: 10%; opacity: 0.9; }
-        .icon-fly-5 { animation-duration: 20s; animation-delay: 3s; top: 40%; left: 5%; opacity: 0.9; }
-        .icon-fly-6 { animation-duration: 23s; animation-delay: 5s; top: 50%; right: 5%; opacity: 0.9; }
-        .icon-fly-7 { animation-duration: 17s; animation-delay: 6s; bottom: 25%; left: 5%; opacity: 0.9; }
-        .icon-fly-8 { animation-duration: 21s; animation-delay: 7s; top: 5%; left: 45%; opacity: 0.9; }
-        .icon-fly-9 { animation-duration: 24s; animation-delay: 8s; bottom: 35%; right: 40%; opacity: 0.9; }
+        .icon-fly-1 {
+            animation-duration: 18s;
+            animation-delay: 0s;
+            top: 10%;
+            left: 15%;
+            opacity: 0.9;
+        }
+
+        .icon-fly-2 {
+            animation-duration: 22s;
+            animation-delay: 2s;
+            top: 25%;
+            right: 20%;
+            opacity: 0.9;
+        }
+
+        .icon-fly-3 {
+            animation-duration: 19s;
+            animation-delay: 4s;
+            bottom: 15%;
+            left: 30%;
+            opacity: 0.9;
+        }
+
+        .icon-fly-4 {
+            animation-duration: 25s;
+            animation-delay: 1s;
+            bottom: 5%;
+            right: 10%;
+            opacity: 0.9;
+        }
+
+        .icon-fly-5 {
+            animation-duration: 20s;
+            animation-delay: 3s;
+            top: 40%;
+            left: 5%;
+            opacity: 0.9;
+        }
+
+        .icon-fly-6 {
+            animation-duration: 23s;
+            animation-delay: 5s;
+            top: 50%;
+            right: 5%;
+            opacity: 0.9;
+        }
+
+        .icon-fly-7 {
+            animation-duration: 17s;
+            animation-delay: 6s;
+            bottom: 25%;
+            left: 5%;
+            opacity: 0.9;
+        }
+
+        .icon-fly-8 {
+            animation-duration: 21s;
+            animation-delay: 7s;
+            top: 5%;
+            left: 45%;
+            opacity: 0.9;
+        }
+
+        .icon-fly-9 {
+            animation-duration: 24s;
+            animation-delay: 8s;
+            bottom: 35%;
+            right: 40%;
+            opacity: 0.9;
+        }
 
 
         /* Media queries to adjust icon sizes/visibility on smaller screens */
         @media (max-width: 768px) {
-            .icon-fly { display: none; }
+            .icon-fly {
+                display: none;
+            }
         }
 
         /* Custom CSS for Text Effects */
@@ -340,21 +474,25 @@
 
         /* Gradient Text for the entire H1 */
         .hero-title-gradient {
-            background: linear-gradient(to right, var(--hero-text-color), var(--hero-accent-text)); /* Subtle gradient for the whole title */
+            background: linear-gradient(to right, var(--hero-text-color), var(--hero-accent-text));
+            /* Subtle gradient for the whole title */
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            color: transparent; /* Fallback */
+            color: transparent;
+            /* Fallback */
             transition: background 0.5s ease;
         }
 
         /* Gradient Text for the name span inside the H1 */
         .hero-name-gradient {
-            background: linear-gradient(to right, var(--hero-accent-text), #81e6d9); /* More prominent gradient for the name */
+            background: linear-gradient(to right, var(--hero-accent-text), #81e6d9);
+            /* More prominent gradient for the name */
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            color: transparent; /* Fallback */
+            color: transparent;
+            /* Fallback */
             transition: background 0.5s ease;
         }
 
@@ -364,7 +502,8 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            color: transparent; /* Fallback for non-webkit browsers */
+            color: transparent;
+            /* Fallback for non-webkit browsers */
             transition: background 0.5s ease;
         }
 
@@ -378,6 +517,7 @@
             transition: color 0.5s ease;
             margin-left: 1rem;
         }
+
         #theme-toggle:hover {
             color: var(--accent-color);
         }
@@ -385,57 +525,76 @@
         /* Animated Gradient Circle for Profile Image */
         .profile-image-wrapper {
             position: relative;
-            width: 14rem; /* w-56, 14 * 16 = 224px */
-            height: 14rem; /* h-56 */
+            width: 14rem;
+            /* w-56, 14 * 16 = 224px */
+            height: 14rem;
+            /* h-56 */
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
-            margin: 0 auto 2rem; /* Center and add margin-bottom */
+            margin: 0 auto 2rem;
+            /* Center and add margin-bottom */
             overflow: hidden;
-            box-shadow: 0 0 0 6px var(--hero-accent-text), 0 0 0 10px rgba(255,255,255,0.3); /* Base border and outer glow */
+            box-shadow: 0 0 0 6px var(--hero-accent-text), 0 0 0 10px rgba(255, 255, 255, 0.3);
+            /* Base border and outer glow */
             transition: box-shadow 0.5s ease;
         }
 
         .profile-image-wrapper::before {
             content: '';
             position: absolute;
-            inset: -5px; /* Slightly larger than the wrapper */
+            inset: -5px;
+            /* Slightly larger than the wrapper */
             border-radius: 50%;
             background: conic-gradient(from 0deg, var(--hero-accent-text) 0%, transparent 20%, transparent 80%, var(--hero-accent-text) 100%);
             animation: rotateGradient 4s linear infinite;
-            z-index: -1; /* Behind the image */
+            z-index: -1;
+            /* Behind the image */
             transition: background 0.5s ease;
         }
 
         @keyframes rotateGradient {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
         }
 
         .profile-image-wrapper img {
-            width: 13rem; /* Slightly smaller than wrapper to show gradient */
+            width: 13rem;
+            /* Slightly smaller than wrapper to show gradient */
             height: 13rem;
             border-radius: 50%;
             object-fit: cover;
-            border: 4px solid var(--hero-gradient-from); /* Inner border for image */
-            box-shadow: 0 0 15px rgba(0,0,0,0.3);
+            border: 4px solid var(--hero-gradient-from);
+            /* Inner border for image */
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
             transition: border-color 0.5s ease;
         }
 
         /* Custom Cursor */
         #custom-cursor {
             position: fixed;
-            width: 20px; /* Increased size */
-            height: 20px; /* Increased size */
+            width: 20px;
+            /* Increased size */
+            height: 20px;
+            /* Increased size */
             background-color: var(--cursor-color);
             border-radius: 50%;
-            pointer-events: none; /* Allows clicks through the cursor */
+            pointer-events: none;
+            /* Allows clicks through the cursor */
             z-index: 9999;
             opacity: 0.6;
-            transform: translate(-50%, -50%); /* Center the cursor */
-            transition: background-color 0.5s ease, transform 0.05s linear; /* Smooth color change, fast follow */
-            filter: blur(4px); /* Subtle blur effect */
+            transform: translate(-50%, -50%);
+            /* Center the cursor */
+            transition: background-color 0.5s ease, transform 0.05s linear;
+            /* Smooth color change, fast follow */
+            filter: blur(4px);
+            /* Subtle blur effect */
         }
 
         /* Hide default cursor on body */
@@ -444,7 +603,13 @@
         }
 
         /* Show default cursor on interactive elements */
-        a, button, input, textarea, select, .tab-button, .card {
+        a,
+        button,
+        input,
+        textarea,
+        select,
+        .tab-button,
+        .card {
             cursor: pointer !important;
         }
 
@@ -458,6 +623,7 @@
             box-shadow: 0 4px 10px var(--shadow-light);
             transition: all 0.3s ease-in-out, background-color 0.5s ease, color 0.5s ease, box-shadow 0.5s ease;
         }
+
         .btn-download-cv:hover {
             background-color: var(--download-btn-hover-bg);
             color: var(--download-btn-hover-text);
@@ -467,8 +633,10 @@
 
         /* Footer Social Icons Hover Effect */
         footer a {
-            transition: color 0.3s ease; /* Ensure hover transition is smooth */
+            transition: color 0.3s ease;
+            /* Ensure hover transition is smooth */
         }
+
         footer a:hover {
             color: var(--footer-icon-hover);
         }
@@ -477,12 +645,16 @@
         header {
             transition: background-color 0.5s ease, box-shadow 0.5s ease;
         }
+
         #mobile-menu {
             transition: background-color 0.5s ease;
         }
+
         #mobile-menu a {
-            transition: color 0.3s ease; /* For mobile menu links */
+            transition: color 0.3s ease;
+            /* For mobile menu links */
         }
+
         #mobile-menu a:hover {
             color: var(--accent-color);
         }
@@ -493,7 +665,8 @@
         }
 
         /* Input and textarea transitions */
-        input, textarea {
+        input,
+        textarea {
             transition: border-color 0.5s ease, background-color 0.5s ease, color 0.5s ease;
         }
 
@@ -504,15 +677,23 @@
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 9998; /* Below custom cursor, above everything else */
-            pointer-events: none; /* Allows clicks through by default */
-            background-color: transparent; /* Will be set dynamically */
-            clip-path: circle(0% at 100% 0%); /* Starts as a tiny circle at top-right */
-            transition: clip-path 0.7s ease-in-out; /* For the expansion animation */
+            z-index: 9998;
+            /* Below custom cursor, above everything else */
+            pointer-events: none;
+            /* Allows clicks through by default */
+            background-color: transparent;
+            /* Will be set dynamically */
+            clip-path: circle(0% at 100% 0%);
+            /* Starts as a tiny circle at top-right */
+            transition: clip-path 0.7s ease-in-out;
+            /* For the expansion animation */
         }
+
         .theme-transition-overlay.active {
-            pointer-events: auto; /* Temporarily block events during transition */
-            clip-path: circle(150% at 100% 0%); /* Expands to cover the screen */
+            pointer-events: auto;
+            /* Temporarily block events during transition */
+            clip-path: circle(150% at 100% 0%);
+            /* Expands to cover the screen */
         }
 
         /* Scroll to Top Button Styles */
@@ -535,7 +716,8 @@
             opacity: 0;
             visibility: hidden;
             transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out, background-color 0.5s ease, color 0.5s ease;
-            z-index: 999; /* Ensure it's above most content */
+            z-index: 999;
+            /* Ensure it's above most content */
         }
 
         #scroll-to-top-btn.show {
@@ -549,6 +731,7 @@
         }
     </style>
 </head>
+
 <body class="antialiased">
 
     <!-- Custom Cursor HTML -->
@@ -560,7 +743,9 @@
     <!-- Header/Navigation -->
     <header class="bg-white shadow-lg py-4 sticky top-0 z-50" style="background-color: var(--header-bg);">
         <nav class="container flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold rounded-lg p-2 transition duration-300 header-gradient-text hover:bg-gray-100">Mohammad Ali</a>
+            <a href="#"
+                class="text-2xl font-bold rounded-lg p-2 transition duration-300 header-gradient-text hover:bg-gray-100">Mohammad
+                Ali</a>
             <ul class="hidden md:flex space-x-8">
                 <li><a href="#about" class="nav-link">About</a></li>
                 <li><a href="#skills" class="nav-link">Skills</a></li>
@@ -576,7 +761,9 @@
                     <i class="fas fa-moon" id="theme-icon"></i>
                 </button>
                 <!-- Mobile Menu Button -->
-                <button id="mobile-menu-button" class="md:hidden text-gray-600 hover:text-teal-700 focus:outline-none ml-4" style="color: var(--text-color);">
+                <button id="mobile-menu-button"
+                    class="md:hidden text-gray-600 hover:text-teal-700 focus:outline-none ml-4"
+                    style="color: var(--text-color);">
                     <i class="fas fa-bars text-2xl"></i></i>
                 </button>
             </div>
@@ -584,34 +771,51 @@
     </header>
 
     <!-- Mobile Menu Overlay -->
-    <div id="mobile-menu" class="hidden fixed inset-0 bg-gray-900 bg-opacity-95 z-50 flex flex-col items-center justify-center space-y-8 md:hidden" style="background-color: var(--footer-bg);">
+    <div id="mobile-menu"
+        class="hidden fixed inset-0 bg-gray-900 bg-opacity-95 z-50 flex flex-col items-center justify-center space-y-8 md:hidden"
+        style="background-color: var(--footer-bg);">
         <button id="close-mobile-menu" class="absolute top-6 right-6 text-white text-3xl focus:outline-none">
             <i class="fas fa-times"></i>
         </button>
         <ul class="text-white text-3xl font-bold space-y-6 text-center">
-            <li><a href="#about" class="block py-2 hover:text-teal-400 transition duration-300" style="color: var(--hero-text-color);">About</a></li>
-            <li><a href="#skills" class="block py-2 hover:text-teal-400 transition duration-300" style="color: var(--hero-text-color);">Skills</a></li>
-            <li><a href="#projects" class="block py-2 hover:text-teal-400 transition duration-300" style="color: var(--hero-text-color);">Projects</a></li>
-            <li><a href="#experience" class="block py-2 hover:text-teal-400 transition duration-300" style="color: var(--hero-text-color);">Experience</a></li>
-            <li><a href="#education" class="block py-2 hover:text-teal-400 transition duration-300" style="color: var(--hero-text-color);">Education</a></li>
-            <li><a href="#download-cv" class="block py-2 hover:text-teal-400 transition duration-300" style="color: var(--hero-text-color);">Download CV</a></li>
-            <li><a href="#contact" class="block py-2 hover:text-teal-400 transition duration-300" style="color: var(--hero-text-color);">Contact</a></li>
+            <li><a href="#about" class="block py-2 hover:text-teal-400 transition duration-300"
+                    style="color: var(--hero-text-color);">About</a></li>
+            <li><a href="#skills" class="block py-2 hover:text-teal-400 transition duration-300"
+                    style="color: var(--hero-text-color);">Skills</a></li>
+            <li><a href="#projects" class="block py-2 hover:text-teal-400 transition duration-300"
+                    style="color: var(--hero-text-color);">Projects</a></li>
+            <li><a href="#experience" class="block py-2 hover:text-teal-400 transition duration-300"
+                    style="color: var(--hero-text-color);">Experience</a></li>
+            <li><a href="#education" class="block py-2 hover:text-teal-400 transition duration-300"
+                    style="color: var(--hero-text-color);">Education</a></li>
+            <li><a href="#download-cv" class="block py-2 hover:text-teal-400 transition duration-300"
+                    style="color: var(--hero-text-color);">Download CV</a></li>
+            <li><a href="#contact" class="block py-2 hover:text-teal-400 transition duration-300"
+                    style="color: var(--hero-text-color);">Contact</a></li>
         </ul>
     </div>
 
     <!-- Hero Section -->
-    <section class="relative py-20 md:py-32 rounded-b-3xl shadow-2xl mb-16 overflow-hidden" style="background: linear-gradient(to bottom right, var(--hero-gradient-from), var(--hero-gradient-to)); color: var(--hero-text-color);">
+    <section class="relative py-20 md:py-32 rounded-b-3xl shadow-2xl mb-16 overflow-hidden"
+        style="background: linear-gradient(to bottom right, var(--hero-gradient-from), var(--hero-gradient-to)); color: var(--hero-text-color);">
         <div class="container text-center flex flex-col items-center relative z-10">
             <!-- Profile Image with Animated Gradient Circle -->
             <div class="profile-image-wrapper animate-fade-in delay-100">
-                <img src="assets/images/rounded-image.png" alt="Mohammad Ali's Profile Picture" class="rounded-full object-cover">
+                <img src="assets/images/my-image2.png" alt="Mohammad Ali's Profile Picture"
+                    class="rounded-full object-cover">
             </div>
             <!-- Applied hero-title-gradient to h1 and hero-name-gradient to span -->
-            <h1 class="text-5xl md:text-7xl font-extrabold mb-4 leading-tight animate-slide-in-up delay-200 hero-title-gradient">Hi, I'm <span class="hero-name-gradient">Mohammad Ali</span></h1>
-            <p class="text-xl md:text-3xl font-light mb-10 animate-slide-in-up delay-300">A passionate <span class="font-bold" style="color: var(--hero-accent-text);">Flutter Developer</span> with 3 Years of Experience</p>
+            <h1
+                class="text-5xl md:text-7xl font-extrabold mb-4 leading-tight animate-slide-in-up delay-200 hero-title-gradient">
+                Hi, I'm <span class="hero-name-gradient">Mohammad Ali</span></h1>
+            <p class="text-xl md:text-3xl font-light mb-10 animate-slide-in-up delay-300">A passionate <span
+                    class="font-bold" style="color: var(--hero-accent-text);">Flutter Developer</span> with 3 Years of
+                Experience</p>
             <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-6 animate-slide-in-up delay-400">
                 <a href="#projects" class="btn-primary">View My Work <i class="fas fa-arrow-right ml-2"></i></a>
-                <a href="#contact" class="btn-primary bg-transparent border-2 border-white hover:bg-white" style="border-color: var(--hero-text-color); color: var(--hero-text-color);">Get In Touch <i class="fas fa-envelope ml-2"></i></a>
+                <a href="#contact" class="btn-primary bg-transparent border-2 border-white hover:bg-white"
+                    style="border-color: var(--hero-text-color); color: var(--hero-text-color);">Get In Touch <i
+                        class="fas fa-envelope ml-2"></i></a>
             </div>
         </div>
 
@@ -619,56 +823,72 @@
         <div class="absolute inset-0 overflow-hidden pointer-events-none">
             <!-- Flutter Icon -->
             <div class="icon-fly icon-fly-1">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-10 h-10" style="color: var(--hero-accent-text);">
-                    <path d="M14.07 10.93L8 4.86 4.86 8l6.07 6.07 3.14-3.14zM10 16.14l-6.07-6.07L0 12l10 10 3.14-3.14zM24 12l-6.07 6.07-3.14-3.14 6.07-6.07z"/>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-10 h-10"
+                    style="color: var(--hero-accent-text);">
+                    <path
+                        d="M14.07 10.93L8 4.86 4.86 8l6.07 6.07 3.14-3.14zM10 16.14l-6.07-6.07L0 12l10 10 3.14-3.14zM24 12l-6.07 6.07-3.14-3.14 6.07-6.07z" />
                 </svg>
             </div>
             <!-- Android Icon -->
             <div class="icon-fly icon-fly-2">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8" style="color: var(--hero-accent-text);">
-                    <path d="M7 2v2H2C.9 4 0 4.9 0 6v14c0 1.1.9 2 2 2h20c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-5V2h-2v2h-6V2H7zm0 6h10v10H7V8zM8 9.5c.83 0 1.5-.67 1.5-1.5S8.83 6.5 8 6.5 6.5 7.17 6.5 8s.67 1.5 1.5 1.5zm8 0c.83 0 1.5-.67 1.5-1.5S16.83 6.5 16 6.5 14.5 7.17 14.5 8s.67 1.5 1.5 1.5z"/>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8"
+                    style="color: var(--hero-accent-text);">
+                    <path
+                        d="M7 2v2H2C.9 4 0 4.9 0 6v14c0 1.1.9 2 2 2h20c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-5V2h-2v2h-6V2H7zm0 6h10v10H7V8zM8 9.5c.83 0 1.5-.67 1.5-1.5S8.83 6.5 8 6.5 6.5 7.17 6.5 8s.67 1.5 1.5 1.5zm8 0c.83 0 1.5-.67 1.5-1.5S16.83 6.5 16 6.5 14.5 7.17 14.5 8s.67 1.5 1.5 1.5z" />
                 </svg>
             </div>
             <!-- iOS Icon (Apple Logo) -->
             <div class="icon-fly icon-fly-3">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-12 h-12" style="color: var(--hero-accent-text);">
-                    <path d="M12 1.347c-2.458 0-4.733 1.01-6.364 2.641C4.004 5.617 3 7.892 3 10.35s1.004 4.733 2.636 6.364C7.267 18.35 9.542 19.36 12 19.36s4.733-1.01 6.364-2.641C20.996 15.083 22 12.808 22 10.35s-1.004-4.733-2.636-6.364C16.733 2.357 14.458 1.347 12 1.347zM17.485 14.67c-1.397 1.397-3.25 2.158-5.23 2.158s-3.833-.761-5.23-2.158C5.628 13.273 5 11.69 5 10.35s.628-2.923 2.025-4.32c1.397-1.397 3.25-2.158 5.23-2.158s3.833.761 5.23 2.158c1.397 1.397 2.025 2.923 2.025 4.32s-.628 2.923-2.025 4.32zm-2.02-6.52c-.672-.672-1.56-.995-2.525-.995s-1.853.323-2.525.995c-.672.672-.995 1.56-.995 2.525s.323 1.853.995 2.525c.672.672 1.56.995 2.525.995s1.853-.323 2.525-.995c.672-.672.995-1.56.995-2.525s-.323-1.853-.995-2.525z"/>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-12 h-12"
+                    style="color: var(--hero-accent-text);">
+                    <path
+                        d="M12 1.347c-2.458 0-4.733 1.01-6.364 2.641C4.004 5.617 3 7.892 3 10.35s1.004 4.733 2.636 6.364C7.267 18.35 9.542 19.36 12 19.36s4.733-1.01 6.364-2.641C20.996 15.083 22 12.808 22 10.35s-1.004-4.733-2.636-6.364C16.733 2.357 14.458 1.347 12 1.347zM17.485 14.67c-1.397 1.397-3.25 2.158-5.23 2.158s-3.833-.761-5.23-2.158C5.628 13.273 5 11.69 5 10.35s.628-2.923 2.025-4.32c1.397-1.397 3.25-2.158 5.23-2.158s3.833.761 5.23 2.158c1.397 1.397 2.025 2.923 2.025 4.32s-.628 2.923-2.025 4.32zm-2.02-6.52c-.672-.672-1.56-.995-2.525-.995s-1.853.323-2.525.995c-.672.672-.995 1.56-.995 2.525s.323 1.853.995 2.525c.672.672 1.56.995 2.525.995s1.853-.323 2.525-.995c.672-.672.995-1.56.995-2.525s-.323-1.853-.995-2.525z" />
                 </svg>
             </div>
             <!-- Google Play Icon -->
             <div class="icon-fly icon-fly-4">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-9 h-9" style="color: var(--hero-accent-text);">
-                    <path d="M3 21h18v-2H3v2zM3 3v2h18V3H3zm0 8h18v-2H3v2zm0 4h18v-2H3v2zM3 7h18V5H3v2z"/>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-9 h-9"
+                    style="color: var(--hero-accent-text);">
+                    <path d="M3 21h18v-2H3v2zM3 3v2h18V3H3zm0 8h18v-2H3v2zm0 4h18v-2H3v2zM3 7h18V5H3v2z" />
                 </svg>
             </div>
-             <!-- Git Icon -->
+            <!-- Git Icon -->
             <div class="icon-fly icon-fly-5">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-7 h-7" style="color: var(--hero-accent-text);">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm3.3 12.3c-.63.63-1.46.99-2.3.99s-1.67-.36-2.3-.99c-1.24-1.24-1.24-3.25 0-4.49s3.25-1.24 4.49 0c1.24 1.24 1.24 3.25 0 4.49z"/>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-7 h-7"
+                    style="color: var(--hero-accent-text);">
+                    <path
+                        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm3.3 12.3c-.63.63-1.46.99-2.3.99s-1.67-.36-2.3-.99c-1.24-1.24-1.24-3.25 0-4.49s3.25-1.24 4.49 0c1.24 1.24 1.24 3.25 0 4.49z" />
                 </svg>
             </div>
             <!-- API Integration Icon -->
             <div class="icon-fly icon-fly-6">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-10 h-10" style="color: var(--hero-accent-text);">
-                    <path d="M15 13H9c-1.66 0-3 1.34-3 3v2h12v-2c0-1.66-1.34-3-3-3zm0-8l-3-3-3 3h2v4h2V5h2z"/>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-10 h-10"
+                    style="color: var(--hero-accent-text);">
+                    <path d="M15 13H9c-1.66 0-3 1.34-3 3v2h12v-2c0-1.66-1.34-3-3-3zm0-8l-3-3-3 3h2v4h2V5h2z" />
                 </svg>
             </div>
             <!-- State Management Icon -->
             <div class="icon-fly icon-fly-7">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8" style="color: var(--hero-accent-text);">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2z"/>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8"
+                    style="color: var(--hero-accent-text);">
+                    <path
+                        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2z" />
                 </svg>
             </div>
             <!-- Firebase Icon (Flame-like) -->
             <div class="icon-fly icon-fly-8">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-12 h-12" style="color: var(--hero-accent-text);">
-                    <path d="M12 1.347c-2.458 0-4.733 1.01-6.364 2.641C4.004 5.617 3 7.892 3 10.35s1.004 4.733 2.636 6.364C7.267 18.35 9.542 19.36 12 19.36s4.733-1.01 6.364-2.641C20.996 15.083 22 12.808 22 10.35s-1.004-4.733-2.636-6.364C16.733 2.357 14.458 1.347 12 1.347zM17.485 14.67c-1.397 1.397-3.25 2.158-5.23 2.158s-3.833-.761-5.23-2.158C5.628 13.273 5 11.69 5 10.35s.628-2.923 2.025-4.32c1.397-1.397 3.25-2.158 5.23-2.158s3.833.761 5.23 2.158c1.397 1.397 2.025 2.923 2.025 4.32s-.628 2.923-2.025 4.32zm-2.02-6.52c-.672-.672-1.56-.995-2.525-.995s-1.853.323-2.525.995c-.672.672-.995 1.56-.995 2.525s.323 1.853.995 2.525c.672.672 1.56.995 2.525.995s1.853-.323 2.525-.995c.672-.672.995-1.56.995-2.525s-.323-1.853-.995-2.525z"/>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-12 h-12"
+                    style="color: var(--hero-accent-text);">
+                    <path
+                        d="M12 1.347c-2.458 0-4.733 1.01-6.364 2.641C4.004 5.617 3 7.892 3 10.35s1.004 4.733 2.636 6.364C7.267 18.35 9.542 19.36 12 19.36s4.733-1.01 6.364-2.641C20.996 15.083 22 12.808 22 10.35s-1.004-4.733-2.636-6.364C16.733 2.357 14.458 1.347 12 1.347zM17.485 14.67c-1.397 1.397-3.25 2.158-5.23 2.158s-3.833-.761-5.23-2.158C5.628 13.273 5 11.69 5 10.35s.628-2.923 2.025-4.32c1.397-1.397 3.25-2.158 5.23-2.158s3.833.761 5.23 2.158c1.397 1.397 2.025 2.923 2.025 4.32s-.628 2.923-2.025 4.32zm-2.02-6.52c-.672-.672-1.56-.995-2.525-.995s-1.853.323-2.525.995c-.672.672-.995 1.56-.995 2.525s.323 1.853.995 2.525c.672.672 1.56.995 2.525.995s1.853-.323 2.525-.995c.672-.672.995-1.56.995-2.525s-.323-1.853-.995-2.525z" />
                 </svg>
             </div>
             <!-- Cloud Deployment Icon -->
             <div class="icon-fly icon-fly-9">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-9 h-9" style="color: var(--hero-accent-text);">
-                    <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13h-4v4h-2v-4H7l5-5 5 5z"/>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-9 h-9"
+                    style="color: var(--hero-accent-text);">
+                    <path
+                        d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13h-4v4h-2v-4H7l5-5 5 5z" />
                 </svg>
             </div>
         </div>
@@ -681,16 +901,30 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                 <div>
                     <p class="text-lg mb-4" style="color: var(--text-color);">
-                        I am a Flutter Developer with 3 years of experience building high-performance mobile apps for iOS and Android. Proficient in Dart, Flutter, and BLOC for state management. Skilled in optimizing app performance, ensuring data integrity, and delivering engaging user experiences. Passionate about learning, collaboration, and developing innovative mobile solutions.
+                        I am a passionate Flutter Developer with 3 years of hands-on experience building beautiful,
+                        performant, and scalable mobile applications for both Android and iOS platforms. My journey in
+                        mobile development has equipped me with a strong understanding of Dart, Flutter SDK, state
+                        management (Provider/Riverpod/Bloc), Firebase integration, and API consumption.
                     </p>
                     <p class="text-lg" style="color: var(--text-color);">
-                        My expertise lies in crafting intuitive and robust mobile experiences that delight users. I believe in writing clean, modular code, fostering collaborative teamwork, and continuously striving for improvement in every project.
+                        I thrive in dynamic environments and am committed to delivering high-quality code and
+                        exceptional user experiences. I enjoy solving complex problems and continuously learning new
+                        technologies to stay at the forefront of development trends.
                     </p>
+                    <p class="text-lg font-semibold text-teal-700 mt-4" style="color: var(--accent-color);">
+                        Currently, I am expanding my knowledge into backend development, actively studying
+                        **Python/Django** and **Node.js** to build full-stack capabilities and architect complete
+                        solutions.
+                    </p>
+
                 </div>
                 <div class="card p-8 shadow-xl">
-                    <h3 class="text-2xl font-semibold mb-4 flex items-center" style="color: var(--text-color);"><i class="fas fa-quote-left mr-3" style="color: var(--accent-color);"></i>My Philosophy</h3>
-                    <p class="italic border-l-4 pl-4 py-2" style="color: var(--text-color); border-color: var(--accent-color);">
-                        "Building beautiful, efficient, and scalable mobile applications is more than just coding; it's about creating seamless digital experiences that truly add value to users' lives. I am committed to pushing the boundaries of what's possible with Flutter."
+                    <h3 class="text-2xl font-semibold mb-4 flex items-center" style="color: var(--text-color);"><i
+                            class="fas fa-quote-left mr-3" style="color: var(--accent-color);"></i>My Philosophy</h3>
+                    <p class="italic border-l-4 pl-4 py-2"
+                        style="color: var(--text-color); border-color: var(--accent-color);">
+                        "Crafting intuitive and robust mobile experiences that delight users is not just my job, but my
+                        passion. I believe in clean code, collaborative teamwork, and continuous improvement."
                     </p>
                 </div>
             </div>
@@ -698,7 +932,8 @@
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="py-16 md:py-24 rounded-3xl shadow-xl mb-16 animated-section hidden-init" style="background-color: var(--card-bg);">
+    <section id="skills" class="py-16 md:py-24 rounded-3xl shadow-xl mb-16 animated-section hidden-init"
+        style="background-color: var(--card-bg);">
         <div class="container">
             <h2 class="text-4xl section-title mb-12 text-center mx-auto">My Skills</h2>
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 text-center">
@@ -744,6 +979,35 @@
                     <h3 class="text-xl font-semibold mb-4" style="color: var(--text-color);">Performance Opt.</h3>
                     <p class="text-sm" style="color: var(--text-color);">Load time, efficiency</p>
                 </div>
+
+                <!-- Backend Learning Path (Requested Additions) -->
+
+                <div class="card p-6 flex flex-col items-center justify-center">
+                    <i class="fa-brands fa-python text-5xl mb-4" style="color: var(--accent-color);"></i>
+                    <h3 class="text-xl font-semibold mb-4" style="color: var(--text-color);">Python</h3>
+                    <p class="text-sm" style="color: var(--text-color);">Actively Learning</p>
+                </div>
+
+                <div class="card p-6 flex flex-col items-center justify-center">
+                    <img src="https://cdn.simpleicons.org/django/0C4B33" alt="Django" class="w-16 h-16 mb-4" />
+                    <h3 class="text-xl font-semibold mb-4" style="color: var(--text-color);">Django</h3>
+                    <p class="text-sm" style="color: var(--text-color);">Backend Framework (Learning)</p>
+                </div>
+
+
+
+                <div class="card p-6 flex flex-col items-center justify-center">
+                    <i class="fa-brands fa-node-js text-5xl mb-4" style="color: var(--accent-color);"></i>
+                    <h3 class="text-xl font-semibold mb-4" style="color: var(--text-color);">Node.js</h3>
+                    <p class="text-sm" style="color: var(--text-color);">Server-side JavaScript(Learning)</p>
+                </div>
+
+                <div class="card p-6 flex flex-col items-center justify-center">
+                    <i class="fa-solid fa-lightbulb text-5xl mb-4" style="color: var(--accent-color);"></i>
+                    <h3 class="text-xl font-semibold mb-4" style="color: var(--text-color);">Problem Solving</h3>
+                    <p class="text-sm" style="color: var(--text-color);">Analytical thinking</p>
+                </div>
+
             </div>
         </div>
     </section>
@@ -768,43 +1032,94 @@
     </section>
 
     <!-- Experience Section -->
-    <section id="experience" class="py-16 md:py-24 rounded-3xl shadow-xl mb-16 animated-section hidden-init" style="background-color: var(--card-bg);">
+    <section id="experience" class="py-16 md:py-24 rounded-3xl shadow-xl mb-16 animated-section hidden-init"
+        style="background-color: var(--card-bg);">
         <div class="container">
             <h2 class="text-4xl section-title mb-12 text-center mx-auto">Work Experience</h2>
             <div class="space-y-12">
+
+
+                <!-- Current Company Experience (Requested Addition) -->
+                <div
+                    class="card p-6 flex flex-col md:flex-row items-start md:items-center justify-between border-l-4 border-teal-500">
+                    <div>
+                        <h3 class="text-3xl font-semibold" style="color: var(--text-color);">Flutter Mobile App
+                            Developer</h3>
+                        <p class="text-xl mb-4" style="color: var(--accent-color);">Techsolutions Plex | Mohakhali,
+                            Dhaka | **August 2025
+                            - Present**</p>
+                        <ul class="list-disc list-inside space-y-2 text-lg" style="color: var(--text-color);">
+                            <li>Build cross-platform mobile apps using <strong>Flutter</strong> and
+                                <strong>Dart</strong>.
+                            </li>
+                            <li>Collaborate with designers and backend teams for smooth app delivery.</li>
+                            <li>Implement clean architecture and efficient <strong>state management</strong>.</li>
+                            <li>Integrate APIs, Firebase, and third-party libraries.</li>
+                            <li>Optimize app performance and responsiveness across devices.</li>
+                            <li>Debug issues and ensure app stability through testing.</li>
+                            <li>Follow Agile methods for planning and development cycles.</li>
+                            <li>Keep up with the latest Flutter tools and best practices.</li>
+                        </ul>
+
+                        <h4 class="text-lg font-medium mt-4 mb-2" style="color: var(--text-color);">Focus Areas:</h4>
+                        <ul class="list-disc pl-6 space-y-2" style="color: var(--text-color);">
+                            <li>Building fast and visually engaging mobile apps.</li>
+                            <li>Improving performance through clean architecture.</li>
+                            <li>Mastering <strong>state management</strong> and real-time data handling.</li>
+                        </ul>
+                    </div>
+                    <span class="mt-6 md:mt-0 md:ml-8 text-md font-medium px-4 py-2 rounded-full animate-pulse"
+                        style="color: var(--text-color); background-color: var(--accent-color);">Current Role</span>
+
+                </div>
+
+
+
                 <!-- Quomodosoft Experience -->
                 <div class="card p-8 flex flex-col md:flex-row items-start md:items-center justify-between">
                     <div class="flex-grow">
-                        <h3 class="text-3xl font-semibold" style="color: var(--text-color);">Flutter Mobile App Developer</h3>
-                        <p class="text-xl mb-4" style="color: var(--accent-color);">Quomodosoft | Mirpur-10, Dhaka | Sept 2022 - May 2025</p>
+                        <h3 class="text-3xl font-semibold" style="color: var(--text-color);">Flutter Mobile App
+                            Developer</h3>
+                        <p class="text-xl mb-4" style="color: var(--accent-color);">Quomodosoft | Mirpur-10, Dhaka |
+                            Sept 2022 - July 2025</p>
                         <ul class="list-disc list-inside space-y-2 text-lg" style="color: var(--text-color);">
-                            <li>Built and maintained high-performance, cross-platform apps for Android and iOS using Flutter.</li>
-                            <li>Integrated Firebase Auth, Firestore, and Messaging for real-time updates and secure user flows.</li>
-                            <li>Implemented in-app purchases (subscriptions and one-time purchases) on both platforms.</li>
+                            <li>Built and maintained high-performance, cross-platform apps for Android and iOS using
+                                Flutter.</li>
+                            <li>Integrated Firebase Auth, Firestore, and Messaging for real-time updates and secure user
+                                flows.</li>
+                            <li>Implemented in-app purchases (subscriptions and one-time purchases) on both platforms.
+                            </li>
                             <li>Integrated Google Maps API for location-based features and real-time tracking.</li>
                             <li>Applied scalable state management using BLOC pattern for maintainable architecture.</li>
                             <li>Deployed and managed app releases on the Play Store and App Store.</li>
                             <li>Conducted code reviews and performance optimizations.</li>
-                            <li>Published high-quality apps on CodeCanyon, adhering to technical and design standards.</li>
-                            <li>Collaborated with clients to gather requirements and deliver fully customized solutions that met their business goals.</li>
+                            <li>Published high-quality apps on CodeCanyon, adhering to technical and design standards.
+                            </li>
+                            <li>Collaborated with clients to gather requirements and deliver fully customized solutions
+                                that met their business goals.</li>
                         </ul>
                     </div>
-                    <span class="mt-6 md:mt-0 md:ml-8 text-md font-medium px-4 py-2 rounded-full shadow-md" style="color: var(--text-color); background-color: var(--accent-color);">Full-time</span>
+                    <span class="mt-6 md:mt-0 md:ml-8 text-md font-medium px-4 py-2 rounded-full shadow-md"
+                        style="color: var(--text-color); background-color: var(--accent-color);">Full-time</span>
                 </div>
 
                 <!-- Generic Additional Experience (can be removed/modified if no other roles) -->
                 <div class="card p-8 flex flex-col md:flex-row items-start md:items-center justify-between">
                     <div class="flex-grow">
-                        <h3 class="text-3xl font-semibold" style="color: var(--text-color);">Freelance Flutter Developer</h3>
+                        <h3 class="text-3xl font-semibold" style="color: var(--text-color);">Freelance Flutter Developer
+                        </h3>
                         <p class="text-xl mb-4" style="color: var(--accent-color);">Self-Employed</p>
                         <ul class="list-disc list-inside space-y-2 text-lg" style="color: var(--text-color);">
                             <li>Developed custom Flutter solutions for various clients, from concept to deployment.</li>
-                            <li>Focused on delivering highly responsive and performant applications tailored to specific business needs.</li>
+                            <li>Focused on delivering highly responsive and performant applications tailored to specific
+                                business needs.</li>
                             <li>Managed project lifecycles, ensuring timely delivery and client satisfaction.</li>
-                            <li>Continuously updated skills with the latest Flutter advancements and best practices.</li>
+                            <li>Continuously updated skills with the latest Flutter advancements and best practices.
+                            </li>
                         </ul>
                     </div>
-                    <span class="mt-6 md:mt-0 md:ml-8 text-md font-medium px-4 py-2 rounded-full shadow-md" style="color: var(--text-color); background-color: var(--accent-color);">Freelance</span>
+                    <span class="mt-6 md:mt-0 md:ml-8 text-md font-medium px-4 py-2 rounded-full shadow-md"
+                        style="color: var(--text-color); background-color: var(--accent-color);">Freelance</span>
                 </div>
             </div>
         </div>
@@ -817,24 +1132,32 @@
             <div class="max-w-3xl mx-auto card p-8">
                 <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6">
                     <div>
-                        <h3 class="text-2xl font-semibold" style="color: var(--text-color);">Bachelor of Computer Science & Engineering</h3>
+                        <h3 class="text-2xl font-semibold" style="color: var(--text-color);">Bachelor of Computer
+                            Science & Engineering</h3>
                         <p class="text-xl" style="color: var(--accent-color);">Southeast University</p>
                     </div>
-                    <span class="mt-2 sm:mt-0 text-lg font-medium px-2 py-2 rounded-full shadow-md" style="color: var(--text-color); background-color: var(--accent-color);">Dhaka, Bangladesh</span>
+                    <span class="mt-2 sm:mt-0 text-lg font-medium px-2 py-2 rounded-full shadow-md"
+                        style="color: var(--text-color); background-color: var(--accent-color);">Dhaka,
+                        Bangladesh</span>
                 </div>
                 <p class="text-lg" style="color: var(--text-color);">
-                    Focused on core computer science principles, software development methodologies, and algorithms. Gained a strong foundation in programming, data structures, and system design, preparing for a career in mobile application development.
+                    Focused on core computer science principles, software development methodologies, and algorithms.
+                    Gained a strong foundation in programming, data structures, and system design, preparing for a
+                    career in mobile application development.
                 </p>
             </div>
         </div>
     </section>
 
     <!-- Download CV Section -->
-    <section id="download-cv" class="py-16 md:py-24 rounded-3xl shadow-xl mb-16 animated-section hidden-init" style="background-color: var(--download-section-bg); color: var(--hero-text-color);">
+    <section id="download-cv" class="py-16 md:py-24 rounded-3xl shadow-xl mb-16 animated-section hidden-init"
+        style="background-color: var(--download-section-bg); color: var(--hero-text-color);">
         <div class="container text-center">
             <h2 class="text-4xl font-extrabold mb-8">Ready to Learn More?</h2>
-            <p class="text-xl mb-10 opacity-90">Download my full resume to get a comprehensive overview of my skills, experience, and projects.</p>
-            <a href="https://drive.google.com/drive/folders/1fK-UHGuSodXjAVtKNTiNNTNpi19eiNqG?usp=sharing" target="_blank" class="btn-download-cv transform hover:scale-105">
+            <p class="text-xl mb-10 opacity-90">Download my full resume to get a comprehensive overview of my skills,
+                experience, and projects.</p>
+            <a href="https://drive.google.com/drive/folders/1fK-UHGuSodXjAVtKNTiNNTNpi19eiNqG?usp=sharing"
+                target="_blank" class="btn-download-cv transform hover:scale-105">
                 <i class="fas fa-download mr-3"></i> Download My CV
             </a>
         </div>
@@ -846,32 +1169,48 @@
             <h2 class="text-4xl section-title mb-12 text-center mx-auto">Get In Touch</h2>
             <div class="max-w-3xl mx-auto card p-8">
                 <p class="text-center text-lg mb-8" style="color: var(--text-color);">
-                    I'm always open to new opportunities and collaborations. Feel free to reach out via the form below or connect with me directly!
+                    I'm always open to new opportunities and collaborations. Feel free to reach out via the form below
+                    or connect with me directly!
                 </p>
-                <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-8 mb-8">
+                <div
+                    class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-8 mb-8">
                     <div class="text-center">
                         <i class="fas fa-envelope text-4xl" style="color: var(--accent-color);"></i>
                         <p class="text-lg font-medium" style="color: var(--text-color);">Email:</p>
-                        <a href="mailto:mscsapan@gmail.com" class="hover:underline text-lg" style="color: var(--link-color);">mscsapan@gmail.com</a>
+                        <a href="mailto:mscsapan@gmail.com" class="hover:underline text-lg"
+                            style="color: var(--link-color);">mscsapan@gmail.com</a>
                     </div>
                     <div class="text-center">
                         <i class="fas fa-phone-alt text-4xl" style="color: var(--accent-color);"></i>
                         <p class="text-lg font-medium" style="color: var(--text-color);">Phone:</p>
-                        <a href="tel:+8801624188877" class="hover:underline text-lg" style="color: var(--link-color);">+880 1624188877</a>
+                        <a href="tel:+8801624188877" class="hover:underline text-lg"
+                            style="color: var(--link-color);">+880 1624188877</a>
                     </div>
                 </div>
                 <form id="contact-form" class="space-y-6">
                     <div>
-                        <label for="name" class="block text-sm font-medium mb-1" style="color: var(--text-color);">Your Name</label>
-                        <input type="text" id="name" name="name" class="mt-1 block w-full px-4 py-2 border rounded-md shadow-sm sm:text-sm" style="border-color: var(--input-border); background-color: var(--card-bg); color: var(--text-color);" placeholder="John Doe" required>
+                        <label for="name" class="block text-sm font-medium mb-1" style="color: var(--text-color);">Your
+                            Name</label>
+                        <input type="text" id="name" name="name"
+                            class="mt-1 block w-full px-4 py-2 border rounded-md shadow-sm sm:text-sm"
+                            style="border-color: var(--input-border); background-color: var(--card-bg); color: var(--text-color);"
+                            placeholder="John Doe" required>
                     </div>
                     <div>
-                        <label for="email" class="block text-sm font-medium mb-1" style="color: var(--text-color);">Your Email</label>
-                        <input type="email" id="email" name="email" class="mt-1 block w-full px-4 py-2 border rounded-md shadow-sm sm:text-sm" style="border-color: var(--input-border); background-color: var(--card-bg); color: var(--text-color);" placeholder="you@example.com" required>
+                        <label for="email" class="block text-sm font-medium mb-1" style="color: var(--text-color);">Your
+                            Email</label>
+                        <input type="email" id="email" name="email"
+                            class="mt-1 block w-full px-4 py-2 border rounded-md shadow-sm sm:text-sm"
+                            style="border-color: var(--input-border); background-color: var(--card-bg); color: var(--text-color);"
+                            placeholder="you@example.com" required>
                     </div>
                     <div>
-                        <label for="message" class="block text-sm font-medium mb-1" style="color: var(--text-color);">Message</label>
-                        <textarea id="message" name="message" rows="6" class="mt-1 block w-full px-4 py-2 border rounded-md shadow-sm sm:text-sm" style="border-color: var(--input-border); background-color: var(--card-bg); color: var(--text-color);" placeholder="I'd love to discuss..." required></textarea>
+                        <label for="message" class="block text-sm font-medium mb-1"
+                            style="color: var(--text-color);">Message</label>
+                        <textarea id="message" name="message" rows="6"
+                            class="mt-1 block w-full px-4 py-2 border rounded-md shadow-sm sm:text-sm"
+                            style="border-color: var(--input-border); background-color: var(--card-bg); color: var(--text-color);"
+                            placeholder="I'd love to discuss..." required></textarea>
                     </div>
                     <div class="text-center">
                         <button type="submit" class="btn-primary">Send Message</button>
@@ -883,14 +1222,17 @@
     </section>
 
     <!-- Footer -->
-    <footer class="py-10 mt-16 rounded-t-3xl shadow-2xl" style="background-color: var(--footer-bg); color: var(--footer-text);">
+    <footer class="py-10 mt-16 rounded-t-3xl shadow-2xl"
+        style="background-color: var(--footer-bg); color: var(--footer-text);">
         <div class="container text-center">
             <p class="mb-6">&copy; 2025 Mohammad Ali. All rights reserved.</p>
             <div class="flex justify-center space-x-8">
-                <a href="https://linkedin.com/in/mscsapan" target="_blank" rel="noopener noreferrer" class="transition duration-300" style="color: var(--footer-icon);" aria-label="LinkedIn Profile">
+                <a href="https://linkedin.com/in/mscsapan" target="_blank" rel="noopener noreferrer"
+                    class="transition duration-300" style="color: var(--footer-icon);" aria-label="LinkedIn Profile">
                     <i class="fab fa-linkedin-in text-3xl"></i>
                 </a>
-                <a href="https://github.com/mscsapan" target="_blank" rel="noopener noreferrer" class="transition duration-300" style="color: var(--footer-icon);" aria-label="GitHub Profile">
+                <a href="https://github.com/mscsapan" target="_blank" rel="noopener noreferrer"
+                    class="transition duration-300" style="color: var(--footer-icon);" aria-label="GitHub Profile">
                     <i class="fab fa-github text-3xl"></i>
                 </a>
             </div>
@@ -998,15 +1340,15 @@
         });
 
         // Mobile menu toggle
-        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+        document.getElementById('mobile-menu-button').addEventListener('click', function () {
             document.getElementById('mobile-menu').classList.remove('hidden');
         });
-        document.getElementById('close-mobile-menu').addEventListener('click', function() {
+        document.getElementById('close-mobile-menu').addEventListener('click', function () {
             document.getElementById('mobile-menu').classList.add('hidden');
         });
 
         // Contact form submission handler (client-side only for this example)
-        document.getElementById('contact-form')?.addEventListener('submit', function(e) {
+        document.getElementById('contact-form')?.addEventListener('submit', function (e) {
             e.preventDefault();
             const formMessage = document.getElementById('form-message');
             formMessage.style.display = 'block';
@@ -1062,7 +1404,7 @@
                     playStore: "https://play.google.com/store/apps/details?id=com.odiqco.bd"
                 }
             },
-              {
+            {
                 name: "Fannan Express",
                 summary: "Built a dual mobile app to Safety starts with understanding how developers collect and share your data. Data privacy and security practices may vary based on your use, region and age. The developer provided this information and may update it over time.",
                 image: "assets/portfolio/fannan.png",
@@ -1088,10 +1430,10 @@
                 platforms: ["ios", "android"],
                 links: {
                     appStore: "https://apps.apple.com/us/app/cre8er-club/id6743208413",
-                     playStore: "https://play.google.com/store/apps/details?id=com.cre8erclub"
+                    playStore: "https://play.google.com/store/apps/details?id=com.cre8erclub"
                 }
             },
-             {
+            {
                 name: "Casas em Angola",
                 summary: "Developed a real estate platform for the Angolan market, enabling users to browse, search, and connect with property listings. Features include advanced search filters, high-quality images, and direct communication with agents",
                 image: "assets/portfolio/cassas.png",
@@ -1112,7 +1454,7 @@
                     appStorePro: "https://apps.apple.com/us/app/repairgopro/id6741471019"
                 }
             },
-        
+
             {
                 name: "Shopo eCommerce",
                 summary: "Shopo is a modern multi vendor eCommerce solution built with Flutter and Laravel, offering apps, admin panel, and website support. Ideal for grocery, electronics, or general online stores with features like CMS, order tracking, and 9+ payment gateways.",
@@ -1149,7 +1491,7 @@
                     liveLink: "https://codecanyon.net/item/inflanar-influencer-marketing-service-selling-platform-user-and-influencer-app/53381205?s_rank=10"
                 }
             },
-              {
+            {
                 name: "Homeco",
                 summary: "Homeco is a modern Flutter app for real estate directory listings, enabling both users and agents to list, manage, and explore properties-ideal for real estate platforms and marketplaces.",
                 image: "assets/portfolio/homeco.png",
@@ -1157,7 +1499,7 @@
                 links: {
                     liveLink: "https://codecanyon.net/item/homeco-real-estate-directory-listing-flutter-app/46302077?s_rank=20"
                 }
-                
+
             }
         ];
 
@@ -1223,14 +1565,14 @@
                         linksHtml += `<a href="${project.links.appStore}" target="_blank" rel="noopener noreferrer" class="${linkClasses}" style="color: var(--link-color);"><i class="fab fa-apple mr-2"></i> App Store</a>`;
                     }
                     if (project.name === "RepairGo") {
-                         if (project.links.playStoreUser) { linksHtml += `<a href="${project.links.playStoreUser}" target="_blank" rel="noopener noreferrer" class="${linkClasses}" style="color: var(--link-color);"><i class="fab fa-google-play mr-2"></i> User App</a>`; }
-                         if (project.links.appStoreUser) { linksHtml += `<a href="${project.links.appStoreUser}" target="_blank" rel="noopener noreferrer" class="${linkClasses}" style="color: var(--link-color);"><i class="fab fa-apple mr-2"></i> User App</a>`; }
-                         if (project.links.playStorePro) { linksHtml += `<a href="${project.links.playStorePro}" target="_blank" rel="noopener noreferrer" class="${linkClasses}" style="color: var(--link-color);"><i class="fab fa-google-play mr-2"></i> Pro App</a>`; }
-                         if (project.links.appStorePro) { linksHtml += `<a href="${project.links.appStorePro}" target="_blank" rel="noopener noreferrer" class="${linkClasses}" style="color: var(--link-color);"><i class="fab fa-apple mr-2"></i> Pro App</a>`; }
+                        if (project.links.playStoreUser) { linksHtml += `<a href="${project.links.playStoreUser}" target="_blank" rel="noopener noreferrer" class="${linkClasses}" style="color: var(--link-color);"><i class="fab fa-google-play mr-2"></i> User App</a>`; }
+                        if (project.links.appStoreUser) { linksHtml += `<a href="${project.links.appStoreUser}" target="_blank" rel="noopener noreferrer" class="${linkClasses}" style="color: var(--link-color);"><i class="fab fa-apple mr-2"></i> User App</a>`; }
+                        if (project.links.playStorePro) { linksHtml += `<a href="${project.links.playStorePro}" target="_blank" rel="noopener noreferrer" class="${linkClasses}" style="color: var(--link-color);"><i class="fab fa-google-play mr-2"></i> Pro App</a>`; }
+                        if (project.links.appStorePro) { linksHtml += `<a href="${project.links.appStorePro}" target="_blank" rel="noopener noreferrer" class="${linkClasses}" style="color: var(--link-color);"><i class="fab fa-apple mr-2"></i> Pro App</a>`; }
                     }
                     if (project.name === "Fannan Express") {
-                         if (project.links.playStoreUser) { linksHtml += `<a href="${project.links.playStoreUser}" target="_blank" rel="noopener noreferrer" class="${linkClasses}" style="color: var(--link-color);"><i class="fab fa-google-play mr-2"></i> User App</a>`; }
-                         if (project.links.playStoreSeller) { linksHtml += `<a href="${project.links.playStoreSeller}" target="_blank" rel="noopener noreferrer" class="${linkClasses}" style="color: var(--link-color);"><i class="fab fa-google-play mr-2"></i> Seller App</a>`; }
+                        if (project.links.playStoreUser) { linksHtml += `<a href="${project.links.playStoreUser}" target="_blank" rel="noopener noreferrer" class="${linkClasses}" style="color: var(--link-color);"><i class="fab fa-google-play mr-2"></i> User App</a>`; }
+                        if (project.links.playStoreSeller) { linksHtml += `<a href="${project.links.playStoreSeller}" target="_blank" rel="noopener noreferrer" class="${linkClasses}" style="color: var(--link-color);"><i class="fab fa-google-play mr-2"></i> Seller App</a>`; }
                     }
                     if (project.links.liveLink && !project.links.playStore && !project.links.appStore && project.name !== "RepairGo" && project.name !== "Fannan Express") {
                         linksHtml += `<a href="${project.links.liveLink}" target="_blank" rel="noopener noreferrer" class="${linkClasses}" style="color: var(--link-color);"><i class="fas fa-link mr-2"></i> Live Demo</a>`;
@@ -1261,7 +1603,7 @@
 
         // Event listeners for project tabs
         tabButtons.forEach(button => {
-            button.addEventListener('click', function() {
+            button.addEventListener('click', function () {
                 tabButtons.forEach(btn => btn.classList.remove('active'));
                 this.classList.add('active');
                 displayProjects(this.dataset.tab);
@@ -1269,7 +1611,7 @@
         });
 
         // Event listener for project image clicks (delegated)
-        projectGrid.addEventListener('click', function(e) {
+        projectGrid.addEventListener('click', function (e) {
             if (e.target.classList.contains('project-image')) {
                 modalImage.src = e.target.src;
                 imageModalOverlay.classList.add('visible');
@@ -1277,12 +1619,12 @@
         });
 
         // Close modal when close button is clicked
-        modalClose.addEventListener('click', function() {
+        modalClose.addEventListener('click', function () {
             imageModalOverlay.classList.remove('visible');
         });
 
         // Close modal when clicking outside the image (on the overlay)
-        imageModalOverlay.addEventListener('click', function(e) {
+        imageModalOverlay.addEventListener('click', function (e) {
             if (e.target === imageModalOverlay) {
                 imageModalOverlay.classList.remove('visible');
             }
@@ -1317,4 +1659,5 @@
         });
     </script>
 </body>
+
 </html>
